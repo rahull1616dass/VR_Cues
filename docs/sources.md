@@ -10,7 +10,7 @@
 
    CUE TYPES:
 
-![1652639853585.png](img/1652639853585.png)
+![different-interaction-cues.png](img/different-interaction-cues.png)
 
 
 originally defined three purposes for interaction cues based on their ludography: discover, look, and go.
@@ -31,10 +31,10 @@ Four additional purposes for interaction cues: pick, manipulate, gesture, and sp
 
 **Speak cues**: inform the user to verbally communicate.
 
-![1652640638987.png](img/1652640638987.png)
+![travel-selection-manipulation-cues.png](img/travel-selection-manipulation-cues.png)
 
 
-![1652640767794.png](img/1652640767794.png)
+![AR-project-cue-examples.png](img/AR-project-cue-examples.png)
 
 # Rahul
 
