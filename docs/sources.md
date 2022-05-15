@@ -39,3 +39,5 @@ Four additional purposes for interaction cues: pick, manipulate, gesture, and sp
 # Rahul
 
 # Kerem
+
+1. We can follow this basic photon tutorial during our next meeting to create a basic online setting: [https://doc.photonengine.com/en-us/pun/v2/demos-and-tutorials/pun-basics-tutorial/intro]()
