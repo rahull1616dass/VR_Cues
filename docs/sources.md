@@ -10,7 +10,8 @@
 
    CUE TYPES:
 
-![1652639853585.png](img/1652639853585.png)
+![different-interaction-cues.png](img/different-interaction-cues.png)
+
 
 originally defined three purposes for interaction cues based on their ludography: discover, look, and go.
 
@@ -30,21 +31,12 @@ Four additional purposes for interaction cues: pick, manipulate, gesture, and sp
 
 **Speak cues**: inform the user to verbally communicate.
 
-![1652640638987.png](img/1652640638987.png)
+![travel-selection-manipulation-cues.png](img/travel-selection-manipulation-cues.png)
 
-![1652640767794.png](img/1652640767794.png)
+
+![AR-project-cue-examples.png](img/AR-project-cue-examples.png)
 
 # Rahul
-
-**There are main two plugin to that we can use to develop the video streaming (Display player view on supervisor)**
-
-
-[1. Plugin 1(Unity official plugin)](https://docs.unity3d.com/Packages/com.unity.renderstreaming@2.0/manual/index.html)
-
-[2. Plugin 2(Thrid party paid plugin)](https://assetstore.unity.com/packages/templates/packs/fmetp-stream-v2-202537#description)
-
-
-My opinion would be to use the Unity's official plugin but if ViA VR already using some other plugin it would be better if we use that.
 
 # Kerem
 
