@@ -30,19 +30,38 @@ There are two types of cues, when it comes to how they show up to the user. Thes
 
 The supervisor sees a List\<Cue> from which he can do basic CRUD Operations.
 
-- val id: String
+- val cue_id: String
+- val place_id: String
 - var name: Stringst
 - val position: Vector3
-- val transformation: Transformation (can there be a cue that actually moves?)
+- val transformation: Parent (can there be a cue that actually moves?)
 - duration: float # The amount of time that the cue should be displayed after which point it disappears.
+- Var Image : Background
+- Var Color : Background Color
 
 ### Textbox
 
+* Var Text: display text
+* Var Color: Text Color
+
 ### Poll
 
-- RadioButttons or Toggles
-- 
+- Var Toggles: RadioButttons or Toggles
+- Var Text: Display text
+- Var Image: Background
+- Var Color: Background Color
+- Var Color: Text Color
+- Var Action: Callback action on clicking toggle
+- Var Action: Callback action on clicking text
 
-### Image
+### Button
+
+* Var TextBox: Button text
+* Var CustomImage: custom image for button
+
+### CustomImage
+
+* Var Color: Color of the Image
+* Var Action: Callback action on clicking the image
 
 ### Video
