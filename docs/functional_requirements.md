@@ -65,6 +65,10 @@ The supervisor sees a List \<Cue> from which he can do basic CRUD Operations.
 
 - Context-Independent cues that alters the user about with any information, e.g.: "Do you want to stop the experience? Yes/No" or "Supervisor is requesting for streaming your VR feed. Proceed? Yes/No"
 
+### (Sooraj) Haptic Signals
+
+- Trigger haptic feedback through the handheld controllers upon necessary situations. 
+
 ### Button
 
 * Var TextBox: Button text
