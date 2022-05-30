@@ -69,6 +69,12 @@ The supervisor sees a List \<Cue> from which he can do basic CRUD Operations.
 
 - Trigger haptic feedback through the handheld controllers upon necessary situations. 
 
+### (Sooraj) Ghost Objects
+
+- Example: ghost hands in [VRescue](http://hci.uni-wuerzburg.de/projects/vrescue/)
+- To indicate the process of doing an action 
+- Demonstration of correct movement etc 
+
 ### Button
 
 * Var TextBox: Button text
