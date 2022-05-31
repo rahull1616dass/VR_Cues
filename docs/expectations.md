@@ -13,11 +13,11 @@ As we discussed in the meeting, these are the expectations (and, in bracket, del
    5. When to display cues? What are the generic scenarios?
 2. **Design (UI and Report)**
 
-   1. Iterative design of the UI
+   1. Iterative design of the UI (API)
 3. **Development (Report, Working model, and Code)**
 
-   1. Final output: Unity based plugin that can be used across different VR applications
-   2. A Control panel similar to a supervision monitor to design, control, and organize cue parameters in real-time
+   1. Final output: Unity plugin to control VR cues. Communication to cues via an API.
+   2. ~~A Control panel similar to a supervision monitor to design, control, and organize cue parameters in real-time~~
 4. **Documentation (Report and GitLab wiki/issues)**
 
 The deadline we agreed to finish the work is  **9th September** , and then decide a date for presentation and demonstration.
