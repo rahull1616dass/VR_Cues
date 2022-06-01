@@ -75,6 +75,8 @@ The supervisor sees a List \<Cue> from which he can do basic CRUD Operations.
 - To indicate the process of doing an action 
 - Demonstration of correct movement etc 
 
+### (Sooraj) Alerts
+
 ### Button
 
 * Var TextBox: Button text
