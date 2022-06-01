@@ -77,6 +77,8 @@ The supervisor sees a List \<Cue> from which he can do basic CRUD Operations.
 
 ### (Sooraj) Alerts
 
+### (Sooraj) Navigation Cues
+
 ### Button
 
 * Var TextBox: Button text
