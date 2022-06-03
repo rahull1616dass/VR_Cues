@@ -32,9 +32,6 @@ On our chair we are using LimeSurvey, which is a web-based quesionnaire administ
 
   [1] Halbig, A., Babu, S. K., Gatter, S., Latoschik, M. E., Brukamp, K., & von Mammen, S. (2022). Opportunities and Challenges of Virtual Reality in Healthcare–A Domain Experts Inquiry. Frontiers in Virtual Reality, 3, 837616.
 
-  [2] https://github.com/immersivecognition/unity-experiment-framework
-  
-  [3] https://assetstore.unity.com/packages/tools/gui/questionnairetoolkit-157330
 
   [4] Kennedy, R. S., Lane, N. E., Berbaum, K. S., & Lilienthal, M. G. (1993). Simulator sickness questionnaire: An enhanced method for quantifying simulator sickness. The international journal of aviation psychology, 3(3), 203-220.
 
