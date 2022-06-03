@@ -1,5 +1,4 @@
-
-background: |
+## Background: 
   VR applications are commonly used in the healthcare context. For example in an exposure therapy to learn how to cope with a specific anxiety or in a gait rehabilitation application that can be applied after someone suffered from a stroke. Applications like these often include a supervisor who is monitoring and adapting the VR-therapy session. In order to do this, the supervisor must be able to constantly assess the current state of the client. One way to obtain an assessment of the user's condition would be through subjective feedback by the client, i.e. questionnaires. Dependent variables that are assessed via questionnaires would be anxiety (e.g. in exposure therapy), cognitive workload [5] (e.g. in training/learning applications), or cybersickness [4] (could actually be relevant in a lot of different VR applications).
   Thus, in this project we would like to build a tool for Unity that enables a supervisor to create his/her own questionnaires and display them in VR. For more detailed information about the motivation of this project, have a look at [1].
 
@@ -11,7 +10,7 @@ background: |
 
   In the end, the creation and triggering of questions should not necessarily be done by Unity itself, but should come from outside. In this case, an API would be needed in Unity to communicate these things. 
 
-tasks: |
+##Tasks
 
 This is how the base functionality could look like (basically a CRUD process for a questionnaire). Of course all of this can be adapted during the runtime of the project: 
 
@@ -29,7 +28,7 @@ This basic functionality can be massiveley extended (depending on where you want
 On our chair we are using LimeSurvey, which is a web-based quesionnaire administration tool. It actually has quite some similar functionality (of course much more extensive than what we are aiming at here). However, there you could get some inspiration how they are doing things, e.g. which question types they are offering and how questions and questionnaires are created, or how they handle the saving and loading of questions, questionnaires, and answers (we might even adopt their format). If you want, I can give you access to LimeSurvey, so you can browse it and get the info you need. 
 
 
-references: |
+##References
   [1] Halbig, A., Babu, S. K., Gatter, S., Latoschik, M. E., Brukamp, K., & von Mammen, S. (2022). Opportunities and Challenges of Virtual Reality in Healthcare–A Domain Experts Inquiry. Frontiers in Virtual Reality, 3, 837616.
 
   [2] https://github.com/immersivecognition/unity-experiment-framework
