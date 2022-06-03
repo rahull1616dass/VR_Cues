@@ -29,6 +29,7 @@ On our chair we are using LimeSurvey, which is a web-based quesionnaire administ
 
 
 ##References
+
   [1] Halbig, A., Babu, S. K., Gatter, S., Latoschik, M. E., Brukamp, K., & von Mammen, S. (2022). Opportunities and Challenges of Virtual Reality in Healthcare–A Domain Experts Inquiry. Frontiers in Virtual Reality, 3, 837616.
 
   [2] https://github.com/immersivecognition/unity-experiment-framework
