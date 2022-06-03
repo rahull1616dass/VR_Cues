@@ -10,7 +10,7 @@
 
   In the end, the creation and triggering of questions should not necessarily be done by Unity itself, but should come from outside. In this case, an API would be needed in Unity to communicate these things. 
 
-##Tasks
+## Tasks
 
 This is how the base functionality could look like (basically a CRUD process for a questionnaire). Of course all of this can be adapted during the runtime of the project: 
 
@@ -28,7 +28,7 @@ This basic functionality can be massiveley extended (depending on where you want
 On our chair we are using LimeSurvey, which is a web-based quesionnaire administration tool. It actually has quite some similar functionality (of course much more extensive than what we are aiming at here). However, there you could get some inspiration how they are doing things, e.g. which question types they are offering and how questions and questionnaires are created, or how they handle the saving and loading of questions, questionnaires, and answers (we might even adopt their format). If you want, I can give you access to LimeSurvey, so you can browse it and get the info you need. 
 
 
-##References
+## References
 
   [1] Halbig, A., Babu, S. K., Gatter, S., Latoschik, M. E., Brukamp, K., & von Mammen, S. (2022). Opportunities and Challenges of Virtual Reality in Healthcare–A Domain Experts Inquiry. Frontiers in Virtual Reality, 3, 837616.
 
