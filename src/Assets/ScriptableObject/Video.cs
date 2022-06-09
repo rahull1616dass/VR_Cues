@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Models
 {
-    public class Video : Cue
+    public class Video
     {
 
         // Use this for initialization

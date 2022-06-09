@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Models
 {
-    public class Image : Cue
+    public class Poll
     {
 
         // Use this for initialization

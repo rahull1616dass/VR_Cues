@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Models
 {
-    public class TextBox : Cue
+    public class Image
     {
 
         // Use this for initialization
