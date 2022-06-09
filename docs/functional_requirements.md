@@ -10,15 +10,16 @@ Player should be able to do the following:
 - interact and navigate across the scene with his hand sets independent of the Cue System at play
 - select an answer and send its result back to supervisor, whenever presented with a 'Poll' cue. (Sooraj: For easy understanding, lets say, the player should be able to interact with cues whenever necessary.)
 
-### Supervisor
+### Developer
 
-Supervisor should be able to do the following:
+Developer should be able to do the following:
 
 - See the player's feed live, with as little lag and jitter as possible.
-- Create a new cue, by setting the fields described in **Cue** section for each type.
-- See the list of created cues, activate/deactivate them at anytime by a **checkbox**
-- Update/Edit a cue's parameters by selecting the relevant cue from the list.
-- Delete a cue from the list
+- Interact with our API and define the structure of all the possible cues, by using the templates and the 
+parameters that we define. Then customize each cue that will be displayed in the scene by:
+- Creating JSON representations, and/or
+- Manipulating ScriptableObject parameters within Unity
+
 - Save a local instance of the current cues list in the form of a json file.
 - (Sooraj: Understand the layout of the environment to decide where to place the cue)
 
@@ -26,6 +27,10 @@ There are two types of cues, when it comes to how they show up to the user. Thes
 
 - **Context-Dependent:** These need to be placed in the scene by the supervisor. For this a 'Scene Edit Mode' is required (as described in the **Edit Mode** section)
 - **Context-Independent:** These cues will always follow the  [posPlayer + (some bias in the z-axis)]. So they will occupy a fixed place in front of the user's point of view until they are hidden. (Sooraj: example is a poll/prompt if I remember it correctly (?))
+
+Also, the cues can be active/inactive at any given time. The activity can be defined to be triggered in the following ways:
+- **Position Trigger:** Whenever the player steps inside a certain area
+- **Time Trigger:** After a set amount of time passes
 
 
 # Edit Mode
