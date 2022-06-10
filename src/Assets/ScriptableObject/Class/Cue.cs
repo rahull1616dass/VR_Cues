@@ -7,7 +7,7 @@ namespace Cues.Data
     [CreateAssetMenu(fileName = "CueData", menuName = "ScriptableObjects/BasicCue", order = 1)]
     public class Cue : ScriptableObject
     {
-        public Vector3 _positionOfTheCue;
+        public PositionData _positionData;
         public List<CueTrigger> _cueTriggers;
     }
 
@@ -23,11 +23,17 @@ namespace Cues.Data
         }
         public ETriggerType _eTriggerType;
 
-
         public float _eTriggerTime;
 
         public Vector3 _eTriggerPosition;
 
         public Vector3 _eTriggerSize;
+    }
+
+    [System.Serializable]
+    public class PositionData
+    {
+        public Transform _cueTransform;
+        public Transform _parent;
     }
 }
