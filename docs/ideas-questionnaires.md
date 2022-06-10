@@ -27,6 +27,18 @@ This basic functionality can be massiveley extended (depending on where you want
 
 On our chair we are using LimeSurvey, which is a web-based quesionnaire administration tool. It actually has quite some similar functionality (of course much more extensive than what we are aiming at here). However, there you could get some inspiration how they are doing things, e.g. which question types they are offering and how questions and questionnaires are created, or how they handle the saving and loading of questions, questionnaires, and answers (we might even adopt their format). If you want, I can give you access to LimeSurvey, so you can browse it and get the info you need. 
 
+## Update (10.06.2022)
+
+In the last meeting we had a more concrete discussion about the scope of this project. The main conclusion was, that you would just be responsible for handling the Cues in the 3D envrionment. The way these Cues reach your API is not of interst (so far). 
+The base task for the questionnaires that I would imagine for this would look like this: 
+You will create a Class representation for Questionnaires and Questions. The first question-type that you would implement are Likert-type questions. They consist of a statement and a Point-Scale that you one can use to express how much one would agree to this statement. Attache to the points can be anchors that represent the meaning of the points. Every point can have an anchor but doesn’t have to have one. However, at least the first and the last one need an anchor, e.g. (strongly agree strongly disagree).
+Usually a questionnaire would have a (short) intro text at the top that explains how it works and what’s its purpose.
+Your API should be able to handle that information and display the questionnaire on a 3D plane in the virtual environment. 
+The user in VR should be able to anser these question via controller interaction 
+
+When the user is finsihed with answering the questionnaire, the answers should be stored.
+
+You can adapt this and realize this as it suits you best. Later on in the project we can extend this, e.g. with more question types, etc...
 
 ## References
 
