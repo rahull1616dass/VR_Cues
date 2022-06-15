@@ -174,9 +174,9 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.picoxr": {
-      "version": "file:C:/Users/localuser/Documents/viavr_cues/Pico UnityXR SDK v2.0.5",
+      "version": "file:Pico UnityXR SDK v2.0.5",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {
         "com.unity.xr.management": "3.2.16",
         "com.unity.ugui": "1.0.0",
