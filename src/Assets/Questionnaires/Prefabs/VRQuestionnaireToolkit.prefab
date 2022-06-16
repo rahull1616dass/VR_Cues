@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8697000387260259618}
   - component: {fileID: 8697000387260259647}
   - component: {fileID: 3864459995664010785}
+  - component: {fileID: 4987380287177598195}
   m_Layer: 0
   m_Name: VRQuestionnaireToolkit
   m_TagString: VRQuestionnaireToolkit
@@ -252,6 +253,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4987380287177598195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697000387260259617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &8697000388396706261
 GameObject:
   m_ObjectHideFlags: 0
