@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 420727342}
   - component: {fileID: 420727341}
   - component: {fileID: 420727340}
+  - component: {fileID: 420727344}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -174,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d260640d94119ec4cb6025773ddad693, type: 2}
+  - {fileID: 2100000, guid: 79b6907e7ed7c574bab215ead0f48d0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,6 +219,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420727344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420727339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08aecb894284dc48a324c75aa9c48ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 1
+  threshold: 10.5
 --- !u!1 &485687511
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485687511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -8.23, y: 1, z: 10.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -313,6 +328,7 @@ GameObject:
   - component: {fileID: 566923928}
   - component: {fileID: 566923927}
   - component: {fileID: 566923926}
+  - component: {fileID: 566923930}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -397,6 +413,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566923930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566923925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88deb1e7f13192b4da869a821186e64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802787889
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +437,7 @@ GameObject:
   - component: {fileID: 802787892}
   - component: {fileID: 802787891}
   - component: {fileID: 802787890}
+  - component: {fileID: 802787894}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -448,7 +477,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa8f04aced826454da7b5b31946efc7a, type: 2}
+  - {fileID: 2100000, guid: a29faecbb518c084e8e5913e6e5ae43d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -492,6 +521,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802787894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802787889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08aecb894284dc48a324c75aa9c48ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 1
+  threshold: 10.5
 --- !u!1 &1381562314
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +547,7 @@ GameObject:
   - component: {fileID: 1381562317}
   - component: {fileID: 1381562316}
   - component: {fileID: 1381562315}
+  - component: {fileID: 1381562319}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -543,7 +587,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aea1070eef0a4514696d9bb2ded899d7, type: 2}
+  - {fileID: 2100000, guid: 0b9c7e5704ae3b74c9270a86fa18b861, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -587,6 +631,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381562319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381562314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08aecb894284dc48a324c75aa9c48ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationTime: 1
+  threshold: 10.5
 --- !u!1 &2095979998
 GameObject:
   m_ObjectHideFlags: 0
