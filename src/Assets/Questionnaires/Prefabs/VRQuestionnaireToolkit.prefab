@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8697000387260259618}
   - component: {fileID: 8697000387260259647}
   - component: {fileID: 3864459995664010785}
+  - component: {fileID: 4987380287177598195}
+  - component: {fileID: 4698788897004292109}
   m_Layer: 0
   m_Name: VRQuestionnaireToolkit
   m_TagString: VRQuestionnaireToolkit
@@ -29,7 +31,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697000387260259617}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
@@ -54,21 +56,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de41a7e30bb47a94fbabd5a537794de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticipantId: id2
-  Condition: AB
-  ControllerTactileFeedbackOnOff: 0
+  ParticipantId: id1
+  Condition: A
+  ControllerTactileFeedbackOnOff: 1
   SoundOnOff: 0
-  ConfigurationMode: 1
+  ConfigurationMode: 0
   AlsoConsolidateResults: 1
   VibratingDurationForHovering: 0.05
   VibratingFrequencyForHovering: 1
   VibratingAmplitudeForHovering: 5
-  SoundClipForHovering: {fileID: 0}
+  SoundClipForHovering: {fileID: 8300000, guid: d7d08c266925c5446947a004fde53aa0, type: 3}
   HoveringVolume: 1
   VibratingDurationForSelecting: 0.05
   VibratingFrequencyForSelecting: 200
   VibratingAmplitudeForSelecting: 1
-  SoundClipForSelecting: {fileID: 0}
+  SoundClipForSelecting: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
   SelectingVolume: 1
 --- !u!114 &8697000387260259645
 MonoBehaviour:
@@ -86,9 +88,9 @@ MonoBehaviour:
   JsonInputPath_2: Assets/Questionnaires/Data/Questions/NASA_TLX
   JsonInputPath_3: Assets/Questionnaires/Data/Questions/SUS Presence Questionnaire
   JsonInputPath_4: Assets/Questionnaires/Data/Questions/Simulation Sickness Questionnaire
-  JsonInputPath_5: 
-  JsonInputPath_6: 
-  JsonInputPath_7: 
+  JsonInputPath_5: Assets/Questionnaires/Data/Questions/IPQ Questionnaire
+  JsonInputPath_6: Assets/Questionnaires/Data/Questions/System Usability Scale Questionnaire
+  JsonInputPath_7: Assets/Questionnaires/Data/Questions/Virtual Embodiment Questionnaire
   JsonInputPath_8: 
   JsonInputPath_9: 
   JsonInputPath_10: 
@@ -138,7 +140,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8697000387260259647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +254,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4987380287177598195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697000387260259617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
+--- !u!114 &4698788897004292109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697000387260259617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff133fbc52255948b4e69d6dc77b5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8697000388396706261
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,14 +328,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1b011cae3bf814d840b3ee9acb236f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileName: answers
-  Delimiter: ','
+  FileName: example-answer-sheet
+  Delimiter: ;
   Filetype: 0
   SaveToLocal: 1
   StorePath: /Questionnaires/Data/Answers/
   UseGlobalPath: 0
-  SaveToServer: 0
-  TargetURI: http://www.example-server.com/survey-results.php
+  SaveToServer: 1
+  TargetURI: http://localhost/test-vr-questionnaire/survey-results.php
   QuestionnaireFinishedEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -1,0 +1,43 @@
+{
+  "cues": [
+    {
+    "id": "Quest. 1",
+  "qInfo": {
+    "qTitle": "title",
+    "qInstructions": "instruction",
+    "qMessage": "message",
+    "qAcknowledgments": "ack"
+  },
+  "questions": [
+    {
+      "qType": "radio",
+      "qInstructions": "Please choose one of the following options...",
+      "qData": [
+        {
+          "qText": "question text",
+          "qOptions": ["opt 1", "opt 2", "opt 3"]
+        }
+      ]
+    },
+    {
+      "qType": "checkbox",
+      "qInstructions": "Choose all options that apply",
+      "qOptions": [
+        "It's too expensive",
+        "The technology isn't that good yet ",
+        "There is not enough content and/or games ",
+        "I don't like wearing the headset ",
+        "The experience isn't immersive enough",
+        "The experience isn't better than traditional gaming"
+      ],
+      "qData": [
+        {
+          "qText": " If you don’t use VR frequently, what is keeping you from adopting this?",
+          "qMandatory": "true"
+        }
+      ]
+    }
+  ]
+    }
+  ]
+}

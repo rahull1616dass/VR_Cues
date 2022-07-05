@@ -1,0 +1,80 @@
+{
+  "$id": "cues_schema",
+  "description": "A list of cues, which can have cues of several different types.",
+  "type": "object",
+  "properties": {
+    "cues": {
+      "type": "array",
+      "items": { "anyOf": [{ "$ref": "#/definitions/questionnaire" }] }
+    }
+  },
+  "required": ["cues"],
+  "definitions": {
+    "questionnaire": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": {
+            "items": { "$ref": "#/definitions/question" }
+          }
+        },
+        "qInfo": { "$ref": "#/definitions/qInfo" }
+      },
+      "required": ["id", "qInfo", "questions"]
+    },
+    "qInfo": {
+      "type": "object",
+      "properties": {
+        "qTitle": { "type": "string" },
+        "qInstructions": { "type": "string" },
+        "qMessage": { "type": "string" },
+        "qAcknowledgments": { "type": "string" }
+      },
+      "required": ["qTitle", "qInstructions", "qMessage", "qAcknowledgments"]
+    },
+    "question": {
+      "type": "object",
+      "properties": {
+        "qType": {
+          "type": "string",
+          "enum": [
+            "radio",
+            "radioGrid",
+            "checkbox",
+            "checkboxGrid",
+            "linearGrid",
+            "linearSlider",
+            "dropdown",
+            "textInput"
+          ]
+        },
+        "qInstructions": { "type": "string" },
+        "qData": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "qText": { "type": "string" },
+              "qMandatory": { "type": "boolean" },
+              "qMin": { "type": "integer" },
+              "qMinLabel": { "type": "string" },
+              "qMax": { "type": "integer" },
+              "qMaxLabel": { "type": "string" },
+              "qOptions": { "$ref": "#/definitions/stringArray" },
+              "qConditions": { "$ref": "#/definitions/stringArray" }
+            },
+            "required": ["qText"]
+          }
+        },
+        "qOptions": { "$ref": "#/definitions/stringArray" }
+      },
+      "required": ["qType", "qInstructions", "qData"]
+    },
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

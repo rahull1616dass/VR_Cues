@@ -206,7 +206,7 @@
          "qData":[
             {
                "qId":"s1",
-               "qText":"Temporal Demand:			How hurried or rushed was the pace of the task?",
+               "qText":"How hurried or rushed was the pace of the task?",
                "qMin":"0",
                "qMinLabel":"Low",
                "qMax":"3",
@@ -214,7 +214,7 @@
             },
             {
                "qId":"s2",
-               "qText":"Physical Demand:				How physically demanding was the task?",
+               "qText":"How physically demanding was the task?",
                "qMin":"0",
                "qMinLabel":"Low",
                "qMax":"12",
@@ -222,7 +222,7 @@
             },
             {
                "qId":"s3",
-               "qText":"Mental Demand:				How mentally demanding was the task?",
+               "qText":"How mentally demanding was the task?",
                "qMin":"0",
                "qMinLabel":"Low",
                "qMax":"20",
@@ -237,7 +237,7 @@
          "qData":[
             {
                "qId":"s4",
-               "qText":"Mental Demand:				How mentally demanding was the task?",
+               "qText":" mentally demanding was the task?",
                "qMandatory":"true",
                "qMin":"0",
                "qMinLabel":"Low",
@@ -246,7 +246,7 @@
             },
             {
                "qId":"s5",
-               "qText":"Physical Demand:				How physically demanding was the task?",
+               "qText":" physically demanding was the task?",
                "qMandatory":"false",
                "qMin":"0",
                "qMinLabel":"Low",
@@ -255,7 +255,7 @@
             },
             {
                "qId":"s6",
-               "qText":"Temporal Demand:		    How hurried or rushed was the pace of the task?",
+               "qText":"How hurried or rushed was the pace of the task?",
                "qMandatory":"false",
                "qMin":"0",
                "qMinLabel":"Low",
