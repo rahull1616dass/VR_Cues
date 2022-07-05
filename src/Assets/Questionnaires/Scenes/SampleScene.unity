@@ -273,6 +273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b5746806bf665469c19b4fe619a708, type: 3}
+--- !u!20 &1205620639 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4305751607765632498, guid: 76b5746806bf665469c19b4fe619a708, type: 3}
+  m_PrefabInstance: {fileID: 1205620638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1263462355
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,93 +425,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1016164502312608958, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: Condition
-      value: A
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: targetURI
-      value: http://localhost/_test/test.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: SoundOnOff
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: soundVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: ParticipantId
-      value: id1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: hoverSoundClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: alsoSaveToServer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: ConfigurationMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: soundClipHovering
-      value: 
-      objectReference: {fileID: 8300000, guid: d7d08c266925c5446947a004fde53aa0, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: soundClipSelecting
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: SoundClipForHovering
-      value: 
-      objectReference: {fileID: 8300000, guid: d7d08c266925c5446947a004fde53aa0, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: soundClipForHovering
-      value: 
-      objectReference: {fileID: 8300000, guid: d7d08c266925c5446947a004fde53aa0, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: SoundClipForSelecting
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: soundClipForSelecting
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: AlsoConsolidateResults
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: rememberTransformValues
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: rememberTransformWhenQuit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: vibratingAmplitudeSelecting
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: vibratingFrequencySelecting
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259616, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: ControllerTactileFeedbackOnOff
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259617, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_Name
       value: VRQuestionnaireToolkit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697000387260259618, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_Pivot.x
@@ -543,18 +468,6 @@ PrefabInstance:
     - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_LocalPosition.x
@@ -604,65 +517,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: JsonInputPath_1
-      value: Assets/Questionnaires/Data/Questions/questionnaire_example
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: JsonInputPath_4
-      value: Assets/Questionnaires/Data/Questions/Simulation Sickness Questionnaire
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: JsonInputPath_5
-      value: Assets/Questionnaires/Data/Questions/IPQ Questionnaire
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: JsonInputPath_6
-      value: Assets/Questionnaires/Data/Questions/System Usability Scale Questionnaire
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: JsonInputPath_7
-      value: Assets/Questionnaires/Data/Questions/Virtual Embodiment Questionnaire
-      objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259646, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: FileName
-      value: example-answer-sheet
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: Delimiter
-      value: ;
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: StorePath
-      value: /Questionnaires/Data/Answers/
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: TargetURI
-      value: http://localhost/test-vr-questionnaire/survey-results.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: targetURI
-      value: http://localhost/test-vr-questionnaire/test.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: SaveToLocal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: SaveToServer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: UseGlobalPath
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697000388396706263, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
-      propertyPath: alsoSaveToServer
-      value: 1
+      objectReference: {fileID: 1205620639}
+    - target: {fileID: 8697000387260259646, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
