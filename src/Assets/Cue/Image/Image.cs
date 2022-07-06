@@ -1,4 +1,9 @@
-﻿class Image : Cue
+﻿
+namespace Cues
 {
-    public string text { get; set; }
+    class Image : Cue
+    {
+        public string text { get; set; }
+    }
 }
+
