@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 using SimpleJSON;
+using Cues.Data;
 
 /// <summary>
 /// GenerateQuestionnaire.class
@@ -58,7 +59,7 @@ namespace VRQuestionnaireToolkit
             numberQuestionnaires = 1;
             Questionnaires = new List<GameObject>();
             JsonInputFiles = new List<string>();
-
+            /*
             if (JsonInputPath_1 != "")
             {
                 JsonInputFiles.Add(JsonInputPath_1);
@@ -108,7 +109,8 @@ namespace VRQuestionnaireToolkit
                 Questionnaires[i].SetActive(false);
 
             Questionnaires[0].SetActive(true);
-
+            */
+            GenerateNewQuestionnaire("Assets/Questionnaires/Data/Questions/sample.json");
         }
 
         void GenerateNewQuestionnaire(string inputPath)
@@ -139,7 +141,9 @@ namespace VRQuestionnaireToolkit
             // reads and parses .json input file
             string JSONString = File.ReadAllText(jsonPath);
             var N = JSON.Parse(JSONString);
-
+            var c = JsonHelper.FromJson<Questionnaire>(N);
+            var x = 5;
+            /*
             //----------- Read metadata from .JSON file ----------//
             string title = N["qTitle"].Value;
             string instructions = N["qInstructions"].Value;
@@ -150,9 +154,9 @@ namespace VRQuestionnaireToolkit
 
             int i = 0;
 
-            /*
-            Continuously reads data from the .json file 
-            */
+            
+            //Continuously reads data from the .json file 
+        
             while (true)
             {
                 pId = N["questions"][i]["pId"].Value; //read new page
@@ -193,5 +197,8 @@ namespace VRQuestionnaireToolkit
                 }
             }
         }
+            */
+        }
     }
 }
+    
