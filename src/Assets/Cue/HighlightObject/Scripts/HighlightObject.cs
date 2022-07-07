@@ -3,7 +3,7 @@
 [RequireComponent(typeof(MeshRenderer))]
 public class HighlightObject : MonoBehaviour {
   public float animationTime = 1f;
-  public float threshold = 10.5f;
+  //public float threshold = 10.5f;
 
   private HighlightController controller;
   private Material material;
@@ -16,9 +16,9 @@ public class HighlightObject : MonoBehaviour {
 
     normalColor = material.color;
     selectedColor = new Color(
-      Mathf.Clamp01(normalColor.r * threshold),
-      Mathf.Clamp01(normalColor.g * threshold),
-      Mathf.Clamp01(normalColor.b * threshold)
+      Mathf.Clamp01(200),
+      Mathf.Clamp01(200),
+      Mathf.Clamp01(200)
     );
   }
 
