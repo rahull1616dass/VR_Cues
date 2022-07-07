@@ -1,5 +1,42 @@
 {
   "cueType": "Cue",
+  "transformDataForCue": {
+    "position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "rotation": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "w": 1.0
+    },
+    "scale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    }
+  },
+  "triggerPointForCue": {
+    "position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "rotation": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "w": 1.0
+    },
+    "scale": {
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
+    }
+  },
+  "typeOfTrigger": 1,
   "cues": [
     {
       "cueType": "Questionnaire",
@@ -17,7 +54,11 @@
           "qData": [
             {
               "qText": "question text",
-              "qOptions": [ "opt 1", "opt 2", "opt 3" ]
+              "qOptions": [
+                "opt 1",
+                "opt 2",
+                "opt 3"
+              ]
             }
           ]
         },
@@ -43,8 +84,44 @@
     },
     {
       "cueType": "Image",
-      "text": "sampleText"
+      "text": "sampleText",
+      "transformDataForCue": {
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 1.0
+        },
+        "scale": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        }
+      },
+      "triggerPointForCue": {
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 1.0
+        },
+        "scale": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        }
+      },
+      "typeOfTrigger": 1
     }
-
   ]
 }
