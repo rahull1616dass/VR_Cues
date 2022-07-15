@@ -110,7 +110,7 @@ namespace VRQuestionnaireToolkit
 
             Questionnaires[0].SetActive(true);
             */
-            GenerateNewQuestionnaire("Assets/Questionnaires/Data/Questions/sample.json");
+            GenerateNewQuestionnaire("Assets/Cue/Questionnaire/Data/Questions/sample.json");
         }
 
         void GenerateNewQuestionnaire(string inputPath)

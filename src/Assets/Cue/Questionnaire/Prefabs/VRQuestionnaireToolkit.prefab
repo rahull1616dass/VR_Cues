@@ -84,13 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cf11b04392eb647bcf6d164697981c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JsonInputPath_1: Assets/Questionnaires/Data/Questions/questionnaire_example
-  JsonInputPath_2: Assets/Questionnaires/Data/Questions/NASA_TLX
-  JsonInputPath_3: Assets/Questionnaires/Data/Questions/SUS Presence Questionnaire
-  JsonInputPath_4: Assets/Questionnaires/Data/Questions/Simulation Sickness Questionnaire
-  JsonInputPath_5: Assets/Questionnaires/Data/Questions/IPQ Questionnaire
-  JsonInputPath_6: Assets/Questionnaires/Data/Questions/System Usability Scale Questionnaire
-  JsonInputPath_7: Assets/Questionnaires/Data/Questions/Virtual Embodiment Questionnaire
+  JsonInputPath_1: Assets/Cue/Questionnaires/Data/Questions/questionnaire_example
+  JsonInputPath_2: Assets/Cue/Questionnaires/Data/Questions/NASA_TLX
+  JsonInputPath_3: Assets/Cue/Questionnaires/Data/Questions/SUS Presence Questionnaire
+  JsonInputPath_4: Assets/Cue/Questionnaires/Data/Questions/Simulation Sickness Questionnaire
+  JsonInputPath_5: Assets/Cue/Questionnaires/Data/Questions/IPQ Questionnaire
+  JsonInputPath_6: Assets/Cue/Questionnaires/Data/Questions/System Usability Scale
+    Questionnaire
+  JsonInputPath_7: Assets/Cue/Questionnaires/Data/Questions/Virtual Embodiment Questionnaire
   JsonInputPath_8: 
   JsonInputPath_9: 
   JsonInputPath_10: 
@@ -140,7 +141,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8697000387260259647
 MonoBehaviour:
   m_ObjectHideFlags: 0

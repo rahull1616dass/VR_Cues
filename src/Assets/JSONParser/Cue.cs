@@ -13,9 +13,9 @@ public class Cue
     public List<Cue> cues { get; set; }
     public string cueType { get; set; }
 
-    public CueTransform transformDataForCue { get; set; }
+    public Transform transformDataForCue { get; set; }
 
-    public CueTransform triggerPointForCue { get; set; }
+    public Transform triggerPointForCue { get; set; }
 
     public TriggerType typeOfTrigger;
 }
