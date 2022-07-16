@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
-        Cue cues = JsonConvert.DeserializeObject<Cue>(jsonString, new CueConverter("cueType"));
+        RootCue cues = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType"));
         Debug.Log(cues);
     }
 

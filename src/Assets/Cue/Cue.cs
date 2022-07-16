@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Cue
 {
-    public List<Cue> cues { get; set; }
-    public string cueType { get; set; }
-
+    
 
 }
 /*
