@@ -1,5 +1,16 @@
-﻿public class Questionnaire : Cue
+﻿
+using Newtonsoft.Json;
+using UnityEngine;
+
+public class Questionnaire : Cue
 {
-    public QInfo qInfo { get; set; }
-    public Question[] questions { get; set; }
+    private QInfo qInfo { get; set; }
+    private Question[] questions { get; set; }
+
+    public override void generate()
+    {
+        GenerateCueInScene.instance.generateQuestionnaire(this);
+
+    }
+
 }

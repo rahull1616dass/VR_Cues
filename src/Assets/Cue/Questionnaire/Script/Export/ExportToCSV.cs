@@ -126,30 +126,30 @@ namespace VRQuestionnaireToolkit
             string[] csvTemp = new string[4];
 
             // enable all GameObjects (except the first and last page) in order to read the responses
-            for (int i = 1; i < _pageFactory.GetComponent<PageFactory>().NumPages - 1; i++)
-                _pageFactory.GetComponent<PageFactory>().PageList[i].SetActive(true);
+            for (int i = 1; i < _pageFactory.GetComponent<QuestionnairePageFactory>().NumPages - 1; i++)
+                _pageFactory.GetComponent<QuestionnairePageFactory>().PageList[i].SetActive(true);
 
             #region CONSTRUCTING RESULTS
             // read participants' responses 
-            for (int i = 0; i < _pageFactory.GetComponent<PageFactory>().QuestionList.Count; i++)
+            for (int i = 0; i < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList.Count; i++)
             {
-                if (_pageFactory.GetComponent<PageFactory>().QuestionList[i] != null)
+                if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i] != null)
                 {
                     csvTemp = new string[4];
 
-                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>() != null)
+                    if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QuestionnaireId;
-                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QType;
-                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QText;
-                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>().QId;
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
                                 .RadioList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                             {
                                 if (_questionnaireID != "SSQ")
                                 {
@@ -163,94 +163,94 @@ namespace VRQuestionnaireToolkit
                         }
                         _csvRows.Add(csvTemp);
                     }
-                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>() != null)
+                    else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QuestionnaireId;
-                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QType;
-                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QText;
-                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>().QId;
 
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
                                 .LinearGridList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                             {
                                 csvTemp[3] = "" + (j + 1);
                             }
                         }
                         _csvRows.Add(csvTemp);
                     }
-                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>() != null)
+                    else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QuestionnaireId;
-                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QType;
-                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QConditions + "_" + _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QText;
-                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QConditions + "_" + _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>().QId;
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>()
                                 .RadioList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                             {
                                 csvTemp[3] = "" + (j + 1);
                             }
                         }
                         _csvRows.Add(csvTemp);
                     }
-                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
+                    else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QuestionnaireId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QuestionnaireId;
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
                                 .CheckboxList.Count;
                             j++)
                         {
                             csvTemp = new string[4];
-                            csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QType;
-                            csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QText + " -" +
-                                        _pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInParent<Checkbox>().QOptions[j]; // "xxxQuestionxxx? -xxxOptionxxx"
-                            csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QId;
-                            csvTemp[3] = (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn ? ("" + 1) : ""); // 1 if checked, blank if unchecked
+                            csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QType;
+                            csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QText + " -" +
+                                        _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInParent<Checkbox>().QOptions[j]; // "xxxQuestionxxx? -xxxOptionxxx"
+                            csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>().QId;
+                            csvTemp[3] = (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn ? ("" + 1) : ""); // 1 if checked, blank if unchecked
                             _csvRows.Add(csvTemp);
                         }
                     }
-                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>() != null)
+                    else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QuestionnaireId;
-                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QType;
-                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QText;
-                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>().QId;
 
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Slider>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Slider>()
                                 .SliderList.Count;
                             j++)
                         {
-                            csvTemp[3] = "" + _pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<UnityEngine.UI.Slider>().value;
+                            csvTemp[3] = "" + _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<UnityEngine.UI.Slider>().value;
                         }
                         _csvRows.Add(csvTemp);
                     }
-                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>() != null)
+                    else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>() != null)
                     {
-                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QuestionnaireId;
-                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QType;
-                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QText;
-                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QId;
+                        _questionnaireID = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>().QId;
 
 
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Dropdown>()
                                 .DropdownList.Count;
                             j++)
                         {
-                            csvTemp[3] = "" + _pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<TMP_Dropdown>().value;
+                            csvTemp[3] = "" + _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<TMP_Dropdown>().value;
                         }
                         _csvRows.Add(csvTemp);
                     }
@@ -259,8 +259,8 @@ namespace VRQuestionnaireToolkit
             #endregion
 
             // disable all GameObjects (except the last page) 
-            for (int i = 1; i < _pageFactory.GetComponent<PageFactory>().NumPages - 1; i++)
-                _pageFactory.GetComponent<PageFactory>().PageList[i].SetActive(false);
+            for (int i = 1; i < _pageFactory.GetComponent<QuestionnairePageFactory>().NumPages - 1; i++)
+                _pageFactory.GetComponent<QuestionnairePageFactory>().PageList[i].SetActive(false);
 
 
             //-----Processing responses into the specified data format-----//

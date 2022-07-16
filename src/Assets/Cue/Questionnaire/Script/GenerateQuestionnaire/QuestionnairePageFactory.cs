@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 namespace VRQuestionnaireToolkit
 {
-    public class PageFactory : MonoBehaviour
+    public class QuestionnairePageFactory : MonoBehaviour
     {
         public int NumPages;
         public int CurrentPage;

@@ -1,9 +1,19 @@
 ﻿
+
+using Newtonsoft.Json;
+using UnityEngine;
+
 namespace Cues
 {
-    class Image : Cue
+    public class Image: Cue
     {
+        Transform transform;
         public string text { get; set; }
+
+        public override void generate()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

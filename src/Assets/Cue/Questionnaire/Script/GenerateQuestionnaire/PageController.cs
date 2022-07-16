@@ -17,7 +17,7 @@ namespace VRQuestionnaireToolkit
     public class PageController : MonoBehaviour
     {
         private GameObject _vrQuestionnaireFactory;
-        private PageFactory _pageFactory;
+        private QuestionnairePageFactory _pageFactory;
         private GameObject _export;
         public List<GameObject> unansweredMandatoryQuestions;
 
@@ -26,7 +26,7 @@ namespace VRQuestionnaireToolkit
             //init necessary relationships
             _vrQuestionnaireFactory = GameObject.FindGameObjectWithTag("QuestionnaireFactory");
             _export = GameObject.FindGameObjectWithTag("ExportToCSV");
-            _pageFactory = _vrQuestionnaireFactory.GetComponent<PageFactory>();
+            _pageFactory = _vrQuestionnaireFactory.GetComponent<QuestionnairePageFactory>();
             unansweredMandatoryQuestions = new List<GameObject>();
         }
 
@@ -37,20 +37,20 @@ namespace VRQuestionnaireToolkit
 
             for (int i = 0; i < _pageFactory.QuestionList.Count; i++)
             {
-                if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>() != null)
+                if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>() != null)
                 {
-                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
+                    if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
                         .QMandatory)
                     {
                         countMandatory++;
 
                         bool isAnswered = false;
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Radio>()
                                 .RadioList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                             {
                                 isAnswered = true;
                                 answeredMandatory++;
@@ -58,25 +58,25 @@ namespace VRQuestionnaireToolkit
                         }
                         if (!isAnswered) // If this question is not answered yet.
                         {
-                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
+                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
                         }
                     }
                 }
-                else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>() != null)
+                else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>() != null)
                 {
-                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>()
+                    if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<RadioGrid>()
                         .QMandatory)
                     {
                         countMandatory++;
 
                         bool isAnswered = false;
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0]
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0]
                                 .GetComponentInParent<RadioGrid>()
                                 .RadioList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>()
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>()
                                 .isOn)
                             {
                                 isAnswered = true;
@@ -85,26 +85,26 @@ namespace VRQuestionnaireToolkit
                         }
                         if (!isAnswered) // If this question is not answered yet.
                         {
-                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("ConditionName").gameObject);
+                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].transform.parent.Find("ConditionName").gameObject);
                         }
                     }
                 }
-                else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
+                else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
                 {
-                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
+                    if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
                     {
-                        if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
+                        if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
                             .QMandatory)
                         {
                             countMandatory++;
 
                             bool isAnswered = false;
                             for (int j = 0;
-                                j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
+                                j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
                                     .CheckboxList.Count;
                                 j++)
                             {
-                                if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                                if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                                 {
                                     isAnswered = true;
                                     answeredMandatory++;
@@ -112,25 +112,25 @@ namespace VRQuestionnaireToolkit
                             }
                             if (!isAnswered) // If this question is not answered yet.
                             {
-                                unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
+                                unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
                             }
                         }
                     }
                 }
-                else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>() != null)
+                else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>() != null)
                 {
-                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
+                    if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
                         .QMandatory)
                     {
                         countMandatory++;
 
                         bool isAnswered = false;
                         for (int j = 0;
-                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
+                            j < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
                                 .LinearGridList.Count;
                             j++)
                         {
-                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
                             {
                                 isAnswered = true;
                                 answeredMandatory++;
@@ -138,7 +138,7 @@ namespace VRQuestionnaireToolkit
                         }
                         if (!isAnswered) // If this question is not answered yet.
                         {
-                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
+                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
                         }
                     }
                 }

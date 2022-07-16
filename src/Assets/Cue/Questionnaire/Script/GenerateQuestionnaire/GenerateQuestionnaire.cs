@@ -30,7 +30,7 @@ namespace VRQuestionnaireToolkit
         private List<string> JsonInputFiles;
         public List<GameObject> Questionnaires; // list containing all questionnaires 
 
-        private PageFactory _pageFactory;
+        private QuestionnairePageFactory _pageFactory;
         private ExportToCSV _exportToCsvScript;
         private GameObject _exportToCsv;
         public GameObject questionnaire;
@@ -128,7 +128,7 @@ namespace VRQuestionnaireToolkit
             radioGridRec.localRotation = Quaternion.identity;
             radioGridRec.localScale = new Vector3(radioGridRec.localScale.x * 0.01f, radioGridRec.localScale.y * 0.01f, radioGridRec.localScale.z * 0.01f);
 
-            _pageFactory = this.GetComponentInChildren<PageFactory>();
+            _pageFactory = this.GetComponentInChildren<QuestionnairePageFactory>();
 
             Questionnaires.Add(currentQuestionnaire);
             numberQuestionnaires++;

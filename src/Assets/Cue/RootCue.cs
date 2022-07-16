@@ -1,7 +1,8 @@
+
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class RootCue
 {
     public List<Cue> cues { get; set; }
