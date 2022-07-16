@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class Qinfo
+public class QInfo
 {
     public string qTitle { get; set; }
     public string qInstructions { get; set; }

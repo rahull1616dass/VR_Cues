@@ -1,5 +1,5 @@
 ﻿public class Questionnaire : Cue
 {
-    public Qinfo qInfo { get; set; }
+    public QInfo qInfo { get; set; }
     public Question[] questions { get; set; }
 }

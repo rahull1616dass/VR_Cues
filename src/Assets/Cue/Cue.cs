@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TriggerType
-{
-    TimeTrigger = 0,
-    PositionTrigger
-}
+
 
 public class Cue
 {
     public List<Cue> cues { get; set; }
     public string cueType { get; set; }
 
-    public Transform transformDataForCue { get; set; }
+
+}
+/*
+ * 
+ *     public Transform transformDataForCue { get; set; }
 
     public Transform triggerPointForCue { get; set; }
 
     public TriggerType typeOfTrigger;
+ * public enum TriggerType
+{
+    TimeTrigger = 0,
+    PositionTrigger
 }
-/*
 [CreateAssetMenu(fileName = "CueData", menuName = "ScriptableObjects/BasicCue", order = 1)]
 public class Cue : ScriptableObject
 {
