@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 using TMPro;
@@ -9,61 +10,33 @@ namespace VRQuestionnaireToolkit
 {
     public class LinearGrid : MonoBehaviour
     {
-        public int NumRadioButtons;
-        public string QId;
-        public string QuestionnaireId;
-        public string QType;
-        public string QInstructions;
-        public string QText;
-        public int QMin;
-        public int QMax;
-        public int NumGrid;
-        public bool QMandatory;
-
-        private string _qMinLabel;
-        private string _qMaxLabel;
         private Sprite _sprite;
 
         public GameObject LinearGridButton;
         public JSONArray QOptions;
+        public bool qMandatory;
 
         private RectTransform _questionRecTest;
         private bool _isOdd;
         public List<GameObject> LinearGridList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateLinearGridQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, JSONArray qOptions, int numberQuestion, RectTransform questionRec, bool qMandatory, int qMin, int qMax, string qMinxLabel, string qMaxLabel)
+        public List<GameObject> CreateLinearGridQuestion(Question question, int numberQuestion, RectTransform questionRec)
         {
-            this.QuestionnaireId = questionnaireId;
-            this.QId = qId;
-            this.QType = qType;
-            this.QInstructions = qInstructions;
-            this.QText = qText;
-            this.QOptions = qOptions;
-            this.NumGrid = numberQuestion;
-            this._questionRecTest = questionRec;
-            this.QMin = qMin;
-            this.QMax = qMax;
-            this._qMaxLabel = qMaxLabel;
-            this._qMinLabel = qMinxLabel;
-            this.QMandatory = qMandatory;
+            this.qMandatory = question.qData[numberQuestion].qMandatory;
+
+            if (question.qOptions.Length > 20)
+            {
+                throw new InvalidOperationException("We currently only support up to 20 gridCells");
+            }
 
             LinearGridList = new List<GameObject>();
 
 
             // generate radio and corresponding text labels on a single page
-            for (int j = 0; j < QMax; j++)
+            for (int j = 0; j < question.qData[numberQuestion].qMax; j++)
             {
-                if (qOptions[j] != "")
-                {
-                    if (NumRadioButtons <= 20)
-                        GenerateLinearGrid(numberQuestion, j); //use odd number layout
-
-                    else
-                    {
-                        Debug.LogError("We currently only support up to 20 gridCells");
-                    }
-                }
+                GenerateLinearGrid(questionRec, numberQuestion, j, question.qData[numberQuestion]); //use odd number layout
             }
             return LinearGridList;
         }
@@ -96,7 +69,7 @@ namespace VRQuestionnaireToolkit
             return counter;
         }
 
-        void GenerateLinearGrid(int numQuestions, int numOptions)
+        void GenerateLinearGrid(RectTransform questionRec, int numQuestions, int numOptions, QData qData)
         {
             // Instantiate radio prefabs
             GameObject temp = Instantiate(LinearGridButton);
@@ -113,9 +86,9 @@ namespace VRQuestionnaireToolkit
             if (numOptions == 0)
             {
                 temp.GetComponentInChildren<Toggle>().GetComponentsInChildren<TextMeshProUGUI>()[0].text =
-                    _qMinLabel;
+                    qData.qMinLabel;
                 temp.GetComponentInChildren<Toggle>().GetComponentsInChildren<TextMeshProUGUI>()[1].text =
-                    _qMaxLabel;
+                    qData.qMaxLabel;
             }
             else
             {

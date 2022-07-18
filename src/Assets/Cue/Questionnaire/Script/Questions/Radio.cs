@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SimpleJSON;
 using TMPro;
 using UnityEngine;
@@ -33,55 +34,31 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> RadioList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateRadioQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, bool qMandatory, JSONArray qOptions, int numberQuestion, RectTransform questionRec)
+        public List<GameObject> CreateRadioQuestion(Question question, int numberQuestion, RectTransform questionRec)
         {
-            this.QuestionnaireId = questionnaireId;
-            this.QId = qId;
-            this.QType = qType;
-            this.QInstructions = qInstructions;
-            this.QText = qText;
-            this.QOptions = qOptions;
-            this.NumRadioButtons = CountRadioButtons(qOptions);
-            this._questionRecTest = questionRec;
-            this.QMandatory = qMandatory;
+            if (question.qOptions.Length > 7)
+            {
+                throw new InvalidOperationException("We currently only support up to 7 options");
+            }
 
             RadioList = new List<GameObject>();
 
             // generate radio and corresponding text labels on a single page
-            for (int j = 0; j < qOptions.Count; j++)
+            for (int j = 0; j < question.qOptions.Length; j++)
             {
-                if (qOptions[j] != "")
+                if ((NumRadioButtons % 2) != 0)
                 {
-                    if (NumRadioButtons <= 7)
-                        if ((NumRadioButtons % 2) != 0)
-                        {
-                            InitRadioButtonsHorizontal(numberQuestion, j, true); //use odd number layout
-                        }
-                        else
-                        {
-                            InitRadioButtonsHorizontal(numberQuestion, j, false); //use even number layout
-                        }
-
-                    else
-                    {
-                        Debug.LogError("We currently only support up to 7 options");
-                    }
+                    InitRadioButtonsHorizontal(numberQuestion, j, true); //use odd number layout
+                }
+                else
+                {
+                    InitRadioButtonsHorizontal(numberQuestion, j, false); //use even number layout
                 }
             }
+
             return RadioList;
         }
 
-        private int CountRadioButtons(JSONArray qOptions)
-        {
-            int counter = 0;
-            for (int i = 0; i < qOptions.Count; i++)
-            {
-                if (qOptions[i] != "")
-                    counter++;
-            }
-
-            return counter;
-        }
 
         void InitRadioButtonsHorizontal(int numQuestions, int numOptions, bool isOdd)
         {

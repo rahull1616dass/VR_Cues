@@ -131,6 +131,7 @@ namespace VRQuestionnaireToolkit
 
             #region CONSTRUCTING RESULTS
             // read participants' responses 
+            /*
             for (int i = 0; i < _pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList.Count; i++)
             {
                 if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i] != null)
@@ -256,6 +257,7 @@ namespace VRQuestionnaireToolkit
                     }
                 }
             }
+            */
             #endregion
 
             // disable all GameObjects (except the last page) 

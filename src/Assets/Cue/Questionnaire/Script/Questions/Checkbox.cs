@@ -18,12 +18,7 @@ namespace VRQuestionnaireToolkit
     public class Checkbox : MonoBehaviour
     {
         public int NumCheckboxButtons;
-        public string QuestionnaireId;
-        public string QId;
-        public string QType;
-        public string QInstructions;
-        public string QText;
-        public bool QMandatory;
+        public bool qMandatory;
 
         public GameObject CheckboxButtons;
         public JSONArray QOptions;
@@ -32,31 +27,22 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> CheckboxList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateCheckboxQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, JSONArray qOptions, int numberQuestion, RectTransform questionRec)
+        public List<GameObject> CreateCheckboxQuestion(Question question, int numberQuestion, RectTransform questionRec)
         {
-            this.QuestionnaireId = questionnaireId;
-            this.QId = qId;
-            this.QType = qType;
-            this.QInstructions = qInstructions;
-            this.QText = qText;
-            this.QOptions = qOptions;
-            this.NumCheckboxButtons = qOptions.Count;
-            this._questionRecTest = questionRec;
-
             CheckboxList = new List<GameObject>();
+            this.qMandatory = question.qData[numberQuestion].qMandatory;
 
             // generate checkbox and corresponding text labels on a single page
-            for (int j = 0; j < qOptions.Count; j++)
+            for (int j = 0; j < question.qOptions.Length; j++)
             {
-                if (qOptions[j] != "")
+
+                if (NumCheckboxButtons <= 7)
+                    InitCheckBoxButtons(numberQuestion, j);
+                else
                 {
-                    if (NumCheckboxButtons <= 7)
-                        InitCheckBoxButtons(numberQuestion, j);
-                    else
-                    {
-                        Debug.LogError("We currently only support up to 7 checkboxes on a single page");
-                    }
+                    Debug.LogError("We currently only support up to 7 checkboxes on a single page");
                 }
+
             }
             return CheckboxList;
         }
