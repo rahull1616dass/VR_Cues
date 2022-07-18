@@ -5,6 +5,9 @@ namespace Cues.Data
 {
     public class Video : Cue
     {
-
+        public override void generate()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

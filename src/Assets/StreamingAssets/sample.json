@@ -48,3 +48,17 @@
 
   ]
 }
+
+
+class TimeTrigger{
+  int startTime;
+  int endTime;
+}
+
+
+class PositionTrigger{
+  Vector3 position;
+  int radius;
+}
+
+(startTime, endTime - startTime)

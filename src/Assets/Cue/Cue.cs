@@ -8,6 +8,9 @@ public abstract class Cue
 {
     public abstract void generate();
 }
+
+
+
 /*
  * 
  *     public Transform transformDataForCue { get; set; }
