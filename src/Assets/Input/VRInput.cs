@@ -42,7 +42,7 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
                     ""id"": ""5b8ce4f7-38e7-456c-9e52-04c664a3d367"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": ""StickDeadzone(min=0.6)"",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": true
                 }
             ],
