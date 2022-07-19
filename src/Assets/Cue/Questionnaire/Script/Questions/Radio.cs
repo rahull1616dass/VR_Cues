@@ -24,18 +24,20 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> RadioList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateRadioQuestion(string[] qOptions, int subQuestionIndex, RectTransform questionRec)
+        public List<GameObject> CreateRadioQuestion(QData subQuestion, int subQuestionIndex, RectTransform questionRec)
         {
-            if (qOptions.Length > 7)
+            if (subQuestion.qOptions.Length > 7)
             {
                 throw new InvalidOperationException("We currently only support up to 7 options for any radio question.");
             }
 
+            this.QMandatory = subQuestion.qMandatory;
+
             RadioList = new List<GameObject>();
-            bool isEven = qOptions.Length % 2 == 0;
+            bool isEven = subQuestion.qOptions.Length % 2 == 0;
 
             // generate radio and corresponding text labels on a single page
-            foreach (var (optionText, optionIndex) in qOptions.WithIndex()) 
+            foreach (var (optionText, optionIndex) in subQuestion.qOptions.WithIndex()) 
             {
                 // Instantiate radio prefabs
                 GameObject temp = Instantiate(RadioButtons);

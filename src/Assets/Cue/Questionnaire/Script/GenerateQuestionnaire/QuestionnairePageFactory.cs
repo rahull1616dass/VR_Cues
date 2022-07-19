@@ -143,7 +143,7 @@ namespace VRQuestionnaireToolkit
                             text.transform.localPosition = new Vector3(0, 120 - (index * 92), text.transform.localPosition.z);
                             SetRec(radioHorizontalRec);
 
-                            QuestionList.Add(temp.GetComponent<Radio>().CreateRadioQuestion(subQuestion.qOptions, index, radioHorizontalRec));
+                            QuestionList.Add(temp.GetComponent<Radio>().CreateRadioQuestion(subQuestion, index, radioHorizontalRec));
                         }
                     }
                     else
