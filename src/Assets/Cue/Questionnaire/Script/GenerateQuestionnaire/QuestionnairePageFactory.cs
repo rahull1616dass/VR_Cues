@@ -60,7 +60,7 @@ namespace VRQuestionnaireToolkit
         */
         public void AddPage(Question question)
         {
-            if (question.qData != null && question.qOptions != null)
+            if (question.qData != null)
             {
                 _newPage.SetActive(false); //do only keep one page enabled
 
@@ -122,10 +122,10 @@ namespace VRQuestionnaireToolkit
                 case "radio":
                     if (question.qData.Length < QuestionPerPage)
                     {
-                        for (int i = 0; i < question.qData.Length; i++)
+                        foreach (var (subQuestion, index) in question.qData.WithIndex())
                         {
                             temp = Instantiate(RadioHorizontalPrefab) as GameObject;
-                            temp.name = "radioHorizontal_" + i;
+                            temp.name = "radioHorizontal_" + index;
 
                             radioHorizontalRec = temp.GetComponent<RectTransform>();
                             q_main = GameObject.Find("Q_Main");
@@ -135,15 +135,15 @@ namespace VRQuestionnaireToolkit
                             text = temp.GetComponentInChildren<TextMeshProUGUI>();
 
                             // If question mandatory -> add " * "
-                            if (question.qData[i].qMandatory)
-                                text.text = question.qData[i].qText + " *";
+                            if (subQuestion.qMandatory)
+                                text.text = subQuestion.qText + " *";
                             else
-                                text.text = question.qData[i].qText;
+                                text.text = subQuestion.qText;
 
-                            text.transform.localPosition = new Vector3(0, 120 - (i * 92), text.transform.localPosition.z);
+                            text.transform.localPosition = new Vector3(0, 120 - (index * 92), text.transform.localPosition.z);
                             SetRec(radioHorizontalRec);
 
-                            QuestionList.Add(temp.GetComponent<Radio>().CreateRadioQuestion(question, i, radioHorizontalRec));
+                            QuestionList.Add(temp.GetComponent<Radio>().CreateRadioQuestion(subQuestion.qOptions, index, radioHorizontalRec));
                         }
                     }
                     else

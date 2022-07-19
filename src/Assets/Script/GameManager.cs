@@ -21,21 +21,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
-
-        // JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-        // settings.Converters.Add(new CueConverter("cueType"));
-        /*GameObject g = new GameObject();
-        g.transform.position = new Vector3(1, 2, 3);
-        g.transform.rotation = Quaternion.Euler(1, 2, 3);
-        g.transform.localScale = new Vector3(1, 2, 3);*/
-        string x = JsonUtility.ToJson(gameObject);
-        // RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType"));
-        Debug.Log("x");
-        /*foreach(var cue in rootCue.cues)
+        var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
+        RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType"));
+        foreach(var cue in rootCue.cues)
         {
-           cue.generate(generateCueInScene);
-        }*/
+           cue.generate();
+        }
     }
 
 }

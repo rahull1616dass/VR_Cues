@@ -175,10 +175,11 @@ namespace VRQuestionnaireToolkit
                     nextButton.text = "Submit";
                 }
 
+                /*
                 if (_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
                 {
                     _export.GetComponent<ExportToCSV>().Save();
-                }
+                }*/
             }
             else
             {

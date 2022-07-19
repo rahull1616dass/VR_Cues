@@ -2,7 +2,8 @@
   "cueType": "Cue",
   "cues": [
     {
-      "transform":{
+      "cueType": "Questionnaire",
+      "cueTransform":{
         "position": {
           "x": 0.0,
           "y": 0.0,
@@ -20,8 +21,6 @@
           "z": 1.0
         }    
       },
-      "cueType": "Questionnaire",
-      "id": "Quest. 1",
       "qInfo": {
         "qTitle": "title",
         "qInstructions": "instruction",
@@ -30,37 +29,55 @@
       },
       "questions": [
         {
-          "qType": "radio",
-          "qInstructions": "Please choose one of the following options...",
-          "qData": [
-            {
-              "qText": "question text",
-              "qOptions": [ "opt 1", "opt 2", "opt 3" ]
-            }
+          "qType":"radio",
+          "qInstructions":"Please choose one of the following options...",
+          "qData":[
+             {
+                "qText":"I had a sense of “being there” in the virtual environment:",
+                "qMandatory":"true",
+                "qOptions":[
+                   "1 = not at all",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7 = very much"
+                ]
+             },
+             {
+                "qText":"There were times during the experience when the virtual environment was the reality for me...",
+                "qMandatory":"true",
+                "qOptions":[
+                   "1 = at no time",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7 = almost all the time"
+                ]
+             },
+             {
+                "qText":"The virtual environment seems to me to be more like...",
+                "qMandatory":"true",
+                "qOptions":[
+                   "1 = images I saw",
+                   "2",
+                   "3",
+                   "4",
+                   "5",
+                   "6",
+                   "7 = somewhere I visited"
+                ]
+             }
           ]
-        },
-        {
-          "qType": "checkbox",
-          "qInstructions": "Choose all options that apply",
-          "qOptions": [
-            "It's too expensive",
-            "The technology isn't that good yet ",
-            "There is not enough content and/or games ",
-            "I don't like wearing the headset ",
-            "The experience isn't immersive enough",
-            "The experience isn't better than traditional gaming"
-          ],
-          "qData": [
-            {
-              "qText": " If you don’t use VR frequently, what is keeping you from adopting this?",
-              "qMandatory": "true"
-            }
-          ]
-        }
+       }
       ]
     },
     {
-      "transform":{
+      "cueType": "Image",
+      "cueTransform":{
         "position": {
           "x": 0.0,
           "y": 0.0,
@@ -78,9 +95,7 @@
           "z": 1.0
         }    
       },
-      "cueType": "Image",
       "text": "sampleText"
     }
-
   ]
 }

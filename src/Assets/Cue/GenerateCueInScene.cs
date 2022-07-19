@@ -9,6 +9,14 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private GameObject questionnairePrefab;
     private QuestionnairePageFactory _pageFactory;
 
+    private Transform cueTransformToTransform(CueTransform cueTransform)
+    {
+        Transform tempCueTransform = new GameObject("cueTransform").transform;
+        tempCueTransform.position = cueTransform.position;
+        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localScale = cueTransform.scale;
+        return tempCueTransform;
+    }
 
     public void generateQuestionnaire(Questionnaire questionnaire)
     {
@@ -16,12 +24,13 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform radioGridRec = currentQuestionnaire.GetComponent<RectTransform>();
-        //radioGridRec.SetParent(QuestionRecTest);
+        Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
+        radioGridRec.SetParent(questionnaireTransform);
         radioGridRec.localPosition = new Vector3(0, 0, 0);
         radioGridRec.localRotation = Quaternion.identity;
         radioGridRec.localScale = new Vector3(radioGridRec.localScale.x * 0.01f, radioGridRec.localScale.y * 0.01f, radioGridRec.localScale.z * 0.01f);
 
-        _pageFactory = this.GetComponentInChildren<QuestionnairePageFactory>();
+        _pageFactory = questionnaireTransform.GetComponentInChildren<QuestionnairePageFactory>();
 
         //----------- Read metadata from .JSON file ----------//
         string title = questionnaire.qInfo.qTitle;
@@ -32,7 +41,6 @@ public class GenerateCueInScene : MonoBehaviour
 
         foreach (var (question, index) in questionnaire.questions.WithIndex())
         {
-            int pageId = index;
             _pageFactory.AddPage(question);
         }
 

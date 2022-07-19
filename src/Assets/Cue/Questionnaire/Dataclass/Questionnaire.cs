@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Questionnaire : Cue
 {
-    public Transform transform { get; set; }
+    public CueTransform cueTransform { get; set; }
 
    // public List<TimeTrigger> timeTriggers;
     public QInfo qInfo { get; set; }

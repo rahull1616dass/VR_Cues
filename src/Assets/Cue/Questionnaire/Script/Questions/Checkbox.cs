@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 using TMPro;
@@ -29,6 +30,11 @@ namespace VRQuestionnaireToolkit
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateCheckboxQuestion(Question question, int numberQuestion, RectTransform questionRec)
         {
+            if (numberQuestion > 7)
+            {
+                throw new InvalidOperationException("We currently only support up to 7 checkboxes on a single page");
+            }
+
             CheckboxList = new List<GameObject>();
             this.qMandatory = question.qData[numberQuestion].qMandatory;
 
@@ -36,18 +42,13 @@ namespace VRQuestionnaireToolkit
             for (int j = 0; j < question.qOptions.Length; j++)
             {
 
-                if (NumCheckboxButtons <= 7)
-                    InitCheckBoxButtons(numberQuestion, j);
-                else
-                {
-                    Debug.LogError("We currently only support up to 7 checkboxes on a single page");
-                }
+                InitCheckBoxButtons(numberQuestion, j, questionRec);
 
             }
             return CheckboxList;
         }
 
-        void InitCheckBoxButtons(int numQuestions, int numOptions)
+        void InitCheckBoxButtons(int numQuestions, int numOptions, RectTransform questionRec)
         {
             // Instantiate dropdown prefabs
             GameObject temp = Instantiate(CheckboxButtons);
@@ -59,7 +60,7 @@ namespace VRQuestionnaireToolkit
 
             // Place in hierarchy 
             RectTransform checkBoxRec = temp.GetComponent<RectTransform>();
-            checkBoxRec.SetParent(_questionRecTest);
+            checkBoxRec.SetParent(questionRec);
             checkBoxRec.localPosition = new Vector3(-170 + (numQuestions * 140), 60 - (numOptions * 30), 0);
             checkBoxRec.localRotation = Quaternion.identity;
             checkBoxRec.localScale = new Vector3(checkBoxRec.localScale.x * 0.01f, checkBoxRec.localScale.y * 0.01f, checkBoxRec.localScale.z * 0.01f);

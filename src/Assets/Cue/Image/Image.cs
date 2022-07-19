@@ -8,7 +8,7 @@ namespace Cues
 {
     public class Image: Cue
     {
-        Transform transform;
+        CueTransform cueTransform;
         /*List<Transform> positionalTriggers;
         List<TimeTrigger> timeTriggers;*/
 
