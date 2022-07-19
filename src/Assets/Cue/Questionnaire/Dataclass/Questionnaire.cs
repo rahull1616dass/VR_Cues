@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class Questionnaire : Cue
 {
-    public List<TimeTrigger> timeTriggers;
+    public Transform transform { get; set; }
+
+   // public List<TimeTrigger> timeTriggers;
     public QInfo qInfo { get; set; }
     public Question[] questions { get; set; }
 
     public override void generate()
     {
-        GenerateCueInScene.instance.generateQuestionnaire(this);
+        GameManager.instance.generateCueInScene.generateQuestionnaire(this);
+       
     }
 
 }

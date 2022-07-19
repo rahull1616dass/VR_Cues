@@ -7,20 +7,22 @@ using VRQuestionnaireToolkit;
 public class GenerateCueInScene : MonoBehaviour
 {
     [SerializeField] private GameObject questionnairePrefab;
-    public static GenerateCueInScene instance;
     private QuestionnairePageFactory _pageFactory;
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
 
     public void generateQuestionnaire(Questionnaire questionnaire)
     {
-        Instantiate<GameObject>(questionnairePrefab);
+        GameObject currentQuestionnaire = Instantiate<GameObject>(questionnairePrefab);
+
+        // Place in hierarchy 
+        RectTransform radioGridRec = currentQuestionnaire.GetComponent<RectTransform>();
+        //radioGridRec.SetParent(QuestionRecTest);
+        radioGridRec.localPosition = new Vector3(0, 0, 0);
+        radioGridRec.localRotation = Quaternion.identity;
+        radioGridRec.localScale = new Vector3(radioGridRec.localScale.x * 0.01f, radioGridRec.localScale.y * 0.01f, radioGridRec.localScale.z * 0.01f);
+
+        _pageFactory = this.GetComponentInChildren<QuestionnairePageFactory>();
+
         //----------- Read metadata from .JSON file ----------//
         string title = questionnaire.qInfo.qTitle;
         string instructions = questionnaire.qInfo.qInstructions;

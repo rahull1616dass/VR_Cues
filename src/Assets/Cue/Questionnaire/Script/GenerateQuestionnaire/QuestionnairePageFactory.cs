@@ -17,6 +17,10 @@ namespace VRQuestionnaireToolkit
 {
     public class QuestionnairePageFactory : MonoBehaviour
     {
+        [SerializeField] private RectTransform qHeader;
+        [SerializeField] private RectTransform qBody;
+
+
         public int NumPages;
         public int CurrentPage;
 

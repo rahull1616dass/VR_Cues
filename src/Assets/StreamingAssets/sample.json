@@ -2,6 +2,24 @@
   "cueType": "Cue",
   "cues": [
     {
+      "transform":{
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 1.0
+        },
+        "scale": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        }    
+      },
       "cueType": "Questionnaire",
       "id": "Quest. 1",
       "qInfo": {
@@ -42,6 +60,24 @@
       ]
     },
     {
+      "transform":{
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 1.0
+        },
+        "scale": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        }    
+      },
       "cueType": "Image",
       "text": "sampleText"
     }
