@@ -3,7 +3,7 @@
   "cues": [
     {
       "cueType": "Questionnaire",
-      "cueTransform":{
+      "cueTransform": {
         "position": {
           "x": 0.0,
           "y": 0.0,
@@ -19,7 +19,7 @@
           "x": 1.0,
           "y": 1.0,
           "z": 1.0
-        }    
+        }
       },
       "qInfo": {
         "qTitle": "title",
@@ -29,55 +29,85 @@
       },
       "questions": [
         {
-          "qType":"radio",
-          "qInstructions":"Please choose one of the following options...",
-          "qData":[
-             {
-                "qText":"I had a sense of “being there” in the virtual environment:",
-                "qMandatory":"true",
-                "qOptions":[
-                   "1 = not at all",
-                   "2",
-                   "3",
-                   "4",
-                   "5",
-                   "6",
-                   "7 = very much"
-                ]
-             },
-             {
-                "qText":"There were times during the experience when the virtual environment was the reality for me...",
-                "qMandatory":"true",
-                "qOptions":[
-                   "1 = at no time",
-                   "2",
-                   "3",
-                   "4",
-                   "5",
-                   "6",
-                   "7 = almost all the time"
-                ]
-             },
-             {
-                "qText":"The virtual environment seems to me to be more like...",
-                "qMandatory":"true",
-                "qOptions":[
-                   "1 = images I saw",
-                   "2",
-                   "3",
-                   "4",
-                   "5",
-                   "6",
-                   "7 = somewhere I visited"
-                ]
-             }
+          "qType": "radio",
+          "qInstructions": "Please choose one of the following options...",
+          "qData": [
+            {
+              "qText": "I had a sense of “being there” in the virtual environment:",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = not at all",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = very much"
+              ]
+            },
+            {
+              "qText": "There were times during the experience when the virtual environment was the reality for me...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = at no time",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = almost all the time"
+              ]
+            },
+            {
+              "qText": "The virtual environment seems to me to be more like...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = images I saw",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = somewhere I visited"
+              ]
+            }
           ]
-       }
+        },
+        {
+          "qType": "linearGrid",
+          "qInstructions": "Please rate all measures by clicking a point on the scale.",
+          "qData": [
+            {
+              "qText": "Mental Demand: How mentally demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Physical Demand: How physically demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Temporal Demand: How hurried or rushed was the pace of the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            }
+          ]
+        }
       ]
     },
     {
       "cueType": "Image",
-      "cueTransform":{
+      "cueTransform": {
         "position": {
           "x": 0.0,
           "y": 0.0,
@@ -93,7 +123,7 @@
           "x": 1.0,
           "y": 1.0,
           "z": 1.0
-        }    
+        }
       },
       "text": "sampleText"
     }

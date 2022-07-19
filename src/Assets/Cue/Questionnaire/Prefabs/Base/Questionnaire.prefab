@@ -60,7 +60,7 @@ MonoBehaviour:
   Checkbox: {fileID: 937513242321453668, guid: 3ab323f41e122204bb11120c9acf74b1, type: 3}
   CheckboxGrid: {fileID: 0}
   Dropdown: {fileID: 1879506780234512771, guid: 0ec0426addea2e143816ae67b6612e2b, type: 3}
-  LinearGrid: {fileID: 2972589160377234563, guid: 897062dcf793b6e498aa373709935e7c, type: 3}
+  LinearGridPrefab: {fileID: 2972589160377234563, guid: 897062dcf793b6e498aa373709935e7c, type: 3}
   LinearSlider: {fileID: 612815703750064148, guid: 7afcf38b0e42b34449c22a5d25cd7a73, type: 3}
   TextInput: {fileID: 0}
   LastPagePrefab: {fileID: 7585923087694151227, guid: 1b2cccbd184a3564e9f805c7d4321290, type: 3}
