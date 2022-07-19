@@ -1,0 +1,102 @@
+{
+    "name": "VRInput",
+    "maps": [
+        {
+            "name": "RightHand",
+            "id": "dd93f917-9125-435a-ac62-c588e805d8c3",
+            "actions": [
+                {
+                    "name": "UI Select",
+                    "type": "Button",
+                    "id": "c7732758-0dc2-4cc3-af38-2796b9fac355",
+                    "expectedControlType": "Button",
+                    "processors": "AxisDeadzone(min=0.6)",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateAround",
+                    "type": "Value",
+                    "id": "5b8ce4f7-38e7-456c-9e52-04c664a3d367",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=0.6)",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8ecf53c7-7ed0-40b7-9859-b5aa84ff7ce4",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a42c4e5-ea69-468a-9e44-2dc01851f859",
+                    "path": "<XRController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateAround",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LeftHand",
+            "id": "89e7a457-3ccb-4043-abb0-41c9227b39f9",
+            "actions": [
+                {
+                    "name": "UISelect",
+                    "type": "Button",
+                    "id": "5cb3c174-b4be-4ea8-a051-478f78ab556c",
+                    "expectedControlType": "Button",
+                    "processors": "AxisDeadzone(min=0.6)",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveAround",
+                    "type": "PassThrough",
+                    "id": "92936ab4-6233-4dcd-83f9-cac7c11f707d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3d572887-4cc0-4a8d-9c8f-863f3a6591a4",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UISelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea7207e5-1694-43b0-8596-8910dafde4ea",
+                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveAround",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
