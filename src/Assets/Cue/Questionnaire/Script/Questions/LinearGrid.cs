@@ -37,7 +37,7 @@ namespace VRQuestionnaireToolkit
             {
                 // Instantiate radio prefabs
                 GameObject temp = Instantiate(LinearGridButton);
-                temp.name = "linearGrid_" + numberQuestion;
+                temp.name = "linearButton_" + numberQuestion;
 
                 // Place in hierarchy 
                 RectTransform radioRec = temp.GetComponent<RectTransform>();

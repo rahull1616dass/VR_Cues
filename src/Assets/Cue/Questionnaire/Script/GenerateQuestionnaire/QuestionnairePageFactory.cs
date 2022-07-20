@@ -226,7 +226,7 @@ namespace VRQuestionnaireToolkit
                         text.text = subQuestion.qText.adjustMandatoryText(subQuestion.qMandatory);
                         text.transform.localPosition = new Vector3(0, 100 - (index * 95), text.transform.localPosition.z);
                         QuestionList.Add(typedQuestion.GetComponent<LinearGrid>()
-                            .CreateLinearGridQuestion(subQuestion, index, GameObject.Find("Q_Main")
+                            .CreateLinearGridQuestion(subQuestion, index, typedQuestion
                             .GetComponent<RectTransform>()));
                     }
                     break;
