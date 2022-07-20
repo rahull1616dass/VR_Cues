@@ -45,7 +45,7 @@ public class MoveAroundSceneScript : MonoBehaviour
 
     private void RotateAroundScene(InputAction.CallbackContext obj)
     {
-        playerTransform.localEulerAngles = GetDirectionFromVector2(obj.ReadValue<Vector2>());
+        playerTransform.localEulerAngles += GetDirectionFromVector2(obj.ReadValue<Vector2>());
     }
 
     private void MoveAroundScene(InputAction.CallbackContext obj)
@@ -57,24 +57,14 @@ public class MoveAroundSceneScript : MonoBehaviour
     private Vector3 GetDirectionFromVector2(Vector2 valueFromInput)
     {
         if (valueFromInput.x > 0 && Mathf.Abs(valueFromInput.x) > Mathf.Abs(valueFromInput.y))
-            return new Vector3(playerTransform.localEulerAngles.x, 
-                                    playerTransform.localEulerAngles.y + rotateVal, 
-                                    playerTransform.localEulerAngles.z);
+            return Vector3.up * rotateVal;
         else if (valueFromInput.x < 0 && Mathf.Abs(valueFromInput.x) > Mathf.Abs(valueFromInput.y))
-            return new Vector3(playerTransform.localEulerAngles.x,
-                                    playerTransform.localEulerAngles.y - rotateVal,
-                                    playerTransform.localEulerAngles.z);
+            return Vector3.down * rotateVal;
         else if (valueFromInput.y > 0 && Mathf.Abs(valueFromInput.x) < Mathf.Abs(valueFromInput.y))
-            return new Vector3(playerTransform.localEulerAngles.x - rotateVal,
-                                    playerTransform.localEulerAngles.y,
-                                    playerTransform.localEulerAngles.z);
+            return Vector3.left * rotateVal;
         else if (valueFromInput.y < 0 && Mathf.Abs(valueFromInput.x) < Mathf.Abs(valueFromInput.y))
-            return new Vector3(playerTransform.localEulerAngles.x + rotateVal,
-                                    playerTransform.localEulerAngles.y,
-                                    playerTransform.localEulerAngles.z);
+            return Vector3.right * rotateVal;
         else
-            return new Vector3(playerTransform.localEulerAngles.x,
-                                    playerTransform.localEulerAngles.y,
-                                    playerTransform.localEulerAngles.z);
+            return Vector3.zero;
     }
 }
