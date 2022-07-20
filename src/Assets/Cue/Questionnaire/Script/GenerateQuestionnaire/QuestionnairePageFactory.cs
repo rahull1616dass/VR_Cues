@@ -148,7 +148,7 @@ namespace VRQuestionnaireToolkit
                     {
                         foreach (var (subQuestion, index) in question.qData.WithIndex())
                         {
-                            GameObject typedQuestion = instantiateTypedQuestion(question.qType, index, RadioHorizontalPrefab);
+                            GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Radio, index, RadioHorizontalPrefab);
                             //ensuring correct placement and scaling in the UI
                             text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
                             // If question mandatory -> add " * "
@@ -168,7 +168,7 @@ namespace VRQuestionnaireToolkit
                     }
                     foreach (var (condition, index) in question.qConditions.WithIndex())
                       {
-                        GameObject typedQuestion = instantiateTypedQuestion(question.qType, index, RadioGridPrefab);
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.RadioGrid, index, RadioGridPrefab);
 
                         //ensuring correct placement and scaling in the UI
                         textArray = typedQuestion.GetComponentsInChildren<TextMeshProUGUI>();
