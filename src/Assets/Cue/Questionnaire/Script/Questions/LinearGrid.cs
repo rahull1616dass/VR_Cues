@@ -42,12 +42,12 @@ namespace VRQuestionnaireToolkit
                 // Place in hierarchy 
                 RectTransform radioRec = temp.GetComponent<RectTransform>();
                 radioRec.SetParent(questionRec);
-                radioRec.localPosition = new Vector3(-120 + (numberQuestion * 20), 90 - (numberQuestion * 95), 0);
+                radioRec.localPosition = new Vector3(-120 + (j * 20), 90 - (numberQuestion * 95), 0);
                 radioRec.localRotation = Quaternion.identity;
                 radioRec.localScale = new Vector3(radioRec.localScale.x * 0.01f, radioRec.localScale.y * 0.01f, radioRec.localScale.z * 0.01f);
 
 
-                if (numberQuestion == 0)
+                if (j == 0)
                 {
                     temp.GetComponentInChildren<Toggle>().GetComponentsInChildren<TextMeshProUGUI>()[0].text =
                         subQuestion.qMinLabel;
