@@ -1,6 +1,7 @@
-using Cues;
+﻿using Cues;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using VRQuestionnaireToolkit;
 
@@ -10,27 +11,28 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     private QuestionnairePageFactory _pageFactory;
 
-    public Transform PlaceCueTransformInScene(CueTransform cueTransform, string objectName = "cueTransform", params System.Type[] componentsToAdd)
+    private Transform cueTransformToTransform(CueTransform cueTransform)
     {
-        Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
+        Transform tempCueTransform = new GameObject("cueTransform").transform;
         tempCueTransform.position = cueTransform.position;
         tempCueTransform.rotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
 
-
     public void generateQuestionnaire(Questionnaire questionnaire)
     {
         GameObject currentQuestionnaire = Instantiate<GameObject>(questionnairePrefab);
 
         // Place in hierarchy 
-        RectTransform radioGridRec = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform);
-        radioGridRec.SetParent(questionnaireTransform);
-        radioGridRec.localPosition = new Vector3(0, 0, 0);
-        radioGridRec.localRotation = Quaternion.identity;
-        radioGridRec.localScale = new Vector3(radioGridRec.localScale.x * 0.01f, radioGridRec.localScale.y * 0.01f, radioGridRec.localScale.z * 0.01f);
+        RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
+        Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
+
+        // Resetting transform
+        rectTransformQuestionnaire.SetParent(questionnaireTransform);
+        rectTransformQuestionnaire.localPosition = new Vector3(0, 0, 0);
+        rectTransformQuestionnaire.localRotation = Quaternion.identity;
+        rectTransformQuestionnaire.localScale = new Vector3(rectTransformQuestionnaire.localScale.x * 0.01f, rectTransformQuestionnaire.localScale.y * 0.01f, rectTransformQuestionnaire.localScale.z * 0.01f);
 
         _pageFactory = questionnaireTransform.GetComponentInChildren<QuestionnairePageFactory>();
 
@@ -57,6 +59,17 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
+        RectTransform rectTransformImage = (RectTransform)cueTransformToTransform(image.cueTransform);
+
+        //Creates texture and loads byte array data to create image
+        Texture2D texture2DImage = new Texture2D((int)rectTransformImage.rect.width, (int)rectTransformImage.rect.height);
+        texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
+
+        //Creates a new Sprite based on the Texture2D
+        Sprite spriteImage = Sprite.Create(texture2DImage, 
+            new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
+
+        // Assign sprite to the instantiated image here.
 
     }
 
