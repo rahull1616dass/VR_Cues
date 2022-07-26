@@ -11,9 +11,9 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     private QuestionnairePageFactory _pageFactory;
 
-    private Transform cueTransformToTransform(CueTransform cueTransform)
+    public Transform PlaceCueTransformInScene(CueTransform cueTransform, string objectName = "cueTransform", params System.Type[] componentsToAdd)
     {
-        Transform tempCueTransform = new GameObject("cueTransform").transform;
+        Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.position = cueTransform.position;
         tempCueTransform.rotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
@@ -26,7 +26,7 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
+        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform);
 
         // Resetting transform
         rectTransformQuestionnaire.SetParent(questionnaireTransform);
@@ -59,7 +59,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
-        RectTransform rectTransformImage = (RectTransform)cueTransformToTransform(image.cueTransform);
+        RectTransform rectTransformImage = (RectTransform)PlaceCueTransformInScene(image.cueTransform);
 
         //Creates texture and loads byte array data to create image
         Texture2D texture2DImage = new Texture2D((int)rectTransformImage.rect.width, (int)rectTransformImage.rect.height);
