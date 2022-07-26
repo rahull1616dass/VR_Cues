@@ -7,6 +7,7 @@ using VRQuestionnaireToolkit;
 public class GenerateCueInScene : MonoBehaviour
 {
     [SerializeField] private GameObject questionnairePrefab;
+    [SerializeField] private TriggerCues triggerCue;
     private QuestionnairePageFactory _pageFactory;
 
     private Transform cueTransformToTransform(CueTransform cueTransform)
@@ -49,6 +50,8 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Initialize (Dis-/enable GameObjects)
         _pageFactory.InitSetup();
+
+        triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
     }
 
     public void generateImage(Image image)
