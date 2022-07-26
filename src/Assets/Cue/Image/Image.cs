@@ -17,7 +17,7 @@ namespace Cues
 
         public override void generate()
         {
-            throw new System.NotImplementedException();
+            GameManager.instance.generateCueInScene.generateImage(this);
         }
     }
 }
