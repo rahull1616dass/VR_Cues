@@ -4,6 +4,8 @@ using SimpleJSON;
 using TMPro;
 using UnityEditor.Experimental;
 using UnityEngine.UI;
+using Assets.Extensions;
+using System;
 
 /// <summary>
 /// PageFactory.class
@@ -17,6 +19,10 @@ namespace VRQuestionnaireToolkit
 {
     public class QuestionnairePageFactory : MonoBehaviour
     {
+        [SerializeField] private RectTransform qHeader;
+        [SerializeField] private RectTransform qBody;
+
+
         public int NumPages;
         public int CurrentPage;
 
@@ -30,7 +36,7 @@ namespace VRQuestionnaireToolkit
         public GameObject Checkbox;
         public GameObject CheckboxGrid;
         public GameObject Dropdown;
-        public GameObject LinearGrid;
+        public GameObject LinearGridPrefab;
         public GameObject LinearSlider;
         public GameObject TextInput;
         public GameObject LastPagePrefab;
@@ -38,25 +44,31 @@ namespace VRQuestionnaireToolkit
         private GameObject _newPage;
         private const int QuestionPerPage = 4;
 
-        public enum QuestionType
+        struct QuestionTypes
         {
-            Radio,
-            RadioGrid,
-            Checkbox,
-            CheckboxGrid,
-            Dropdown,
-            LinearScale,
-            TextInput
+            public const string Radio = "radio";
+            public const string RadioGrid = "radioGrid";
+            public const string Checkbox = "checkbox";
+            public const string CheckboxGrid = "checkboxGrid";
+            public const string Dropdown = "dropdown";
+            public const string LinearScale = "linearScale";
+            public const string TextInput = "textInput";
+            public const string LinearGrid = "linearGrid";
         }
 
-        private QuestionType _type;
+        struct Limitations
+        {
+            public const int MaxRadioQuestions = 5;
+            public const int MaxRadioGridQuestions = 8;
+        }
+
 
         /*
          * This method adds 1..n pages to a questionnaire
         */
-        public void AddPage(string qId, string qType, string qInstructions, JSONArray _qData, JSONArray qConditions, JSONArray qOptions)
+        public void AddPage(Question question)
         {
-            if (_qData != null && qOptions != null)
+            if (question.qData != null)
             {
                 _newPage.SetActive(false); //do only keep one page enabled
 
@@ -76,12 +88,12 @@ namespace VRQuestionnaireToolkit
                 //display instruction on page
                 GameObject q_header = GameObject.Find("Q_Header");
                 TextMeshProUGUI descriptionText = q_header.GetComponentInChildren<TextMeshProUGUI>();
-                descriptionText.text = qInstructions;
+                descriptionText.text = question.qInstructions;
 
                 PageList.Add(_newPage);
                 NumPages++;
 
-                DetermineQuestionType(qType, qId, qInstructions, _qData, qConditions, qOptions);
+                DetermineQuestionType(question);
 
                 // Debug.Log(qId + " " + qType + " " + qInstructions + " " + qText + " " + qOptions);
                 // Debug.Log(qOptions.Count);
@@ -102,11 +114,20 @@ namespace VRQuestionnaireToolkit
             nextButton[1].gameObject.SetActive(false);
         }
 
+
+        private GameObject instantiateTypedQuestion(string questionType, int questionIndex, GameObject questionPrefab)
+        {
+            GameObject typedQuestion = Instantiate(questionPrefab) as GameObject;
+            typedQuestion.name = $"{questionType}_{questionIndex}";
+            RectTransform typedQuestionRect = typedQuestion.GetComponent<RectTransform>();
+            typedQuestionRect.SetParent(GameObject.Find("Q_Main").GetComponent<RectTransform>());
+            SetRec(typedQuestionRect);
+            return typedQuestion;
+        }
         /*
          * This method instantiates the required components based on the JSON Input
          */
-        public void DetermineQuestionType(string qType, string qId, string qInstructions, JSONArray _qData,
-            JSONArray qConditions, JSONArray qOptions)
+        public void DetermineQuestionType(Question question)
         {
             GameObject temp;
             RectTransform radioHorizontalRec;
@@ -114,101 +135,67 @@ namespace VRQuestionnaireToolkit
             TextMeshProUGUI text;
             TextMeshProUGUI[] textArray;
 
-            switch (qType)
+            switch (question.qType)
             {
-                case "radio":
-                    if (_qData.Count < QuestionPerPage)
+                case QuestionTypes.Radio:
+                    if (question.qData.Length > Limitations.MaxRadioQuestions)
                     {
-                        for (int i = 0; i < _qData.Count; i++)
+                        throw new InvalidOperationException($@"We currently only support up to 
+                            {Limitations.MaxRadioQuestions} radioquestions per page");
+                    }
+
+                    if (question.qData.Length < QuestionPerPage)
+                    {
+                        foreach (var (subQuestion, index) in question.qData.WithIndex())
                         {
-                            temp = Instantiate(RadioHorizontalPrefab) as GameObject;
-                            temp.name = "radioHorizontal_" + i;
-
-                            radioHorizontalRec = temp.GetComponent<RectTransform>();
-                            q_main = GameObject.Find("Q_Main");
-                            radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
-
+                            GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Radio, index, RadioHorizontalPrefab);
                             //ensuring correct placement and scaling in the UI
-                            text = temp.GetComponentInChildren<TextMeshProUGUI>();
-
+                            text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
                             // If question mandatory -> add " * "
-                            if (_qData[i][2].AsBool)
-                                text.text = _qData[i][1] + " *";
-                            else
-                                text.text = _qData[i][1];
-
-                            text.transform.localPosition = new Vector3(0, 120 - (i * 92), text.transform.localPosition.z);
-                            SetRec(radioHorizontalRec);
-
-                            QuestionList.Add(temp.GetComponent<Radio>().CreateRadioQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], _qData[i][2].AsBool, _qData[i][3].AsArray, i, radioHorizontalRec));
+                            text.text = subQuestion.qText.adjustMandatoryText(subQuestion.qMandatory);
+                            text.transform.localPosition = new Vector3(0, 120 - (index * 92), text.transform.localPosition.z);
+                            QuestionList.Add(typedQuestion.GetComponent<Radio>()
+                                .CreateRadioQuestion(subQuestion, index, typedQuestion.GetComponent<RectTransform>()));
                         }
                     }
-                    else
+                    break;
+
+                case QuestionTypes.RadioGrid:
+                    if (question.qConditions.Length > Limitations.MaxRadioQuestions)
                     {
-                        Debug.LogError("We currently only support up to 5 radioquestions per page");
+                        throw new InvalidOperationException($@"We currently only support up to 
+                            {Limitations.MaxRadioQuestions} 8 radioGrid conditions");
+                    }
+                    foreach (var (condition, index) in question.qConditions.WithIndex())
+                      {
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.RadioGrid, index, RadioGridPrefab);
+
+                        //ensuring correct placement and scaling in the UI
+                        textArray = typedQuestion.GetComponentsInChildren<TextMeshProUGUI>();
+                        textArray[0].text = question.qData[0].qText.adjustMandatoryText(question.qData[index].qMandatory);
+                        textArray[1].text = question.qConditions[index];
+                       
+                        //Differentiate between 5-Point and 7-Point Likert Scale
+                        textArray[1].transform.localPosition = new Vector3(
+                            question.qOptions.Length switch
+                            {
+                                5 => -195,
+                                7 => -245,
+                                _ => throw new InvalidOperationException("Likert Scale must have 5 or 7 points")
+                            }, 
+                            17 - (index * 50), 
+                            textArray[1].transform.localPosition.z
+                            );
+
+                        textArray[0].transform.localPosition = new Vector3(0, 120, textArray[0].transform.localPosition.z);
+                        QuestionList.Add(typedQuestion.GetComponent<RadioGrid>()
+                            .CreateRadioGridQuestion(question, index, typedQuestion.GetComponent<RectTransform>()));
                     }
                     break;
-                case "radioGrid":
-                    if (qConditions.Count < 8)
-                    {
-                        for (int i = 0; i < qConditions.Count; i++)
-                        {
-                            temp = Instantiate(RadioGridPrefab) as GameObject;
-                            temp.name = "radioGrid_" + i;
 
-                            radioHorizontalRec = temp.GetComponent<RectTransform>();
-                            q_main = GameObject.Find("Q_Main");
-                            radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
-
-                            //ensuring correct placement and scaling in the UI
-                            textArray = temp.GetComponentsInChildren<TextMeshProUGUI>();
-                            textArray[0].text = "";
-
-                            if (i == 0)
-                            {
-
-                                // If question mandatory -> add " * " to question in UI
-                                if (_qData[i][2].AsBool)
-                                    textArray[0].text = _qData[0][1] + " *";
-                                else
-                                    textArray[0].text = _qData[0][1];
-
-                            }
-
-                            //Differentiate between 5-Point and 7-Point Likert Scale
-                            int temp2 = 0;
-                            foreach (var option in qOptions)
-                            {
-                                if (option.Value != "")
-                                    temp2++;
-                            }
-
-                            if (temp2 == 5)
-                            {
-                                textArray[1].text = qConditions[i][1];
-                                textArray[1].transform.localPosition = new Vector3(-195, 17 - (i * 50), textArray[1].transform.localPosition.z);
-                            }
-                            else
-                            {
-                                textArray[1].text = qConditions[i][1];
-                                textArray[1].transform.localPosition = new Vector3(-245, 17 - (i * 50), textArray[1].transform.localPosition.z);
-                            }
-
-                            textArray[0].transform.localPosition = new Vector3(0, 120, textArray[0].transform.localPosition.z);
-
-                            SetRec(radioHorizontalRec);
-                            QuestionList.Add(temp.GetComponent<RadioGrid>().CreateRadioGridQuestion(qId, qType, qInstructions, _qData[0][0],
-                                _qData[0][1], _qData[0][2].AsBool, qOptions, qConditions[i][1], i, radioHorizontalRec));
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogError("We currently only support up to 8 conditions");
-                    }
-                    break;
                 case "checkbox":
 
-                    for (int i = 0; i < _qData.Count; i++)
+                    for (int i = 0; i < question.qData.Length; i++)
                     {
                         temp = Instantiate(Checkbox) as GameObject;
                         temp.name = "checkbox_" + i;
@@ -219,41 +206,32 @@ namespace VRQuestionnaireToolkit
 
                         //ensuring correct placement and scaling in the UI
                         text = temp.GetComponentInChildren<TextMeshProUGUI>();
-                        text.text = _qData[i][1];
+                        text.text = question.qData[i].qText;
                         text.transform.localPosition = new Vector3(10, 110 - (i * 50), text.transform.localPosition.z);
                         SetRec(radioHorizontalRec);
 
-                        QuestionList.Add(temp.GetComponent<Checkbox>().CreateCheckboxQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], qOptions, i, radioHorizontalRec));
+                        QuestionList.Add(temp.GetComponent<Checkbox>().CreateCheckboxQuestion(question, i, radioHorizontalRec));
                     }
                     break;
                 case "checkboxGrid":
                     Debug.LogError("Checkboxgrid is not supported ATM");
                     break;
-                case "linearGrid":
-                    for (int i = 0; i < _qData.Count; i++)
+                case QuestionTypes.LinearGrid:
+                    foreach (var (subQuestion, index) in question.qData.WithIndex())
                     {
-                        temp = Instantiate(LinearGrid) as GameObject;
-                        temp.name = "linearGrid_" + i;
-                        radioHorizontalRec = temp.GetComponent<RectTransform>();
-                        q_main = GameObject.Find("Q_Main");
-                        radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.LinearGrid, index, LinearGridPrefab);
 
                         //ensuring correct placement and scaling in the UI
-                        text = temp.GetComponentInChildren<TextMeshProUGUI>();
-
-                        if (_qData[i][2].AsBool)
-                            text.text = _qData[i][1] + " *";
-                        else
-                            text.text = _qData[i][1];
-
-                        text.transform.localPosition = new Vector3(0, 100 - (i * 95), text.transform.localPosition.z);
-                        SetRec(radioHorizontalRec);
-
-                        QuestionList.Add(temp.GetComponent<LinearGrid>().CreateLinearGridQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], qOptions, i, radioHorizontalRec, _qData[i][2].AsBool, _qData[i][3], _qData[i][5], _qData[i][4], _qData[i][6]));
+                        text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
+                        text.text = subQuestion.qText.adjustMandatoryText(subQuestion.qMandatory);
+                        text.transform.localPosition = new Vector3(0, 100 - (index * 95), text.transform.localPosition.z);
+                        QuestionList.Add(typedQuestion.GetComponent<LinearGrid>()
+                            .CreateLinearGridQuestion(subQuestion, index, typedQuestion
+                            .GetComponent<RectTransform>()));
                     }
                     break;
                 case "linearSlider":
-                    for (int i = 0; i < _qData.Count; i++)
+                    for (int i = 0; i < question.qData.Length; i++)
                     {
                         temp = Instantiate(LinearSlider) as GameObject;
                         temp.name = "linearSlider_" + i;
@@ -263,16 +241,16 @@ namespace VRQuestionnaireToolkit
 
                         //ensuring correct placement and scaling in the UI
                         text = temp.GetComponentInChildren<TextMeshProUGUI>();
-                        text.text = _qData[i][1];
+                        text.text = question.qData[i].qText;
                         text.transform.localPosition = new Vector3(0, 100 - (i * 100), text.transform.localPosition.z);
                         SetRec(radioHorizontalRec);
-                        text.text = _qData[i][1];
+                        text.text = question.qData[i].qText;
 
-                        QuestionList.Add(temp.GetComponent<Slider>().CreateSliderQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], qOptions, i, radioHorizontalRec, _qData[i][2], _qData[i][4], _qData[i][3], _qData[i][5]));
+                        QuestionList.Add(temp.GetComponent<Slider>().CreateSliderQuestion(question, i, radioHorizontalRec));
                     }
                     break;
                 case "dropdown":
-                    for (int i = 0; i < _qData.Count; i++)
+                    for (int i = 0; i < question.qData.Length; i++)
                     {
                         temp = Instantiate(Dropdown) as GameObject;
                         temp.name = "dropdown_" + i;
@@ -282,11 +260,11 @@ namespace VRQuestionnaireToolkit
 
                         //ensuring correct placement and scaling in the UI
                         text = temp.GetComponentInChildren<TextMeshProUGUI>();
-                        text.text = _qData[i][1];
+                        text.text = question.qData[i].qText;
                         text.transform.localPosition = new Vector3(0, 120 - (i * 90), text.transform.localPosition.z);
                         SetRec(radioHorizontalRec);
 
-                        QuestionList.Add(temp.GetComponent<Dropdown>().CreateDropdownQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], _qData[i][2].AsArray, i, radioHorizontalRec));
+                        QuestionList.Add(temp.GetComponent<Dropdown>().CreateDropdownQuestion(question, i, radioHorizontalRec));
                     }
                     break;
                 case "textInput":

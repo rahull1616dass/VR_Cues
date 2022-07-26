@@ -94,7 +94,7 @@ namespace VRQuestionnaireToolkit
                     if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>() != null)
                     {
                         if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<Checkbox>()
-                            .QMandatory)
+                            .qMandatory)
                         {
                             countMandatory++;
 
@@ -120,7 +120,7 @@ namespace VRQuestionnaireToolkit
                 else if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>() != null)
                 {
                     if (_pageFactory.GetComponent<QuestionnairePageFactory>().QuestionList[i][0].GetComponentInParent<LinearGrid>()
-                        .QMandatory)
+                        .qMandatory)
                     {
                         countMandatory++;
 
@@ -175,10 +175,11 @@ namespace VRQuestionnaireToolkit
                     nextButton.text = "Submit";
                 }
 
+                /*
                 if (_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
                 {
                     _export.GetComponent<ExportToCSV>().Save();
-                }
+                }*/
             }
             else
             {

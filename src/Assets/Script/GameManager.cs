@@ -7,15 +7,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private string jsonPath;
-    [SerializeField] private GenerateCueInScene questionGenerator;
-    // [SerializeField] private ImageGenerator imageGenerator;
+    public static GameManager instance;
+    public GenerateCueInScene generateCueInScene;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
 
     private void Start()
     {
         var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
-        
-        // JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-        // settings.Converters.Add(new CueConverter("cueType"));
         RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType"));
         foreach(var cue in rootCue.cues)
         {

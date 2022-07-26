@@ -35,33 +35,21 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> RadioList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateRadioGridQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, bool Mandatory, JSONArray qOptions, string qConditions, int numberConditions, RectTransform questionRec)
+        public List<GameObject> CreateRadioGridQuestion(Question question, int numberConditions, RectTransform questionRec)
         {
-            this.QuestionnaireId = questionnaireId;
-            this.QId = qId;
-            this.QType = qType;
-            this.QInstructions = qInstructions;
-            this.QText = qText;
-            this.QOptions = qOptions;
-            this.QConditions = qConditions;
-            this.NumRadioButtons = qOptions.Count;
-            this._questionRecTest = questionRec;
-            this.QMandatory = Mandatory;
 
             RadioList = new List<GameObject>();
 
             // generate radioGrid and corresponding text labels on a single page
-            for (int j = 0; j < qOptions.Count; j++)
+            for (int j = 0; j < question.qOptions.Length; j++)
             {
-                if (qOptions[j] != "")
+                if (NumRadioButtons <= 7)
+                    InitRadioGridButtons(numberConditions, j);
+                else
                 {
-                    if (NumRadioButtons <= 7)
-                        InitRadioGridButtons(numberConditions, j);
-                    else
-                    {
-                        Debug.LogError("We currently only support up to 7 options (e.g., 7 point-likert scale)");
-                    }
+                    Debug.LogError("We currently only support up to 7 options (e.g., 7 point-likert scale)");
                 }
+
             }
             return RadioList;
         }

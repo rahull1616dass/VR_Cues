@@ -8,4 +8,5 @@ public class Question
     public string qInstructions { get; set; }
     public QData[] qData { get; set; }
     public string[] qOptions { get; set; }
+    public string[] qConditions { get; set; }
 }

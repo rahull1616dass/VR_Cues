@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonPath: /sample.json
+  generateCueInScene: {fileID: 705861959}
 --- !u!4 &134715139
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +168,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &308086852 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8697000387260259619, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
+  m_PrefabInstance: {fileID: 1637818733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +266,92 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &705861958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705861960}
+  - component: {fileID: 705861959}
+  - component: {fileID: 705861961}
+  - component: {fileID: 705861962}
+  m_Layer: 0
+  m_Name: CueGenerator
+  m_TagString: VRQuestionnaireToolkit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &705861959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705861958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54941d8d73edd4249b980df1993580ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionnairePrefab: {fileID: 1977427658288308199, guid: 4c6cc58c027d248458484da2093c22bc, type: 3}
+--- !u!4 &705861960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705861958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.286377, y: -31.102264, z: 46.170193}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &705861961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705861958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de41a7e30bb47a94fbabd5a537794de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticipantId: id1
+  Condition: A
+  ControllerTactileFeedbackOnOff: 1
+  SoundOnOff: 0
+  ConfigurationMode: 0
+  AlsoConsolidateResults: 1
+  VibratingDurationForHovering: 0.05
+  VibratingFrequencyForHovering: 1
+  VibratingAmplitudeForHovering: 5
+  SoundClipForHovering: {fileID: 8300000, guid: d7d08c266925c5446947a004fde53aa0, type: 3}
+  HoveringVolume: 1
+  VibratingDurationForSelecting: 0.05
+  VibratingFrequencyForSelecting: 200
+  VibratingAmplitudeForSelecting: 1
+  SoundClipForSelecting: {fileID: 8300000, guid: 7b660b21fad7af34e806c3f3c4eb8868, type: 3}
+  SelectingVolume: 1
+--- !u!114 &705861962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705861958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83155eb6f832b4a4dafeb38c05d5aef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1205620638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259617, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259618, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -565,6 +657,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8697000387260259645, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
+      propertyPath: QuestionRecTest
+      value: 
+      objectReference: {fileID: 308086852}
     - target: {fileID: 8697000387260259646, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_Camera
       value: 

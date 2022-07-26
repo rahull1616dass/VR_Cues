@@ -8,9 +8,9 @@ namespace Cues
 {
     public class Image: Cue
     {
-        Transform thisTransform;
-        List<Transform> positionalTriggers;
-        List<TimeTrigger> timeTriggers;
+        CueTransform cueTransform;
+        /*List<Transform> positionalTriggers;
+        List<TimeTrigger> timeTriggers;*/
 
         public string text { get; set; }
 

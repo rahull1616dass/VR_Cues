@@ -116,7 +116,7 @@ namespace VRQuestionnaireToolkit
         void GenerateNewQuestionnaire(string inputPath)
         {
             if (numberQuestionnaires > 1)
-                currentQuestionnaire.SetActive(false);
+                currentQuestionnaire.SetActive(false); 
 
             currentQuestionnaire = Instantiate(questionnaire);
             currentQuestionnaire.name = "Questionnaire_" + numberQuestionnaires;
@@ -139,10 +139,10 @@ namespace VRQuestionnaireToolkit
         void ReadJson(string jsonPath)
         {
             // reads and parses .json input file
-            string JSONString = File.ReadAllText(jsonPath);
+            /*string JSONString = File.ReadAllText(jsonPath);
             var N = JSON.Parse(JSONString);
             var c = JsonHelper.FromJson<Questionnaire>(N);
-            var x = 5;
+            var x = 5;*/
             /*
             //----------- Read metadata from .JSON file ----------//
             string title = N["qTitle"].Value;
