@@ -8,11 +8,12 @@ namespace Cues
 {
     public class Image: Cue
     {
-        CueTransform cueTransform;
+        public CueTransform cueTransform { get; set; }
         /*List<Transform> positionalTriggers;
         List<TimeTrigger> timeTriggers;*/
 
         public string text { get; set; }
+        public string referenceId { get; set; }
 
         public override void generate()
         {
