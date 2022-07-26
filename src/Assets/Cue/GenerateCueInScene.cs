@@ -10,14 +10,15 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     private QuestionnairePageFactory _pageFactory;
 
-    private Transform cueTransformToTransform(CueTransform cueTransform)
+    public Transform PlaceCueTransformInScene(CueTransform cueTransform, string objectName = "cueTransform", params System.Type[] componentsToAdd)
     {
-        Transform tempCueTransform = new GameObject("cueTransform").transform;
+        Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.position = cueTransform.position;
         tempCueTransform.rotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
+
 
     public void generateQuestionnaire(Questionnaire questionnaire)
     {
@@ -25,7 +26,7 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform radioGridRec = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
+        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform);
         radioGridRec.SetParent(questionnaireTransform);
         radioGridRec.localPosition = new Vector3(0, 0, 0);
         radioGridRec.localRotation = Quaternion.identity;
