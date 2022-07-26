@@ -75,6 +75,9 @@
     "stringArray": {
       "type": "array",
       "items": { "type": "string" }
+    },
+    "cueTransform": {
+      
     }
   }
 }
