@@ -8,7 +8,9 @@ public class Questionnaire : Cue
 {
     public CueTransform cueTransform { get; set; }
 
-   // public List<TimeTrigger> timeTriggers;
+    public List<TimeTrigger> timeTrigger;
+
+    public List<CueTransform> positionTrigger;
     public QInfo qInfo { get; set; }
     public Question[] questions { get; set; }
 
