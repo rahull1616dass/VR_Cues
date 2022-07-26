@@ -1,4 +1,4 @@
-using Cues;
+﻿using Cues;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -25,12 +25,14 @@ public class GenerateCueInScene : MonoBehaviour
         GameObject currentQuestionnaire = Instantiate<GameObject>(questionnairePrefab);
 
         // Place in hierarchy 
-        RectTransform radioGridRec = currentQuestionnaire.GetComponent<RectTransform>();
+        RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
         Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
-        radioGridRec.SetParent(questionnaireTransform);
-        radioGridRec.localPosition = new Vector3(0, 0, 0);
-        radioGridRec.localRotation = Quaternion.identity;
-        radioGridRec.localScale = new Vector3(radioGridRec.localScale.x * 0.01f, radioGridRec.localScale.y * 0.01f, radioGridRec.localScale.z * 0.01f);
+
+        // Resetting transform
+        rectTransformQuestionnaire.SetParent(questionnaireTransform);
+        rectTransformQuestionnaire.localPosition = new Vector3(0, 0, 0);
+        rectTransformQuestionnaire.localRotation = Quaternion.identity;
+        rectTransformQuestionnaire.localScale = new Vector3(rectTransformQuestionnaire.localScale.x * 0.01f, rectTransformQuestionnaire.localScale.y * 0.01f, rectTransformQuestionnaire.localScale.z * 0.01f);
 
         _pageFactory = questionnaireTransform.GetComponentInChildren<QuestionnairePageFactory>();
 
