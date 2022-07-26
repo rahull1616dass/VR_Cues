@@ -1,6 +1,7 @@
 using Cues;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using VRQuestionnaireToolkit;
 
@@ -56,6 +57,17 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
+        RectTransform rectTransformImage = (RectTransform)cueTransformToTransform(image.cueTransform);
+
+        //Creates texture and loads byte array data to create image
+        Texture2D texture2DImage = new Texture2D((int)rectTransformImage.rect.width, (int)rectTransformImage.rect.height);
+        texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
+
+        //Creates a new Sprite based on the Texture2D
+        Sprite spriteImage = Sprite.Create(texture2DImage, 
+            new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
+
+        // Assign sprite to the instantiated image here.
 
     }
 
