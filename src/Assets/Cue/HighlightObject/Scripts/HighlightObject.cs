@@ -12,9 +12,12 @@ public class HighlightObject : MonoBehaviour {
     private Color normalColor;
     private Color selectedColor;
 
+    private iTween.EaseType easeType;
+    private iTween.LoopType loopType;
 
-    public void StartHighlight(Color selectedColorArg, float animationTimeArg = 1f)
-    {
+
+    public void StartHighlight(Color selectedColorArg, float animationTimeArg, iTween.EaseType ease, iTween.LoopType loop) { 
+    
         material = GetComponent<MeshRenderer>().material;
         controller = FindObjectOfType<HighlightController>();
 
@@ -22,7 +25,8 @@ public class HighlightObject : MonoBehaviour {
         selectedColor = selectedColorArg;
         animationTime = animationTimeArg;
 
-        
+        easeType = ease;
+        loopType = loop;
     }
 
 
