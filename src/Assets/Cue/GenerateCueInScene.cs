@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cues;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -56,7 +57,7 @@ public class GenerateCueInScene : MonoBehaviour
         triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
     }
 
-    public void generateImage(Cues.Image image)
+    public void generateImage(Image image)
     {
         Transform transformImage = PlaceCueTransformInScene(image.cueTransform);
 
@@ -73,8 +74,9 @@ public class GenerateCueInScene : MonoBehaviour
         spriteRenderer.sprite = spriteImage;
     }
 
-    public void generateHighlightObject(HighlightObject highlightObject)
+    public void generateHighlight(Highlight highlight)
     {
+
 
     }
 }
