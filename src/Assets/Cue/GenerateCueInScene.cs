@@ -1,4 +1,5 @@
 ﻿using Cues;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -66,7 +67,7 @@ public class GenerateCueInScene : MonoBehaviour
         texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
 
         //Creates a new Sprite based on the Texture2D
-        Sprite spriteImage = Sprite.Create(texture2DImage, 
+        Sprite spriteImage = Sprite.Create(texture2DImage,
             new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
 
         // Assign sprite to the instantiated image here.
@@ -76,7 +77,31 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateHighlight(Highlight highlight)
     {
+        GameObject[] highlightableGameObjects = GameObject.FindGameObjectsWithTag("HighlightedObjects");
 
+        foreach (GameObject o in highlightableGameObjects)
+        {
+            if (o.GetComponent<HighlightObject>() == null)
+            {
+                throw new Exception("You should add the HighlightObject script to the objects that needs to be highlighted.");
+            }
+
+
+            HighlightObject highlightObject = o.GetComponent<HighlightObject>();
+            if(highlight.objectId == highlightObject.objectID)
+            {
+                highlightObject.initHighlight(
+                highlight.highlightColor,
+                highlight.animationTime,
+                (iTween.EaseType)highlight.easeType,
+               (iTween.LoopType)highlight.loopType
+                );
+
+                // Remove it after implement it on the triggers
+                highlightObject.StartHighlight();
+            }
+            
+        }
 
     }
 }

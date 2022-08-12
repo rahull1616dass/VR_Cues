@@ -158,9 +158,17 @@
     },
     {
       "cueType": "Highlight",
-      "objectId": "20",
+      "objectId": "Car",
       "highlightColor": "#224B0C",
       "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Male",
+      "highlightColor": "#AC4425",
+      "animationTime": 3,
       "easeType": 21,
       "loopType": 2
     }

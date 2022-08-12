@@ -3,7 +3,7 @@
 [RequireComponent(typeof(MeshRenderer))]
 public class HighlightObject : MonoBehaviour {
 
-    public int objectID;
+    public string objectID;
     private float animationTime = 1f;
     //public float threshold = 10.5f;
 
@@ -16,13 +16,13 @@ public class HighlightObject : MonoBehaviour {
     private iTween.LoopType loopType;
 
 
-    public void StartHighlight(Color selectedColorArg, float animationTimeArg, iTween.EaseType ease, iTween.LoopType loop) { 
+    public void initHighlight(string hexColor, float animationTimeArg, iTween.EaseType ease, iTween.LoopType loop) { 
     
         material = GetComponent<MeshRenderer>().material;
         controller = FindObjectOfType<HighlightController>();
 
         normalColor = material.color;
-        selectedColor = selectedColorArg;
+        ColorUtility.TryParseHtmlString(hexColor, out selectedColor);
         animationTime = animationTimeArg;
 
         easeType = ease;
@@ -35,8 +35,8 @@ public class HighlightObject : MonoBehaviour {
         iTween.ColorTo(gameObject, iTween.Hash(
             "color", selectedColor,
             "time", animationTime,
-            "easetype", iTween.EaseType.linear,
-            "looptype", iTween.LoopType.pingPong
+            "easetype", easeType,
+            "looptype", loopType
         ));
     }
 
