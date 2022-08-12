@@ -1,5 +1,4 @@
-﻿using Cues;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -57,12 +56,12 @@ public class GenerateCueInScene : MonoBehaviour
         triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
     }
 
-    public void generateImage(Image image)
+    public void generateImage(Cues.Image image)
     {
-        RectTransform rectTransformImage = (RectTransform)PlaceCueTransformInScene(image.cueTransform);
+        Transform transformImage = PlaceCueTransformInScene(image.cueTransform);
 
         //Creates texture and loads byte array data to create image
-        Texture2D texture2DImage = new Texture2D((int)rectTransformImage.rect.width, (int)rectTransformImage.rect.height);
+        Texture2D texture2DImage = new Texture2D(100, 100);
         texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
 
         //Creates a new Sprite based on the Texture2D
@@ -70,7 +69,8 @@ public class GenerateCueInScene : MonoBehaviour
             new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
 
         // Assign sprite to the instantiated image here.
-
+        SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteImage;
     }
 
     public void generateHighlightObject(HighlightObject highlightObject)
