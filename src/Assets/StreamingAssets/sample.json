@@ -176,6 +176,7 @@
       "cueType": "InfoBox",
       "title": "This is title of the InfoBox.",
       "description": "This is description of the InfoBox.",
+      "textColor": "#000000",
       "buttons": [
         {
           "text": "Button1 Text",

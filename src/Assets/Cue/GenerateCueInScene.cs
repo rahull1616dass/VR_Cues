@@ -104,4 +104,15 @@ public class GenerateCueInScene : MonoBehaviour
         }
 
     }
+
+    public void generateInfoBox(InfoBox infoBox)    
+    {
+        if(infoBox.buttons.Length > 2)
+        {
+            throw new Exception("For UX purposes, only 0 to 2 buttons are supported!");
+        }
+        Transform transformInfoBox = PlaceCueTransformInScene(infoBox.cueTransform);
+
+
+    }
 }
