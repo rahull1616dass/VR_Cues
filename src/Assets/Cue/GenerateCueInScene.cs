@@ -118,6 +118,11 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateHaptic(Haptic haptic)
     {
-        
+        // Pico.generateHaptic(haptic.amplitude, haptic.duration);
+    }
+
+    public void generateAudio(Audio audio)
+    {
+        var audioRef = File.ReadAllBytes($"{Application.streamingAssetsPath}/audio/{audio.referenceId}");
     }
 }
