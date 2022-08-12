@@ -2,45 +2,50 @@
 
 [RequireComponent(typeof(MeshRenderer))]
 public class HighlightObject : MonoBehaviour {
-  public float animationTime = 1f;
-  //public float threshold = 10.5f;
 
-  private HighlightController controller;
-  private Material material;
-  private Color normalColor;
-  private Color selectedColor;
+    public string objectID;
+    private float animationTime = 1f;
+    //public float threshold = 10.5f;
 
-  private void Awake() {
-    material = GetComponent<MeshRenderer>().material;
-    controller = FindObjectOfType<HighlightController>();
+    private HighlightController controller;
+    private Material material;
+    private Color normalColor;
+    private Color selectedColor;
 
-    normalColor = material.color;
-    selectedColor = new Color(
-      Mathf.Clamp01(200),
-      Mathf.Clamp01(200),
-      Mathf.Clamp01(200)
-    );
-  }
+    private iTween.EaseType easeType;
+    private iTween.LoopType loopType;
 
-  private void Start() {
-    //StartHighlight();
-  }
 
-  public void StartHighlight() {
-    iTween.ColorTo(gameObject, iTween.Hash(
-      "color", selectedColor,
-      "time", animationTime,
-      "easetype", iTween.EaseType.linear,
-      "looptype", iTween.LoopType.pingPong
-    ));
-  }
+    public void initHighlight(string hexColor, float animationTimeArg, iTween.EaseType ease, iTween.LoopType loop) { 
+    
+        material = GetComponent<MeshRenderer>().material;
+        controller = FindObjectOfType<HighlightController>();
 
-  public void StopHighlight() {
-    iTween.Stop(gameObject);
-    material.color = normalColor;
-  }
+        normalColor = material.color;
+        ColorUtility.TryParseHtmlString(hexColor, out selectedColor);
+        animationTime = animationTimeArg;
 
-  private void OnMouseDown() {
-    controller.SelectObject(this);
-  }
+        easeType = ease;
+        loopType = loop;
+    }
+
+
+
+    public void StartHighlight() {
+        iTween.ColorTo(gameObject, iTween.Hash(
+            "color", selectedColor,
+            "time", animationTime,
+            "easetype", easeType,
+            "looptype", loopType
+        ));
+    }
+
+    public void StopHighlight() {
+        iTween.Stop(gameObject);
+        material.color = normalColor;
+    }
+
+    private void OnMouseDown() {
+        controller.SelectObject(this);
+    }
 }

@@ -24,8 +24,8 @@ public class TriggerCues : MonoBehaviour
         List<TriggerColliderForCues> tempTriggerColliders = new List<TriggerColliderForCues>();
         for (int i = 0; i < positionTriggers.Count; i++)
         {
-            GameObject triggerCollider = new GameObject("CueTrigger_" + cueToTrigger.name + "_" + i + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
-            triggerCollider.transform.SetParent(allTriggerParant);
+            Transform triggerCollider = GameManager.instance.generateCueInScene.PlaceCueTransformInScene(positionTriggers[i], "CueTrigger_" + cueToTrigger.name + "_" + i + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
+            triggerCollider.SetParent(allTriggerParant);
             TriggerColliderForCues tempRefTriggerCollider = triggerCollider.GetComponent<TriggerColliderForCues>();
             tempRefTriggerCollider.cueToTrigger = cueToTrigger;
             tempTriggerColliders.Add(tempRefTriggerCollider);

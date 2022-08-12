@@ -148,13 +148,29 @@
           "w": 1
         },
         "scale": {
-          "x": 1,
-          "y": 1,
-          "z": 1
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
         }
       },
       "text": "sampleText",
       "referenceId": "help_menu.png"
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Car",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Male",
+      "highlightColor": "#AC4425",
+      "animationTime": 3,
+      "easeType": 21,
+      "loopType": 2
     }
   ]
 }

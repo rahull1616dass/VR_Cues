@@ -1,4 +1,5 @@
 ﻿using Cues;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,9 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     private QuestionnairePageFactory _pageFactory;
 
-    private Transform cueTransformToTransform(CueTransform cueTransform)
+    public Transform PlaceCueTransformInScene(CueTransform cueTransform, string objectName = "cueTransform", params System.Type[] componentsToAdd)
     {
-        Transform tempCueTransform = new GameObject("cueTransform").transform;
+        Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.position = cueTransform.position;
         tempCueTransform.rotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
@@ -26,7 +27,7 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = cueTransformToTransform(questionnaire.cueTransform);
+        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform);
 
         // Resetting transform
         rectTransformQuestionnaire.SetParent(questionnaireTransform);
@@ -59,22 +60,48 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
-        RectTransform rectTransformImage = (RectTransform)cueTransformToTransform(image.cueTransform);
+        Transform transformImage = PlaceCueTransformInScene(image.cueTransform);
 
         //Creates texture and loads byte array data to create image
-        Texture2D texture2DImage = new Texture2D((int)rectTransformImage.rect.width, (int)rectTransformImage.rect.height);
+        Texture2D texture2DImage = new Texture2D(100, 100);
         texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
 
         //Creates a new Sprite based on the Texture2D
-        Sprite spriteImage = Sprite.Create(texture2DImage, 
+        Sprite spriteImage = Sprite.Create(texture2DImage,
             new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
 
         // Assign sprite to the instantiated image here.
-
+        SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteImage;
     }
 
-    public void generateHighlightObject(HighlightObject highlightObject)
+    public void generateHighlight(Highlight highlight)
     {
+        GameObject[] highlightableGameObjects = GameObject.FindGameObjectsWithTag("HighlightedObjects");
+
+        foreach (GameObject o in highlightableGameObjects)
+        {
+            if (o.GetComponent<HighlightObject>() == null)
+            {
+                throw new Exception("You should add the HighlightObject script to the objects that needs to be highlighted.");
+            }
+
+
+            HighlightObject highlightObject = o.GetComponent<HighlightObject>();
+            if(highlight.objectId == highlightObject.objectID)
+            {
+                highlightObject.initHighlight(
+                highlight.highlightColor,
+                highlight.animationTime,
+                (iTween.EaseType)highlight.easeType,
+               (iTween.LoopType)highlight.loopType
+                );
+
+                // Remove it after implement it on the triggers
+                highlightObject.StartHighlight();
+            }
+            
+        }
 
     }
 }
