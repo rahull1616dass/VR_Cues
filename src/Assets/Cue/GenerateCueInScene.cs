@@ -1,7 +1,5 @@
 ﻿using Cues;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using VRQuestionnaireToolkit;
@@ -10,11 +8,26 @@ public class GenerateCueInScene : MonoBehaviour
 {
     [SerializeField] private GameObject questionnairePrefab;
     [SerializeField] private TriggerCues triggerCue;
+    [SerializeField] private GameObject infoPrefab;
+    [SerializeField] private Transform allCueParent;
     private QuestionnairePageFactory _pageFactory;
 
-    public Transform PlaceCueTransformInScene(CueTransform cueTransform, string objectName = "cueTransform", params System.Type[] componentsToAdd)
+    public Transform PlaceCueTransformInScene(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
     {
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
+        tempCueTransform.SetParent(parentTransform);
+        tempCueTransform.position = cueTransform.position;
+        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localScale = cueTransform.scale;
+        return tempCueTransform;
+    }
+
+    public Transform PlaceCueTransformInScene(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", params Type[] componentsToAdd)
+    {
+
+        Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
+        foreach (Type component in componentsToAdd)
+            tempCueTransform.gameObject.AddComponent(component);
         tempCueTransform.position = cueTransform.position;
         tempCueTransform.rotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
@@ -27,7 +40,7 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform);
+        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform, allCueParent);
 
         // Resetting transform
         rectTransformQuestionnaire.SetParent(questionnaireTransform);
@@ -60,8 +73,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
-        Transform transformImage = PlaceCueTransformInScene(image.cueTransform);
-
+        Transform transformImage = PlaceCueTransformInScene(image.cueTransform, allCueParent);
         //Creates texture and loads byte array data to create image
         Texture2D texture2DImage = new Texture2D(100, 100);
         texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
@@ -111,7 +123,7 @@ public class GenerateCueInScene : MonoBehaviour
         {
             throw new Exception("For UX purposes, only 0 to 2 buttons are supported!");
         }
-        Transform transformInfoBox = PlaceCueTransformInScene(infoBox.cueTransform);
+        Transform transformInfoBox = PlaceCueTransformInScene(infoBox.cueTransform, allCueParent, infoPrefab);
 
 
     }

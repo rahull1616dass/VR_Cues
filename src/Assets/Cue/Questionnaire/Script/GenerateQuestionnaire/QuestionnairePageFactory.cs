@@ -110,7 +110,7 @@ namespace VRQuestionnaireToolkit
             PageList[CurrentPage].SetActive(true);
 
             GameObject q_footer = GameObject.Find("Q_Footer");
-            Button[] nextButton = q_footer.GetComponentsInChildren<Button>();
+            UnityEngine.UI.Button[] nextButton = q_footer.GetComponentsInChildren<UnityEngine.UI.Button>();
             nextButton[1].gameObject.SetActive(false);
         }
 
