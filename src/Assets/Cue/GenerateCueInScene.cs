@@ -115,4 +115,9 @@ public class GenerateCueInScene : MonoBehaviour
 
 
     }
+
+    public void generateHaptic(Haptic haptic)
+    {
+        
+    }
 }

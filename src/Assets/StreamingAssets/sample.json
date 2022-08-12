@@ -207,6 +207,11 @@
           "z": 0.1
         }
       }
+    },
+    {
+      "cueType": "Haptic",
+      "duration": 5,
+      "amplitude": 100
     }
   ]
 }
