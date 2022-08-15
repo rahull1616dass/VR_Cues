@@ -14,12 +14,28 @@ public class InfoBoxCreator : MonoBehaviour
 
     public void CreateInfoBox(InfoBox infoBox)
     {
-        titleText.text = infoBox.title;
-        descriptionText.text = infoBox.description;
-        infoImage.sprite = infoBox.iconReferenceId.createSpriteFromReferenceId();
+        if (!string.IsNullOrEmpty(infoBox.title))
+        {
+            titleText.text = infoBox.title;
+            titleText.gameObject.SetActive(true);
+        }
+        if (!string.IsNullOrEmpty(infoBox.title))
+        {
+            descriptionText.text = infoBox.description;
+            descriptionText.gameObject.SetActive(true);
+        }
+        if (!string.IsNullOrEmpty(infoBox.iconReferenceId))
+        {
+            infoImage.sprite = infoBox.iconReferenceId.createSpriteFromReferenceId();
+            infoImage.gameObject.SetActive(true);
+        }
         for (int i = 0; i < infoBox.buttons.Length; i++)
         {
-            buttonTexts[i].text = infoBox.buttons[i].text;
+            if (!string.IsNullOrEmpty(infoBox.buttons[i].text))
+            {
+                buttonTexts[i].text = infoBox.buttons[i].text;
+                buttonTexts[i].gameObject.SetActive(true);
+            }
             _ = buttonImages[i].color;
             ColorUtility.TryParseHtmlString(infoBox.buttons[i].buttonBackgroundColor, out Color tempColor);
             buttonImages[i].color = tempColor;
