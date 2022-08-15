@@ -24,6 +24,10 @@ namespace Assets.Extensions
             //Creates a new Sprite based on the Texture2D
             return Sprite.Create(texture2DImage,
                 new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+
+        public static void appendToOutputFile(this string text)
+        {
 
         }
     }

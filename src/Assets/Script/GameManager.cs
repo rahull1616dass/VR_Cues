@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string jsonPath;
     public static GameManager instance;
     public GenerateCueInScene generateCueInScene;
+    public static string gameStartTimestamp;
 
     private void Awake()
     {
