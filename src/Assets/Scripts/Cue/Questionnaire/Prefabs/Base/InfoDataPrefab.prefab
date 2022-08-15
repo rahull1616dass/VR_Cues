@@ -720,8 +720,9 @@ MonoBehaviour:
   titleText: {fileID: 50936569341237117}
   descriptionText: {fileID: 50936568927288285}
   infoImage: {fileID: 50936570196106893}
-  closeButton: {fileID: 50936569211668293}
-  confirmButton: {fileID: 50936570061056960}
+  buttons:
+  - {fileID: 50936569211668293}
+  - {fileID: 50936570061056960}
 --- !u!1 &50936570061056966
 GameObject:
   m_ObjectHideFlags: 0

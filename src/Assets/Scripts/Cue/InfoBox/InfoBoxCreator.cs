@@ -10,7 +10,7 @@ public class InfoBoxCreator : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image[] buttonImages;
     [SerializeField] private TextMeshProUGUI titleText, descriptionText;
     [SerializeField] private UnityEngine.UI.Image infoImage;
-    [SerializeField] private UnityEngine.UI.Button closeButton, confirmButton;
+    [SerializeField] private UnityEngine.UI.Button[] buttons;
 
     public void CreateInfoBox(InfoBox infoBox)
     {
@@ -27,19 +27,16 @@ public class InfoBoxCreator : MonoBehaviour
             _ = buttonTexts[i].color;
             ColorUtility.TryParseHtmlString(infoBox.buttons[i].textColor, out tempColor);
             buttonTexts[i].color = tempColor;
-       
-        closeButton.onClick.AddListener(() => { OnClickClose(); });
-        confirmButton.onClick.AddListener(() => { OnClickConfirm(); });
+
+            string feedback = "user feedback to title " + infoBox.title + " \n Description: " + infoBox.description + "\n is " + infoBox.buttons[i].text;
+            buttons[i].onClick.AddListener(() => { OnButtonClick(feedback); });
+        }
     }
 
-    private void OnClickClose()
+    private void OnButtonClick(string feedback)
     {
+        LogHelper.WriteLog(feedback);
         Destroy(gameObject);
-    }
-
-    private void OnClickConfirm()
-    {
-
     }
 }
 
