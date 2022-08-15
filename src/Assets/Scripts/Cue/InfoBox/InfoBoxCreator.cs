@@ -27,7 +27,7 @@ public class InfoBoxCreator : MonoBehaviour
             _ = buttonTexts[i].color;
             ColorUtility.TryParseHtmlString(infoBox.buttons[i].textColor, out tempColor);
             buttonTexts[i].color = tempColor;
-        }
+       
         closeButton.onClick.AddListener(() => { OnClickClose(); });
         confirmButton.onClick.AddListener(() => { OnClickConfirm(); });
     }

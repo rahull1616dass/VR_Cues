@@ -11,7 +11,6 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
-    private QuestionnairePageFactory _pageFactory;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
     {
@@ -49,25 +48,25 @@ public class GenerateCueInScene : MonoBehaviour
         rectTransformQuestionnaire.localRotation = Quaternion.identity;
         rectTransformQuestionnaire.localScale = new Vector3(rectTransformQuestionnaire.localScale.x * 0.01f, rectTransformQuestionnaire.localScale.y * 0.01f, rectTransformQuestionnaire.localScale.z * 0.01f);
 
-        _pageFactory = questionnaireTransform.GetComponentInChildren<QuestionnairePageFactory>();
+        QuestionnairePageFactory pageFactory = questionnaireTransform.GetComponentInChildren<QuestionnairePageFactory>();
 
         //----------- Read metadata from .JSON file ----------//
         string title = questionnaire.qInfo.qTitle;
         string instructions = questionnaire.qInfo.qInstructions;
 
         // Generates the first page
-        _pageFactory.GenerateAndDisplayFirstAndLastPage(true, instructions, title);
+        pageFactory.GenerateAndDisplayFirstAndLastPage(true, instructions, title);
 
         foreach (var (question, index) in questionnaire.questions.WithIndex())
         {
-            _pageFactory.AddPage(question);
+            pageFactory.AddPage(question);
         }
 
         // Generates the last page
-        _pageFactory.GenerateAndDisplayFirstAndLastPage(false, questionnaire.qInfo.qMessage, questionnaire.qInfo.qAcknowledgments);
+        pageFactory.GenerateAndDisplayFirstAndLastPage(false, questionnaire.qInfo.qMessage, questionnaire.qInfo.qAcknowledgments);
 
         // Initialize (Dis-/enable GameObjects)
-        _pageFactory.InitSetup();
+        pageFactory.InitSetup();
 
         triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
     }
