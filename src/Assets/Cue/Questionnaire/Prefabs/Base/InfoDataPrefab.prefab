@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 50936569977459920}
   - component: {fileID: 50936569977459921}
   - component: {fileID: -3304605412255036999}
+  - component: {fileID: 4487970657393302233}
   m_Layer: 5
   m_Name: InfoDataPrefab
   m_TagString: Untagged
@@ -702,6 +703,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff133fbc52255948b4e69d6dc77b5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4487970657393302233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50936569977459926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77421ceb5bd02943b87baf5b30777fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText:
+  - {fileID: 50936570091830767}
+  - {fileID: 50936570481631116}
+  buttonImage:
+  - {fileID: 50936569211668292}
+  - {fileID: 50936570061056963}
+  titleText: {fileID: 50936569341237117}
+  descriptionText: {fileID: 50936568927288285}
+  infoImage: {fileID: 50936570196106893}
 --- !u!1 &50936570061056966
 GameObject:
   m_ObjectHideFlags: 0
