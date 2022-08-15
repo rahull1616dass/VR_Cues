@@ -34,10 +34,12 @@ class CueConverter : JsonConverter
         object target;
         switch ((string)jObject[selector])
         {
+            case "RootCue": target = new RootCue(); break;
             case "Questionnaire": target = new Questionnaire(); break;
             case "Image": target = new Image(); break;
             case "Highlight": target = new Highlight(); break;
-            case "RootCue": target = new RootCue(); break;
+            case "InfoBox": target = new InfoBox(); break;
+            case "Haptic": target = new Haptic(); break;
             default: throw new ArgumentException("Invalid source type");
         }
         serializer.Populate(jObject.CreateReader(), target);

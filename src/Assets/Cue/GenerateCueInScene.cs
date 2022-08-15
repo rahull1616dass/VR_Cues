@@ -12,7 +12,7 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private Transform allCueParent;
     private QuestionnairePageFactory _pageFactory;
 
-    public Transform PlaceCueTransformInScene(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
     {
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
@@ -22,7 +22,7 @@ public class GenerateCueInScene : MonoBehaviour
         return tempCueTransform;
     }
 
-    public Transform PlaceCueTransformInScene(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", params Type[] componentsToAdd)
     {
 
         Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
@@ -40,7 +40,7 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = PlaceCueTransformInScene(questionnaire.cueTransform, allCueParent);
+        Transform questionnaireTransform = CueTransformToTransform(questionnaire.cueTransform, allCueParent);
 
         // Resetting transform
         rectTransformQuestionnaire.SetParent(questionnaireTransform);
@@ -73,7 +73,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateImage(Image image)
     {
-        Transform transformImage = PlaceCueTransformInScene(image.cueTransform, allCueParent);
+        Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);
         //Creates texture and loads byte array data to create image
         Texture2D texture2DImage = new Texture2D(100, 100);
         texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
@@ -123,7 +123,9 @@ public class GenerateCueInScene : MonoBehaviour
         {
             throw new Exception("For UX purposes, only 0 to 2 buttons are supported!");
         }
-        Transform transformInfoBox = PlaceCueTransformInScene(infoBox.cueTransform, allCueParent, infoPrefab);
+        Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
+        transformInfoBox.gameObject.GetComponent<Panel>().
+
 
 
     }
