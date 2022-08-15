@@ -10,13 +10,14 @@ public class InfoBoxCreator : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image[] buttonImages;
     [SerializeField] private TextMeshProUGUI titleText, descriptionText;
     [SerializeField] private UnityEngine.UI.Image infoImage;
+    [SerializeField] private UnityEngine.UI.Button closeButton, confirmButton;
 
     public void CreateInfoBox(InfoBox infoBox)
     {
         titleText.text = infoBox.title;
         descriptionText.text = infoBox.description;
         infoImage.sprite = infoBox.iconReferenceId.createSpriteFromReferenceId();
-        for(int i = 0; i < infoBox.buttons.Length; i++)
+        for (int i = 0; i < infoBox.buttons.Length; i++)
         {
             buttonTexts[i].text = infoBox.buttons[i].text;
             _ = buttonImages[i].color;
@@ -27,10 +28,18 @@ public class InfoBoxCreator : MonoBehaviour
             ColorUtility.TryParseHtmlString(infoBox.buttons[i].textColor, out tempColor);
             buttonTexts[i].color = tempColor;
         }
+        closeButton.onClick.AddListener(() => { OnClickClose(); });
+        confirmButton.onClick.AddListener(() => { OnClickConfirm(); });
+    }
 
-        public void onButton1Clicked()
-        {
+    private void OnClickClose()
+    {
+        Destroy(gameObject);
+    }
 
-        }
+    private void OnClickConfirm()
+    {
+
     }
 }
+

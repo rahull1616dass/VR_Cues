@@ -673,7 +673,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &50936569977459921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,15 +715,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77421ceb5bd02943b87baf5b30777fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText:
-  - {fileID: 50936570091830767}
-  - {fileID: 50936570481631116}
-  buttonImage:
-  - {fileID: 50936569211668292}
-  - {fileID: 50936570061056963}
+  buttonTexts: []
+  buttonImages: []
   titleText: {fileID: 50936569341237117}
   descriptionText: {fileID: 50936568927288285}
   infoImage: {fileID: 50936570196106893}
+  closeButton: {fileID: 50936569211668293}
+  confirmButton: {fileID: 50936570061056960}
 --- !u!1 &50936570061056966
 GameObject:
   m_ObjectHideFlags: 0
