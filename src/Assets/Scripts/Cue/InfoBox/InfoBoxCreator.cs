@@ -14,6 +14,7 @@ public class InfoBoxCreator : MonoBehaviour
 
     public void CreateInfoBox(InfoBox infoBox)
     {
+
         if (!string.IsNullOrEmpty(infoBox.title))
         {
             titleText.text = infoBox.title;
@@ -34,7 +35,7 @@ public class InfoBoxCreator : MonoBehaviour
             if (!string.IsNullOrEmpty(infoBox.buttons[i].text))
             {
                 buttonTexts[i].text = infoBox.buttons[i].text;
-                buttonTexts[i].gameObject.SetActive(true);
+                buttonTexts[i].transform.parent.gameObject.SetActive(true);
             }
             _ = buttonImages[i].color;
             ColorUtility.TryParseHtmlString(infoBox.buttons[i].buttonBackgroundColor, out Color tempColor);
