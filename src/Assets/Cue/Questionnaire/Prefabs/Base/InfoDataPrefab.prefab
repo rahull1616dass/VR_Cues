@@ -715,8 +715,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77421ceb5bd02943b87baf5b30777fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonTexts: []
-  buttonImages: []
+  buttonTexts:
+  - {fileID: 50936570091830767}
+  - {fileID: 50936570481631116}
+  buttonImages:
+  - {fileID: 50936569211668292}
+  - {fileID: 50936570061056963}
   titleText: {fileID: 50936569341237117}
   descriptionText: {fileID: 50936568927288285}
   infoImage: {fileID: 50936570196106893}
