@@ -124,9 +124,6 @@ public class GenerateCueInScene : MonoBehaviour
             throw new Exception("For UX purposes, only 0 to 2 buttons are supported!");
         }
         Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
-        transformInfoBox.gameObject.GetComponent<Panel>().
-
-
 
     }
 
