@@ -1,4 +1,5 @@
-﻿using Cues;
+﻿using Assets.Extensions;
+using Cues;
 using System;
 using System.IO;
 using UnityEngine;
@@ -74,17 +75,10 @@ public class GenerateCueInScene : MonoBehaviour
     public void generateImage(Image image)
     {
         Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);
-        //Creates texture and loads byte array data to create image
-        Texture2D texture2DImage = new Texture2D(100, 100);
-        texture2DImage.LoadImage(File.ReadAllBytes($"{Application.streamingAssetsPath}/images/{image.referenceId}"));
-
-        //Creates a new Sprite based on the Texture2D
-        Sprite spriteImage = Sprite.Create(texture2DImage,
-            new Rect(0.0f, 0.0f, texture2DImage.width, texture2DImage.height), new Vector2(0.5f, 0.5f), 100.0f);
-
+       
         // Assign sprite to the instantiated image here.
         SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = spriteImage;
+        spriteRenderer.sprite = image.referenceId.createSpriteFromReferenceId();
     }
 
     public void generateHighlight(Highlight highlight)

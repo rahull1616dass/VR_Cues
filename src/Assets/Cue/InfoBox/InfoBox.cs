@@ -7,7 +7,7 @@ public class InfoBox : Cue
 
     public string textColor { get; set; }
     public Button[] buttons { get; set; }
-
+    public string iconReferenceId { get; set; }
 
     public override void generate()
     {
