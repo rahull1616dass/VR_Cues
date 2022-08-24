@@ -75,6 +75,36 @@
           ]
         },
         {
+          "qType":"dropdown",
+          "qInstructions":"Please select the correct answer",
+          "qData":[
+             {
+                "qText":"Demanding",
+                "qOptions":[
+                   "Yes",
+                   "Average",
+                   "No"
+                ]
+             },
+             {
+                "qText":"Mental",
+                "qOptions":[
+                   "Yes",
+                   "Average",
+                   "No"
+                ]
+             },
+             {
+                "qText":"Physical",
+                "qOptions":[
+                   "Yes",
+                   "Average",
+                   "No"
+                ]
+             }
+          ]
+       },
+        {
           "qType": "radio",
           "qInstructions": "Please choose one of the following options...",
           "qData": [

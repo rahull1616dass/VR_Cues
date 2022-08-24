@@ -35,7 +35,7 @@ namespace VRQuestionnaireToolkit
         public GameObject RadioGridPrefab;
         public GameObject Checkbox;
         public GameObject CheckboxGrid;
-        public GameObject Dropdown;
+        public GameObject DropdownPrefab;
         public GameObject LinearGridPrefab;
         public GameObject LinearSlider;
         public GameObject TextInput;
@@ -248,22 +248,16 @@ namespace VRQuestionnaireToolkit
                         QuestionList.Add(temp.GetComponent<Slider>().CreateSliderQuestion(question, i, radioHorizontalRec));
                     }
                     break;
-                case "dropdown":
-                    for (int i = 0; i < question.qData.Length; i++)
+                case QuestionTypes.Dropdown:
+                    foreach (var (subDropdown, index) in question.qData.WithIndex())
                     {
-                        temp = Instantiate(Dropdown) as GameObject;
-                        temp.name = "dropdown_" + i;
-                        radioHorizontalRec = temp.GetComponent<RectTransform>();
-                        q_main = GameObject.Find("Q_Main");
-                        radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Dropdown, index, DropdownPrefab);
 
                         //ensuring correct placement and scaling in the UI
-                        text = temp.GetComponentInChildren<TextMeshProUGUI>();
-                        text.text = question.qData[i].qText;
-                        text.transform.localPosition = new Vector3(0, 120 - (i * 90), text.transform.localPosition.z);
-                        SetRec(radioHorizontalRec);
-
-                        QuestionList.Add(temp.GetComponent<Dropdown>().CreateDropdownQuestion(question, i, radioHorizontalRec));
+                        text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
+                        text.text = subDropdown.qText;
+                        text.transform.localPosition = new Vector3(0, 120 - (index * 90), text.transform.localPosition.z);
+                        QuestionList.Add(typedQuestion.GetComponent<Dropdown>().CreateDropdownQuestion(subDropdown.qOptions, index, typedQuestion.GetComponent<RectTransform>()));
                     }
                     break;
                 case "textInput":
