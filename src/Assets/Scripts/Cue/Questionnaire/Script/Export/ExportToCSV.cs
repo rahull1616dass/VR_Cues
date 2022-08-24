@@ -37,17 +37,13 @@ namespace VRQuestionnaireToolkit
         [Tooltip("Save results locally on this device.")]
         public bool SaveToLocal = true;
         public string StorePath;
-        public bool UseGlobalPath;
 
-        [Header("Configure if you want to save the results to remote server:")]
-        public bool SaveToServer = false;
-        [Tooltip("The target URI to send the results to")]
-        public string TargetURI = "http://www.example-server.com/survey-results.php";
+        //[Header("Configure if you want to save the results to remote server:")]
+        //public bool SaveToServer = false;
+        //[Tooltip("The target URI to send the results to")]
+        //public string TargetURI = "http://www.example-server.com/survey-results.php";
 
         private List<string[]> _csvRows;
-        private GameObject _pageFactory;
-        private GameObject _vrQuestionnaireToolkit;
-        private StudySetup _studySetup;
         private string _folderPath;
         private string _fileType;
         private string _questionnaireID;
@@ -56,64 +52,11 @@ namespace VRQuestionnaireToolkit
         public UnityEvent QuestionnaireFinishedEvent;
 
         // Use this for initialization
-        void Start()
-        {
-            _vrQuestionnaireToolkit = GameObject.FindGameObjectWithTag("VRQuestionnaireToolkit");
-            _studySetup = _vrQuestionnaireToolkit.GetComponent<StudySetup>();
-            _folderPath = UseGlobalPath ? StorePath : Application.dataPath + StorePath;
-
-            if (QuestionnaireFinishedEvent == null)
-                QuestionnaireFinishedEvent = new UnityEvent();
-
-            if (Filetype == 0)
-                _fileType = "csv";
-            else
-            {
-                _fileType = "txt";
-            }
-
-            if (!(SaveToLocal | SaveToServer)) // if neither of the box is checked, warn the user that the data won't be saved.
-            {
-                Debug.LogError("You have chosen to save the results NEITHER locally NOR remotely. Please consider going to the inspector of ExportToCSV and check one of the save-to options, otherwise your data will be lost!!");
-            }
-            else
-            {
-                if (SaveToLocal)
-                {
-                    try // create a new folder if the specified folder does not exist.
-                    {
-                        if (!Directory.Exists(_folderPath))
-                        {
-                            Directory.CreateDirectory(_folderPath);
-                            Debug.LogWarning("Local folder path does not exist! New folder created at " + _folderPath);
-                        }
-                    }
-                    catch (IOException ex)
-                    {
-                        Debug.Log(ex.Message);
-                    }
-                }
-
-                if (SaveToServer)
-                {
-                    // check if the provided uri is valid
-                    StartCoroutine(CheckURIValidity(TargetURI));
-                }
-            }
-        }
-
+       
         public void Save()
         {
             int currentQuestionnaire = 1;
 
-            for (int i = 0; i < _vrQuestionnaireToolkit.GetComponent<GenerateQuestionnaire>().Questionnaires.Count; i++)
-            {
-                if (_vrQuestionnaireToolkit.GetComponent<GenerateQuestionnaire>().Questionnaires[i].gameObject.activeSelf)
-                    currentQuestionnaire = i + 1;
-            }
-
-
-            _pageFactory = GameObject.FindGameObjectWithTag("QuestionnaireFactory");
             _csvRows = new List<string[]>();
 
             // create title rows
@@ -125,9 +68,8 @@ namespace VRQuestionnaireToolkit
 
             string[] csvTemp = new string[4];
 
-            // enable all GameObjects (except the first and last page) in order to read the responses
-            for (int i = 1; i < _pageFactory.GetComponent<QuestionnairePageFactory>().NumPages - 1; i++)
-                _pageFactory.GetComponent<QuestionnairePageFactory>().PageList[i].SetActive(true);
+            
+           
 
             #region CONSTRUCTING RESULTS
             // read participants' responses 
@@ -260,14 +202,13 @@ namespace VRQuestionnaireToolkit
             */
             #endregion
 
-            // disable all GameObjects (except the last page) 
-            for (int i = 1; i < _pageFactory.GetComponent<QuestionnairePageFactory>().NumPages - 1; i++)
-                _pageFactory.GetComponent<QuestionnairePageFactory>().PageList[i].SetActive(false);
+            
+           
 
 
             //-----Processing responses into the specified data format-----//
 
-            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + _studySetup.ParticipantId + "_condition_" + _studySetup.Condition + "_" + FileName + "." + _fileType;
+            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_"  + "_" + FileName + "." + _fileType;
             string _completeFileName_allResults = "questionnaireID_" + _questionnaireID + "_ALL_" + FileName + "." + _fileType;
             string _path = _folderPath + _completeFileName;
             string _path_allResults = _folderPath + _completeFileName_allResults;
@@ -291,26 +232,26 @@ namespace VRQuestionnaireToolkit
             }
 
             /* SENDING RESULTS TO REMOTE SERVER */
-            if (SaveToServer)
-            {
-                StartCoroutine(SendToServer(TargetURI, _completeFileName, contentOfResult.ToString()));
-            }
+            //if (SaveToServer)
+            //{
+            //    StartCoroutine(SendToServer(TargetURI, _completeFileName, contentOfResult.ToString()));
+            //}
 
             /* CONSOLIDATING RESULTS */
-            if (_studySetup.AlsoConsolidateResults)
-            {
-                StringBuilder content_all_results = GetConsolidatedContent(_path_allResults, output);
+            //if (_studySetup.AlsoConsolidateResults)
+            //{
+            //    StringBuilder content_all_results = GetConsolidatedContent(_path_allResults, output);
                 
-                if (SaveToLocal)
-                {
-                    WriteToLocal(_path_allResults, content_all_results);
-                }
+            //    if (SaveToLocal)
+            //    {
+            //        WriteToLocal(_path_allResults, content_all_results);
+            //    }
 
-                if (SaveToServer)
-                {
-                    StartCoroutine(SendToServer(TargetURI, _completeFileName_allResults, content_all_results.ToString()));
-                }
-            }
+            //    if (SaveToServer)
+            //    {
+            //        StartCoroutine(SendToServer(TargetURI, _completeFileName_allResults, content_all_results.ToString()));
+            //    }
+            //}
 
             QuestionnaireFinishedEvent.Invoke(); //notify 
         }
@@ -325,7 +266,7 @@ namespace VRQuestionnaireToolkit
         {
             StringBuilder sb_all_content = new StringBuilder();
 
-            string header = "Answer_Participant_" + _studySetup.ParticipantId + "_condition_" + _studySetup.Condition; // header for this current participant
+            string header =  ""; // header for this current participant
 
             try
             {

@@ -162,24 +162,33 @@ namespace VRQuestionnaireToolkit
         {
             if (CheckMandatoryQuestionsAnswered() || _pageFactory.CurrentPage == 0)
             {
-                // _pageFactory.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(false);
+                print("Before::" + _pageFactory.CurrentPage);
                 _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(false);
-                ++_pageFactory.CurrentPage;
+                _pageFactory.CurrentPage++;
                 _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(true);
 
+                print("After::" + _pageFactory.CurrentPage);
                 //reached second-last page
                 if (_pageFactory.PageList.Count - 2 == _pageFactory.CurrentPage)
                 {
                     GameObject q_footer = GameObject.Find("Q_Footer");
                     TextMeshProUGUI nextButton = q_footer.GetComponentInChildren<TextMeshProUGUI>();
                     nextButton.text = "Submit";
+                    nextButton.transform.parent.gameObject.SetActive(true);
                 }
-
-                /*
-                if (_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
+                else if(_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
                 {
+                    GameObject q_footer = GameObject.Find("Q_Footer");
+                    Debug.Log("Now Do");
                     _export.GetComponent<ExportToCSV>().Save();
-                }*/
+                    q_footer.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                else
+                {
+                    TextMeshProUGUI nextButton = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                    nextButton.text = "Next";
+                    nextButton.transform.parent.gameObject.SetActive(true);
+                }
             }
             else
             {
