@@ -46,7 +46,7 @@ namespace VRQuestionnaireToolkit
                 // Place in hierarchy 
                 RectTransform checkBoxRec = temp.GetComponent<RectTransform>();
                 checkBoxRec.SetParent(questionRec);
-                checkBoxRec.localPosition = new Vector3(-170 + (optionIndex * 140), 60 - (questionIndex * 30), 0);
+                checkBoxRec.localPosition = new Vector3(-170 + (questionIndex * 140), 60 - (optionIndex * 30), 0);
                 checkBoxRec.localRotation = Quaternion.identity;
                 checkBoxRec.localScale = new Vector3(checkBoxRec.localScale.x * 0.01f, checkBoxRec.localScale.y * 0.01f,
                     checkBoxRec.localScale.z * 0.01f);
