@@ -202,7 +202,7 @@ namespace VRQuestionnaireToolkit
                     }
                     foreach (var (subQuestion, index) in question.qData.WithIndex())
                     {
-                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Checkbox, index, RadioGridPrefab);
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Checkbox, index, Checkbox);
 
                         //ensuring correct placement and scaling in the UI
                         text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
