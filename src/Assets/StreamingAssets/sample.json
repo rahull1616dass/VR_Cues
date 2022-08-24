@@ -195,6 +195,7 @@
       "title": "This is title of the InfoBox.",
       "description": "This is description of the InfoBox.",
       "textColor": "#000000",
+      "iconReferenceId": "error_icon.png",
       "buttons": [
         {
           "text": "Button1 Text",
