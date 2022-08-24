@@ -60,6 +60,7 @@ namespace VRQuestionnaireToolkit
         {
             public const int MaxRadioQuestions = 5;
             public const int MaxRadioGridQuestions = 8;
+            public const int MaxCheckboxQuestions = 7;
         }
 
 
@@ -193,24 +194,22 @@ namespace VRQuestionnaireToolkit
                     }
                     break;
 
-                case "checkbox":
-
-                    for (int i = 0; i < question.qData.Length; i++)
+                case QuestionTypes.Checkbox:
+                    if (question.qData.Length > Limitations.MaxCheckboxQuestions)
                     {
-                        temp = Instantiate(Checkbox) as GameObject;
-                        temp.name = "checkbox_" + i;
-
-                        radioHorizontalRec = temp.GetComponent<RectTransform>();
-                        q_main = GameObject.Find("Q_Main");
-                        radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
+                        throw new InvalidOperationException($@"We currently only support up to {Limitations.MaxCheckboxQuestions} 
+                                                            checkboxes on a single page");
+                    }
+                    foreach (var (subQuestion, index) in question.qData.WithIndex())
+                    {
+                        GameObject typedQuestion = instantiateTypedQuestion(QuestionTypes.Checkbox, index, RadioGridPrefab);
 
                         //ensuring correct placement and scaling in the UI
-                        text = temp.GetComponentInChildren<TextMeshProUGUI>();
-                        text.text = question.qData[i].qText;
-                        text.transform.localPosition = new Vector3(10, 110 - (i * 50), text.transform.localPosition.z);
-                        SetRec(radioHorizontalRec);
+                        text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
+                        text.text = subQuestion.qText;
+                        text.transform.localPosition = new Vector3(10, 110 - (index * 50), text.transform.localPosition.z);
 
-                        QuestionList.Add(temp.GetComponent<Checkbox>().CreateCheckboxQuestion(question, i, radioHorizontalRec));
+                        QuestionList.Add(typedQuestion.GetComponent<Checkbox>().CreateCheckboxQuestion(subQuestion.qOptions, index, typedQuestion.GetComponent<RectTransform>()));
                     }
                     break;
                 case "checkboxGrid":
