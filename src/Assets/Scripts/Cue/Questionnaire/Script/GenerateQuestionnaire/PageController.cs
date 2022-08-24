@@ -180,7 +180,6 @@ namespace VRQuestionnaireToolkit
                 {
                     GameObject q_footer = GameObject.Find("Q_Footer");
                     Debug.Log("Now Do");
-                    _export.GetComponent<ExportToCSV>().Save();
                     q_footer.transform.GetChild(0).gameObject.SetActive(false);
                 }
                 else

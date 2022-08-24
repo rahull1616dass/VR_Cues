@@ -48,11 +48,25 @@ namespace VRQuestionnaireToolkit
         private string _fileType;
         private string _questionnaireID;
         private string[] csvTitleRow = new string[4];
+        private List<string[]> questionAnswersList = new List<string[]>();
 
         public UnityEvent QuestionnaireFinishedEvent;
 
         // Use this for initialization
        
+        public void SaveDataWhileAnswering(string Question, string Answer, int Index)
+        {
+            string[] questionAnswer = new string[2];
+            questionAnswer[0] = Question;
+            questionAnswer[1] = Answer;
+            if (questionAnswersList.Count - 1 < Index)
+            {
+                questionAnswersList[Index] = questionAnswer;
+            }
+            else
+                questionAnswersList.Add(questionAnswer);
+        }
+
         public void Save()
         {
             int currentQuestionnaire = 1;
@@ -68,7 +82,6 @@ namespace VRQuestionnaireToolkit
 
             string[] csvTemp = new string[4];
 
-            
            
 
             #region CONSTRUCTING RESULTS
