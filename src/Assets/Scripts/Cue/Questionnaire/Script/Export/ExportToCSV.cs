@@ -43,11 +43,9 @@ namespace VRQuestionnaireToolkit
         //[Tooltip("The target URI to send the results to")]
         //public string TargetURI = "http://www.example-server.com/survey-results.php";
 
-        private List<string[]> _csvRows;
         private string _folderPath;
         private string _fileType;
         private string _questionnaireID;
-        private string[] csvTitleRow = new string[4];
         private static List<string[]> questionAnswersList = new List<string[]>();
 
         public UnityEvent QuestionnaireFinishedEvent;
@@ -58,23 +56,25 @@ namespace VRQuestionnaireToolkit
        
         public static void SaveDataWhileAnswering(string Question, string Answer, int Index)
         {
+            Debug.Log("Using Index " + Index);
             string[] questionAnswer = new string[2];
             questionAnswer[0] = Question;
             questionAnswer[1] = Answer;
-            if (questionAnswersList.Count - 1 < Index)
+            if (questionAnswersList.Count > Index)
             {
                 questionAnswersList[Index] = questionAnswer;
             }
             else
+            {
+                Debug.Log("Created Index " + Index);
                 questionAnswersList.Add(questionAnswer);
+            }
         }
 
-        public void Save()
+        public static void Save(string _folderPath, string _questionnaireID, string FileName, string _fileType)
         {
-            int currentQuestionnaire = 1;
-
-            _csvRows = new List<string[]>();
-
+            List<string[]> _csvRows = new List<string[]>();
+            string[] csvTitleRow = new string[4];
             // create title rows
             csvTitleRow[0] = "QuestionType";
             csvTitleRow[1] = "Question";
@@ -83,8 +83,6 @@ namespace VRQuestionnaireToolkit
             _csvRows.Add(csvTitleRow);
 
             string[] csvTemp = new string[4];
-
-           
 
             #region CONSTRUCTING RESULTS
             // read participants' responses 
@@ -217,10 +215,6 @@ namespace VRQuestionnaireToolkit
             */
             #endregion
 
-            
-           
-
-
             //-----Processing responses into the specified data format-----//
 
             string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_"  + "_" + FileName + "." + _fileType;
@@ -238,13 +232,15 @@ namespace VRQuestionnaireToolkit
             StringBuilder contentOfResult = new StringBuilder();
 
             for (int index = 0; index < output.GetLength(0); index++)
-                contentOfResult.AppendLine(string.Join(Delimiter, output[index]));
+                contentOfResult.AppendLine(string.Join(";", output[index]));
 
+
+            WriteToLocal(_path, contentOfResult);
             /* WRITING RESULTS TO LOCAL STORAGE */
-            if (SaveToLocal)
-            {
-                WriteToLocal(_path, contentOfResult);
-            }
+            //if (SaveToLocal)
+            //{
+            //    WriteToLocal(_path, contentOfResult);
+            //}
 
             /* SENDING RESULTS TO REMOTE SERVER */
             //if (SaveToServer)
@@ -256,7 +252,7 @@ namespace VRQuestionnaireToolkit
             //if (_studySetup.AlsoConsolidateResults)
             //{
             //    StringBuilder content_all_results = GetConsolidatedContent(_path_allResults, output);
-                
+
             //    if (SaveToLocal)
             //    {
             //        WriteToLocal(_path_allResults, content_all_results);
@@ -268,7 +264,7 @@ namespace VRQuestionnaireToolkit
             //    }
             //}
 
-            QuestionnaireFinishedEvent.Invoke(); //notify 
+            //QuestionnaireFinishedEvent.Invoke(); //notify 
         }
 
         /// <summary>
@@ -277,46 +273,46 @@ namespace VRQuestionnaireToolkit
         /// <param name="filepath"></param>
         /// <param name="newData"></param>
         /// <returns></returns>
-        StringBuilder GetConsolidatedContent(string filepath, string[][] newData)
-        {
-            StringBuilder sb_all_content = new StringBuilder();
+        //StringBuilder GetConsolidatedContent(string filepath, string[][] newData)
+        //{
+        //    StringBuilder sb_all_content = new StringBuilder();
 
-            string header =  ""; // header for this current participant
+        //    string header =  ""; // header for this current participant
 
-            try
-            {
-                if (!File.Exists(filepath))
-                {
-                    sb_all_content.AppendLine(csvTitleRow[0] + Delimiter + csvTitleRow[1] + Delimiter + csvTitleRow[2] + Delimiter + header); // first row being the headers
-                    for (int row = 1; row < newData.GetLength(0); row++) // from the second row
-                    {
-                        sb_all_content.AppendLine(string.Join(Delimiter, newData[row]));
-                    }
-                }
-                else
-                {
-                    StreamReader sr = new StreamReader(filepath);
-                    sb_all_content.AppendLine(sr.ReadLine() + Delimiter + header); // copy the first row in the existing file and add a header for the new data
-                    for (int row = 1; row < newData.GetLength(0); row++) // from the second row
-                    {
-                        sb_all_content.AppendLine(sr.ReadLine() + Delimiter + newData[row][3]); // copy old data and add new data
-                    }
-                    sr.Close();
-                }
-            }
-            catch (IOException ex)
-            {
-                Debug.Log(ex.Message);
-            }
-            return sb_all_content;
-        }
+        //    try
+        //    {
+        //        if (!File.Exists(filepath))
+        //        {
+        //            sb_all_content.AppendLine(csvTitleRow[0] + Delimiter + csvTitleRow[1] + Delimiter + csvTitleRow[2] + Delimiter + header); // first row being the headers
+        //            for (int row = 1; row < newData.GetLength(0); row++) // from the second row
+        //            {
+        //                sb_all_content.AppendLine(string.Join(Delimiter, newData[row]));
+        //            }
+        //        }
+        //        else
+        //        {
+        //            StreamReader sr = new StreamReader(filepath);
+        //            sb_all_content.AppendLine(sr.ReadLine() + Delimiter + header); // copy the first row in the existing file and add a header for the new data
+        //            for (int row = 1; row < newData.GetLength(0); row++) // from the second row
+        //            {
+        //                sb_all_content.AppendLine(sr.ReadLine() + Delimiter + newData[row][3]); // copy old data and add new data
+        //            }
+        //            sr.Close();
+        //        }
+        //    }
+        //    catch (IOException ex)
+        //    {
+        //        Debug.Log(ex.Message);
+        //    }
+        //    return sb_all_content;
+        //}
 
         /// <summary>
         /// Write a StringBuilder to a local file.
         /// </summary>
         /// <param name="localPath"></param>
         /// <param name="content"></param>
-        void WriteToLocal(string localPath, StringBuilder content)
+        static void WriteToLocal(string localPath, StringBuilder content)
         {
             Debug.Log("Answers stored in path: " + localPath);
 

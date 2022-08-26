@@ -20,14 +20,13 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> LinearGridList; //contains all radiobuttons which correspond to one question
 
         [SerializeField] private TextMeshProUGUI questionTextbox;
-        private string currentQuestion, currentAnswer; 
-        int CurrentQuestionIndex;
+        private string currentQuestion, currentAnswer;
+        private int CurrentQuestionIndex;
 
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateLinearGridQuestion(QData subQuestion, int numberQuestion, RectTransform questionRec)
         {
-            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
-            ExportToCSV.QuestionIndex++;
             this.qMandatory = subQuestion.qMandatory;
 
             if (subQuestion.qMax > 20)
@@ -118,10 +117,28 @@ namespace VRQuestionnaireToolkit
             }
         }
 
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
 
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true; 
+                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+            }
+        }
         private void OnDisable()
         {
+            Debug.Log("CallingDisable");
+
             ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("Destory");
         }
     }
 }

@@ -25,13 +25,12 @@ namespace VRQuestionnaireToolkit
 
         [SerializeField] private TextMeshProUGUI questionTextbox;
         private string currentQuestion, currentAnswer;
-        int CurrentQuestionIndex;
+        private int CurrentQuestionIndex;
 
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateRadioQuestion(QData subQuestion, int subQuestionIndex, RectTransform questionRec)
         {
-            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
-            ExportToCSV.QuestionIndex++;
 
             if (subQuestion.qOptions.Length > 7)
             {
@@ -86,10 +85,24 @@ namespace VRQuestionnaireToolkit
                 currentAnswer = answer;
             }
         }
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
 
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true;
+                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+
+            }
+        }
 
         private void OnDisable()
         {
+            Debug.Log("CallingDisable");
+
             ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }

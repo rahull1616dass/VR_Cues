@@ -25,13 +25,13 @@ namespace VRQuestionnaireToolkit
         [SerializeField] private TextMeshProUGUI questionTextbox;
         private string currentQuestion, currentAnswer;
 
-        int CurrentQuestionIndex;
+        private int CurrentQuestionIndex;
+
+        private bool IsAlreadyEnabled;
 
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateDropdownQuestion(string[] options, int dropdownIndex, RectTransform questionRec)
         {
-            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
-            ExportToCSV.QuestionIndex++;
             if (options.Length > 7)
             {
                 throw new InvalidOperationException("We currently only support up to 7 dropdown questions on a single page");
@@ -68,9 +68,22 @@ namespace VRQuestionnaireToolkit
             currentQuestion = questionTextbox.text;
             currentAnswer = options[index];
         }
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
 
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true; 
+                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+            }
+        }
         private void OnDisable()
         {
+            Debug.Log("CallingDisable");
+
             ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }

@@ -30,13 +30,12 @@ namespace VRQuestionnaireToolkit
         [SerializeField] private TextMeshProUGUI questionTextbox;
         private string currentQuestion, currentAnswer;
 
-        int CurrentQuestionIndex;
+        private int CurrentQuestionIndex;
 
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateCheckboxQuestion(string[] options, int questionIndex, RectTransform questionRec)
         {
-            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
-            ExportToCSV.QuestionIndex++;
 
             CheckboxList = new List<GameObject>();
 
@@ -89,9 +88,20 @@ namespace VRQuestionnaireToolkit
             }
         }
 
-
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true; 
+                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+            }
+        }
         private void OnDisable()
         {
+            Debug.Log("CallingDisable");
             ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
