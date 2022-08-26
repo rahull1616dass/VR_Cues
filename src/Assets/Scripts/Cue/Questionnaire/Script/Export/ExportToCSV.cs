@@ -22,7 +22,7 @@ using UnityEngine.Networking;
 
 namespace VRQuestionnaireToolkit
 {
-    public class ExportToCSV : MonoBehaviour
+    public class ExportToCSV    
     {
         public string FileName;
         public string Delimiter;
@@ -48,13 +48,15 @@ namespace VRQuestionnaireToolkit
         private string _fileType;
         private string _questionnaireID;
         private string[] csvTitleRow = new string[4];
-        private List<string[]> questionAnswersList = new List<string[]>();
+        private static List<string[]> questionAnswersList = new List<string[]>();
 
         public UnityEvent QuestionnaireFinishedEvent;
 
+        public static int QuestionIndex;
+
         // Use this for initialization
        
-        public void SaveDataWhileAnswering(string Question, string Answer, int Index)
+        public static void SaveDataWhileAnswering(string Question, string Answer, int Index)
         {
             string[] questionAnswer = new string[2];
             questionAnswer[0] = Question;
@@ -316,7 +318,8 @@ namespace VRQuestionnaireToolkit
         /// <param name="content"></param>
         void WriteToLocal(string localPath, StringBuilder content)
         {
-            print("Answers stored in path: " + localPath);
+            Debug.Log("Answers stored in path: " + localPath);
+
             try
             {
                 StreamWriter outStream = System.IO.File.CreateText(localPath);

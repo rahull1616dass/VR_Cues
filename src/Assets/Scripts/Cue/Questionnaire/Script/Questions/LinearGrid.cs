@@ -19,9 +19,15 @@ namespace VRQuestionnaireToolkit
         private bool _isOdd;
         public List<GameObject> LinearGridList; //contains all radiobuttons which correspond to one question
 
+        [SerializeField] private TextMeshProUGUI questionTextbox;
+        private string currentQuestion, currentAnswer; 
+        int CurrentQuestionIndex;
+
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateLinearGridQuestion(QData subQuestion, int numberQuestion, RectTransform questionRec)
         {
+            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+            ExportToCSV.QuestionIndex++;
             this.qMandatory = subQuestion.qMandatory;
 
             if (subQuestion.qMax > 20)
@@ -65,7 +71,10 @@ namespace VRQuestionnaireToolkit
 
                 // Set radiobutton group
                 LinearGrid linearGridScript = temp.GetComponentInParent<LinearGrid>();
-                temp.GetComponentInChildren<Toggle>().group = linearGridScript.gameObject.GetComponent<ToggleGroup>();
+
+                Toggle currentToggle = temp.GetComponentInChildren<Toggle>();
+                currentToggle.group = linearGridScript.gameObject.GetComponent<ToggleGroup>();
+                currentToggle.onValueChanged.AddListener((value) => OnValueChangeCheckBox(j.ToString(), value)) ;
 
                 LinearGridList.Add(temp);
             }
@@ -98,6 +107,21 @@ namespace VRQuestionnaireToolkit
             }
 
             return counter;
+        }
+
+        public void OnValueChangeCheckBox(string answer, bool value)
+        {
+            if (value)
+            {
+                currentQuestion = questionTextbox.text;
+                currentAnswer = answer;
+            }
+        }
+
+
+        private void OnDisable()
+        {
+            ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

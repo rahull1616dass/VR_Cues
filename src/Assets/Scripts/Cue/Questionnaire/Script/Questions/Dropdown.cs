@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using SimpleJSON;
 using TMPro;
 using UnityEngine;
@@ -21,10 +22,16 @@ namespace VRQuestionnaireToolkit
         public GameObject Dropbdown;
         public List<GameObject> DropdownList; //contains all radiobuttons which correspond to one question
 
+        [SerializeField] private TextMeshProUGUI questionTextbox;
+        private string currentQuestion, currentAnswer;
+
+        int CurrentQuestionIndex;
+
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateDropdownQuestion(string[] options, int dropdownIndex, RectTransform questionRec)
-        { 
-
+        {
+            CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+            ExportToCSV.QuestionIndex++;
             if (options.Length > 7)
             {
                 throw new InvalidOperationException("We currently only support up to 7 dropdown questions on a single page");
@@ -37,9 +44,13 @@ namespace VRQuestionnaireToolkit
             GameObject temp = Instantiate(Dropbdown);
             temp.name = "dropdown" + dropdownIndex;
 
+            TMP_Dropdown dropdown = temp.GetComponentInChildren<TMP_Dropdown>();
+
             // Set dropdown options (Text) ;image also possible
             foreach (var (optionText, index) in options.WithIndex())
-                temp.GetComponentInChildren<TMP_Dropdown>().options[index].text = optionText;
+                dropdown.options[index].text = optionText;
+
+            dropdown.onValueChanged.AddListener((value) => OnValueChangeDropDown(options, value));
 
             // Place in hierarchy 
             RectTransform dropbDownRec = temp.GetComponent<RectTransform>();
@@ -48,7 +59,19 @@ namespace VRQuestionnaireToolkit
             // dropbDownRec.localRotation = Quaternion.identity;
             dropbDownRec.localScale = new Vector3(dropbDownRec.localScale.x * 0.01f, dropbDownRec.localScale.y * 0.01f, dropbDownRec.localScale.z * 0.01f);
             DropdownList.Add(temp);
+            OnValueChangeDropDown(options, 0);
             return DropdownList;
+        }
+
+        public void OnValueChangeDropDown(string[] options, int index)
+        {
+            currentQuestion = questionTextbox.text;
+            currentAnswer = options[index];
+        }
+
+        private void OnDisable()
+        {
+            ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }
