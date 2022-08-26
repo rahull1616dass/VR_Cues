@@ -141,4 +141,9 @@ public class GenerateCueInScene : MonoBehaviour
     {
         var audioRef = File.ReadAllBytes($"{Application.streamingAssetsPath}/audio/{audio.referenceId}");
     }
+
+    public void generateAnimation(Cues.Animation animation)
+    {
+
+    }
 }
