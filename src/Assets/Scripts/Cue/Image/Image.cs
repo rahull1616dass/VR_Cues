@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace Cues
 {
-    public class Image: Cue
+    public class Image
     {
         public CueTransform cueTransform { get; set; }
         /*List<Transform> positionalTriggers;
         List<TimeTrigger> timeTriggers;*/
-
-        public string text { get; set; }
         public string referenceId { get; set; }
 
-        public override void generate()
+
+        public Image(CueTransform cueTransform, string referenceId)
         {
-            GameManager.instance.generateCueInScene.generateImage(this);
+            this.cueTransform = cueTransform;
+            this.referenceId = referenceId;
         }
     }
 }

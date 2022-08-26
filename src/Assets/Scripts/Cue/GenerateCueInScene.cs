@@ -71,6 +71,18 @@ public class GenerateCueInScene : MonoBehaviour
         triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
     }
 
+    public void generateMedia(Media media)
+    {
+        if (!string.IsNullOrEmpty(media.imageReferenceId))
+        {
+            generateImage(new Image(media.cueTransform, media.imageReferenceId));
+        }
+        if (!string.IsNullOrEmpty(media.audioReferenceId))
+        {
+            generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
+        }
+    }
+
     public void generateImage(Image image)
     {
         Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);

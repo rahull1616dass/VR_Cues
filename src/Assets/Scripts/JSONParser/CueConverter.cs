@@ -36,7 +36,7 @@ class CueConverter : JsonConverter
         {
             case "RootCue": target = new RootCue(); break;
             case "Questionnaire": target = new Questionnaire(); break;
-            case "Image": target = new Image(); break;
+            case "Media": target = new Media(); break;
             case "Highlight": target = new Highlight(); break;
             case "InfoBox": target = new InfoBox(); break;
             case "Haptic": target = new Haptic(); break;

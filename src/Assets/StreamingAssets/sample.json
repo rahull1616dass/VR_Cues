@@ -182,7 +182,7 @@
       ]
     },
     {
-      "cueType": "Image",
+      "cueType": "Media",
       "cueTransform": {
         "position": {
           "x": 0,
@@ -201,8 +201,7 @@
           "z": 0.1
         }
       },
-      "text": "sampleText",
-      "referenceId": "help_menu.png"
+      "imageReferenceId": "help_menu.png"
     },
     {
       "cueType": "Highlight",
