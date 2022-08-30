@@ -176,13 +176,10 @@ namespace VRQuestionnaireToolkit
                     nextButton.text = "Submit";
                     nextButton.transform.parent.gameObject.SetActive(true);
                 }
-                else if(_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
+                else if (_pageFactory.PageList.Count - 1 == _pageFactory.CurrentPage)
                 {
-                    GameObject q_footer = GameObject.Find("Q_Footer");
                     Debug.Log("Now Do");
-                    ExportToCSV.Save("", "", "", "");
-                    q_footer.transform.GetChild(0).gameObject.SetActive(false);
-
+                    ExportToCSV.Save(Application.streamingAssetsPath+"/", "TempID", "SaveData", "csv");
                 }
                 else
                 {

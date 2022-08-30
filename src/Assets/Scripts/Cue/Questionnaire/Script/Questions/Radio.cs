@@ -94,7 +94,7 @@ namespace VRQuestionnaireToolkit
                 CurrentQuestionIndex = ExportToCSV.QuestionIndex;
                 ExportToCSV.QuestionIndex++;
                 IsAlreadyEnabled = true;
-                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+                ExportToCSV.SaveDataWhileAnswering("", "", "", CurrentQuestionIndex);
 
             }
         }
@@ -103,7 +103,7 @@ namespace VRQuestionnaireToolkit
         {
             Debug.Log("CallingDisable");
 
-            ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering("Radio", currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

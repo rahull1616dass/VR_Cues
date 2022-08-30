@@ -126,14 +126,14 @@ namespace VRQuestionnaireToolkit
                 CurrentQuestionIndex = ExportToCSV.QuestionIndex;
                 ExportToCSV.QuestionIndex++;
                 IsAlreadyEnabled = true; 
-                ExportToCSV.SaveDataWhileAnswering("", "", CurrentQuestionIndex);
+                ExportToCSV.SaveDataWhileAnswering("", "", "", CurrentQuestionIndex);
             }
         }
         private void OnDisable()
         {
             Debug.Log("CallingDisable");
 
-            ExportToCSV.SaveDataWhileAnswering(currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering("Range", currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
 
         private void OnDestroy()
