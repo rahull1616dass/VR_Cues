@@ -71,7 +71,7 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
+        triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)

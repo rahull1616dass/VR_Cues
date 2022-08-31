@@ -1,5 +1,5 @@
 public class Trigger
 {
-    TriggerPoint startPoint;
-    TriggerPoint endPoint;
+    public TriggerPoint startPoint;
+    public TriggerPoint endPoint;
 }
