@@ -21,6 +21,10 @@ public class GenerateCueInScene : MonoBehaviour
         tempCueTransform.localPosition = cueTransform.position;
         tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
+        if (cueTransform.attachToPlayer)
+        {
+            tempCueTransform.parent = Camera.main.transform;
+        }
         return tempCueTransform;
     }
 

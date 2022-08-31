@@ -4,6 +4,7 @@
     {
       "cueType": "Questionnaire",
       "cueTransform": {
+        "attachToPlayer": false,
         "position": {
           "x": 0,
           "y": 0,
@@ -182,6 +183,7 @@
     {
       "cueType": "Media",
       "cueTransform": {
+        "attachToPlayer": false,
         "position": {
           "x": 0,
           "y": 0,
@@ -235,6 +237,7 @@
         }
       ],
       "cueTransform": {
+        "attachToPlayer": false,
         "position": {
           "x": 0,
           "y": 0,

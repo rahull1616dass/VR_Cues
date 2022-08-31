@@ -15,6 +15,7 @@
               }
             ],
             "cueTransform": {
+              "attachToPlayer": false,
               "position": {
                 "x": 0.84,
                 "y": -0.63,
