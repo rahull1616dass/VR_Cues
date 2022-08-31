@@ -18,8 +18,8 @@ public class GenerateCueInScene : MonoBehaviour
     {
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
-        tempCueTransform.position = cueTransform.position;
-        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localPosition = cueTransform.position;
+        tempCueTransform.localRotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
@@ -31,8 +31,8 @@ public class GenerateCueInScene : MonoBehaviour
         Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
         foreach (Type component in componentsToAdd)
             tempCueTransform.gameObject.AddComponent(component);
-        tempCueTransform.position = cueTransform.position;
-        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localPosition = cueTransform.position;
+        tempCueTransform.localRotation = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
