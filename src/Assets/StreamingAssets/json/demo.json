@@ -33,6 +33,50 @@
               }
             },
             "triggers": [{ "startTriggerPoint": 0}]
+        },
+        {
+            "cueType": "Media",
+            "imageReferenceId": "steps.png",
+            "cueTransform": {
+                "attachToPlayer": false,
+                "position": {
+                  "x": 12.81888,
+                  "y": -3.1,
+                  "z": 6.051795
+                },
+                "rotation": {
+                  "x": 89.821,
+                  "y": -11.02,
+                  "z": 0.999
+                },
+                "scale": {
+                  "x": 0.15,
+                  "y": 0.15,
+                  "z": 0.15
+                }
         }
+    },
+    {
+        "cueType": "Media",
+        "imageReferenceId": "riddle_of_king.png",
+        "cueTransform": {
+            "attachToPlayer": false,
+            "position": {
+              "x":-6.83,
+              "y":25.41,
+              "z": 14.39
+            },
+            "rotation": {
+              "x": 14.311,
+              "y": 126.2,
+              "z": 21
+            },
+            "scale": {
+              "x": 0.4,
+              "y": 0.4,
+              "z": 0.4
+            }
+    }
+    }
     ]
 }
