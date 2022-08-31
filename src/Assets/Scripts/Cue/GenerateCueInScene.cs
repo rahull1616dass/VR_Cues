@@ -16,22 +16,25 @@ public class GenerateCueInScene : MonoBehaviour
         params Type[] componentsToAdd)
 
     {
+        if (cueTransform.attachToPlayer)
+        {
+            parentTransform = Camera.main.transform;
+        }
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
         tempCueTransform.localPosition = cueTransform.position;
         tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
-        if (cueTransform.attachToPlayer)
-        {
-            tempCueTransform.parent = Camera.main.transform;
-        }
         return tempCueTransform;
     }
 
     public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", 
         params Type[] componentsToAdd)
     {
-
+        if (cueTransform.attachToPlayer)
+        {
+            parentTransform = Camera.main.transform;
+        }
         Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
         foreach (Type component in componentsToAdd)
             tempCueTransform.gameObject.AddComponent(component);
