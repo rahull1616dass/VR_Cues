@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using SimpleJSON;
@@ -116,7 +116,7 @@ namespace VRQuestionnaireToolkit
         void GenerateNewQuestionnaire(string inputPath)
         {
             if (numberQuestionnaires > 1)
-                currentQuestionnaire.SetActive(false); 
+                currentQuestionnaire.SetActive(false);
 
             currentQuestionnaire = Instantiate(questionnaire);
             currentQuestionnaire.name = "Questionnaire_" + numberQuestionnaires;
@@ -201,4 +201,3 @@ namespace VRQuestionnaireToolkit
         }
     }
 }
-    

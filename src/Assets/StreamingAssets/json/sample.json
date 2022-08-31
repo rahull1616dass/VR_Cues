@@ -1,5 +1,5 @@
 {
-  "cueType": "Cue",
+  "cueType": "RootCue",
   "cues": [
     {
       "cueType": "Questionnaire",

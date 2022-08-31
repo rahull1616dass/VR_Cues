@@ -11,13 +11,13 @@ public class TriggerCues : MonoBehaviour
         refCue.SetActive(false);
         CreateTriggerObj(positions, refCue);
    }
-
+    /*
     public void TimeTrigger(List<TimeTrigger> positions, GameObject refCue)
     {
         refCue.SetActive(false);
 
     }
-
+    */
 
     private List<TriggerColliderForCues> CreateTriggerObj(List<CueTransform> positionTriggers, GameObject cueToTrigger)
     {
@@ -32,6 +32,7 @@ public class TriggerCues : MonoBehaviour
         return tempTriggerColliders;
     }
 
+    /*
     private void SetTimeTriggers(List<TimeTrigger> triggerTimers, GameObject refCue)
     {
         foreach (var trigger in triggerTimers)
@@ -54,4 +55,5 @@ public class TriggerCues : MonoBehaviour
         }
         refCue.SetActive(false);
     }
+    */
 }

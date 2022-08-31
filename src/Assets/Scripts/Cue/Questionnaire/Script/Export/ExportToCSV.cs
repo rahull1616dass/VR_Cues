@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +22,7 @@ using UnityEngine.Networking;
 
 namespace VRQuestionnaireToolkit
 {
-    public class ExportToCSV    
+    public class ExportToCSV
     {
         public string FileName;
         public string Delimiter;
@@ -53,7 +53,7 @@ namespace VRQuestionnaireToolkit
         public static int QuestionIndex;
 
         // Use this for initialization
-       
+
         public static void SaveDataWhileAnswering(string QuestionType, string Question, string Answer, int Index)
         {
             Debug.Log("Using Index " + Index);
@@ -83,21 +83,21 @@ namespace VRQuestionnaireToolkit
             csvTitleRow[2] = "QuestionID";
             csvTitleRow[3] = "Answer";
             _csvRows.Add(csvTitleRow);
-            foreach(var data in questionAnswersList)
+            foreach (var data in questionAnswersList)
             {
                 _csvRows.Add(data);
             }
 
-           
+
 
             //-----Processing responses into the specified data format-----//
 
-            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_"  + "_" + FileName + "." + _fileType;
+            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + "_" + FileName + "." + _fileType;
             string _path = _folderPath + _completeFileName;
 
 
             string[][] output = _csvRows.ToArray(); ;
-            
+
 
             StringBuilder contentOfResult = new StringBuilder();
 
