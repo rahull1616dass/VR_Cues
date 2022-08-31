@@ -12,7 +12,9 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
 
-    public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
+        params Type[] componentsToAdd)
+
     {
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
@@ -22,7 +24,8 @@ public class GenerateCueInScene : MonoBehaviour
         return tempCueTransform;
     }
 
-    public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", 
+        params Type[] componentsToAdd)
     {
 
         Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
