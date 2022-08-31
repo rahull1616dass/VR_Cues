@@ -5,6 +5,6 @@ using UnityEngine;
 public class CueTransform
 {
     public Vector3 position;
-    public Quaternion rotation;
+    public Vector3 rotation;
     public Vector3 scale;
 }
