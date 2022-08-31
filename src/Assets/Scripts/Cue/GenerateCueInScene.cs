@@ -19,7 +19,7 @@ public class GenerateCueInScene : MonoBehaviour
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
         tempCueTransform.localPosition = cueTransform.position;
-        tempCueTransform.localRotation = cueTransform.rotation;
+        tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
@@ -32,7 +32,7 @@ public class GenerateCueInScene : MonoBehaviour
         foreach (Type component in componentsToAdd)
             tempCueTransform.gameObject.AddComponent(component);
         tempCueTransform.localPosition = cueTransform.position;
-        tempCueTransform.localRotation = cueTransform.rotation;
+        tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
