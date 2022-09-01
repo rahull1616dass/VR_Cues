@@ -183,7 +183,7 @@
     {
       "cueType": "Media",
       "cueTransform": {
-        "attachToPlayer": false,
+        "attachToPlayer": true,
         "position": {
           "x": 0,
           "y": 0,
@@ -237,7 +237,7 @@
         }
       ],
       "cueTransform": {
-        "attachToPlayer": false,
+        "attachToPlayer": true,
         "position": {
           "x": 0,
           "y": 0,
