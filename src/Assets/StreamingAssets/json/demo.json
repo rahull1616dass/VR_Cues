@@ -45,7 +45,7 @@
           "z": 6.051795
         },
         "rotation": {
-          "x": 89.821,
+          "x": 90,
           "y": -11.02,
           "z": 0.999
         },
@@ -66,7 +66,7 @@
           "z": 13.863
         },
         "rotation": {
-          "x": -90,
+          "x": 90,
           "y": 41.2,
           "z": 1
         },
@@ -77,6 +77,94 @@
         }
       },
       "imageReferenceId": "steps.png"
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 5.48,
+          "y": 1.23,
+          "z": 17.59
+        },
+        "rotation": {
+          "x": 90,
+          "y": 68.088,
+          "z": 68.435
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png"
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -2.67,
+          "y": 0.02,
+          "z": 21.88
+        },
+        "rotation": {
+          "x": 90,
+          "y": 19.222,
+          "z": -3.821
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png"
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
     },
     {
       "cueType": "Media",
@@ -170,7 +258,8 @@
         },
         "triggers": [{ "startTriggerPoint": 0 }]
       }
-    },{
+    },
+    {
       "cueType": "Questionnaire",
       "cueTransform": {
         "attachToPlayer": false,
@@ -243,35 +332,23 @@
           ]
         },
         {
-          "qType":"dropdown",
-          "qInstructions":"Please select the correct answer",
-          "qData":[
-             {
-                "qText":"Demanding",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             },
-             {
-                "qText":"Mental",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             },
-             {
-                "qText":"Physical",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             }
+          "qType": "dropdown",
+          "qInstructions": "Please select the correct answer",
+          "qData": [
+            {
+              "qText": "Demanding",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Mental",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Physical",
+              "qOptions": ["Yes", "Average", "No"]
+            }
           ]
-       },
+        },
         {
           "qType": "radio",
           "qInstructions": "Please choose one of the following options...",
