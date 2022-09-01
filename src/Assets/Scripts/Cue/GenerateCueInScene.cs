@@ -1,8 +1,10 @@
 ﻿using Assets.Extensions;
 using Cues;
 using System;
+using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using VRQuestionnaireToolkit;
 
 public class GenerateCueInScene : MonoBehaviour
@@ -11,6 +13,7 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
+    [SerializeField] private AudioManager audioManager;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
@@ -78,7 +81,7 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
+        triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)
@@ -149,6 +152,24 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateAudio(Audio audio)
     {
-        var audioRef = File.ReadAllBytes($"{Application.streamingAssetsPath}/audio/{audio.referenceId}");
+        StartCoroutine(genarateAudio(audio));
+    }
+
+    IEnumerator genarateAudio(Audio audio)
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
+                audioManager.Play(myClip, 1.0f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform);
+            }
+        }
     }
 }
