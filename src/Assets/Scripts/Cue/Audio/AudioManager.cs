@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public AudioSource Play(AudioClip clip, AudioType audioType, CueTransform transform)
+    public AudioSource Play(AudioClip clip,  CueTransform transform, AudioType audioType = AudioType.Sound)
     {
         if (audioType == AudioType.Music)
             if (PlayerPrefs.GetInt("music") == 1)
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
         else
             return null;
     }
-    public AudioSource Play(AudioClip clip, float volume, bool IsLoop, bool withPlayer, CueTransform transform, AudioType audioType)
+    public AudioSource Play(AudioClip clip, float volume, bool IsLoop, bool withPlayer, CueTransform transform, AudioType audioType = AudioType.Sound)
     {
         if (audioType == AudioType.Music)
             if (PlayerPrefs.GetInt("music") == 1)
