@@ -1,82 +1,186 @@
 {
-    "cueType": "RootCue",
-    "cues": [
+  "cueType": "RootCue",
+  "cues": [
+    {
+      "cueType": "InfoBox",
+      "title": "Welcome to the game!",
+      "description": "This is a demo scene about our game.",
+      "textColor": "#000000",
+      "iconReferenceId": "welcome.jpg",
+      "buttons": [
         {
-            "cueType": "InfoBox",
-            "title": "Welcome to the game!",
-            "description": "This is a demo scene about our game.",
-            "textColor": "#000000",
-            "iconReferenceId": "welcome.jpg",
-            "buttons": [
-              {
-                "text": "Let's Go!",
-                "textColor": "#FFFFFF",
-                "buttonBackgroundColor": "#05801A"
-              }
-            ],
-            "cueTransform": {
-              "attachToPlayer": false,
-              "position": {
-                "x": 0.84,
-                "y": -0.63,
-                "z": 2.53
-              },
-              "rotation": {
-                "x": -6.12,
-                "y": 60.23,
-                "z": 0.8
-              },
-              "scale": {
-                "x": 0.01,
-                "y": 0.01,
-                "z": 0.01
-              }
-            },
-            "triggers": [{ "startTriggerPoint": 0}]
-        },
-        {
-            "cueType": "Media",
-            "imageReferenceId": "steps.png",
-            "cueTransform": {
-                "attachToPlayer": false,
-                "position": {
-                  "x": 12.81888,
-                  "y": -3.1,
-                  "z": 6.051795
-                },
-                "rotation": {
-                  "x": 89.821,
-                  "y": -11.02,
-                  "z": 0.999
-                },
-                "scale": {
-                  "x": 0.15,
-                  "y": 0.15,
-                  "z": 0.15
-                }
+          "text": "Let's Go!",
+          "textColor": "#FFFFFF",
+          "buttonBackgroundColor": "#05801A"
         }
+      ],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 0.84,
+          "y": -0.63,
+          "z": 2.53
+        },
+        "rotation": {
+          "x": -6.12,
+          "y": 60.23,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        }
+      },
+      "triggers": [{ "startTriggerPoint": 0 }]
     },
     {
-        "cueType": "Media",
-        "imageReferenceId": "riddle_of_king.png",
-        "cueTransform": {
-            "attachToPlayer": false,
-            "position": {
-              "x":-6.83,
-              "y":25.41,
-              "z": 14.39
-            },
-            "rotation": {
-              "x": 14.311,
-              "y": 126.2,
-              "z": 21
-            },
-            "scale": {
-              "x": 0.4,
-              "y": 0.4,
-              "z": 0.4
-            }
+      "cueType": "Media",
+      "imageReferenceId": "steps.png",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 12.81888,
+          "y": -3.1,
+          "z": 6.051795
+        },
+        "rotation": {
+          "x": 89.821,
+          "y": -11.02,
+          "z": 0.999
+        },
+        "scale": {
+          "x": 0.15,
+          "y": 0.15,
+          "z": 0.15
+        }
+      }
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Sword",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Door",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "princess.mp3"
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "audioReferenceId": "king_1.mp3"
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "king_2.mp3"
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 14,
+          "y": 0.58,
+          "z": 3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "narrator.mp3"
     }
-    }
-    ]
+  ]
 }
