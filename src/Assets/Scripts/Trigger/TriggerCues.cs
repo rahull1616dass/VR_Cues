@@ -2,58 +2,53 @@ using Cues;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System;
 
 public class TriggerCues : MonoBehaviour
 {
     [SerializeField] private Transform allTriggerParant;
-   public void PositionTrigger(List<CueTransform> positions, GameObject refCue)
+   public void SetTrigger(List<Trigger> allTriggers, GameObject refCue)
    {
         refCue.SetActive(false);
-        CreateTriggerObj(positions, refCue);
+        for (int i = 0; i < allTriggers.Count; i++)
+        {
+            CreateTriggers(allTriggers[i].startPoint, allTriggers[i].endPoint, refCue, i);
+        }
+        
    }
-    /*
-    public void TimeTrigger(List<TimeTrigger> positions, GameObject refCue)
-    {
-        refCue.SetActive(false);
 
-    }
-    */
-
-    private List<TriggerColliderForCues> CreateTriggerObj(List<CueTransform> positionTriggers, GameObject cueToTrigger)
+    private GameObject CreateEndTriggers(TriggerPoint endTrigger, GameObject refCue, int index)
     {
-        List<TriggerColliderForCues> tempTriggerColliders = new List<TriggerColliderForCues>();
-        for (int i = 0; i < positionTriggers.Count; i++)
+        if (endTrigger._triggerPoint.GetType() == typeof(float))
         {
-            Transform triggerCollider = GameManager.instance.generateCueInScene.CueTransformToTransform(positionTriggers[i],allTriggerParant, "CueTrigger_" + cueToTrigger.name + "_" + i + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
-            TriggerColliderForCues tempRefTriggerCollider = triggerCollider.GetComponent<TriggerColliderForCues>();
-            tempRefTriggerCollider.cueToTrigger = cueToTrigger;
-            tempTriggerColliders.Add(tempRefTriggerCollider);
+            Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(), 
+                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
+            triggerTimer.GetComponent<TriggerTimeForCues>().EndByTimeTrigger(refCue, (float)endTrigger._triggerPoint);
         }
-        return tempTriggerColliders;
+        else if(endTrigger._triggerPoint.GetType() == typeof(CueTransform))
+        {
+            Transform triggerCollider = GameManager.instance.generateCueInScene.CueTransformToTransform((CueTransform)endTrigger._triggerPoint, 
+                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
+            triggerCollider.GetComponent<TriggerColliderForCues>().ArrangeTheTrigger(refCue, null, false);
+            return triggerCollider.gameObject;
+        }
+        return null;
     }
 
-    /*
-    private void SetTimeTriggers(List<TimeTrigger> triggerTimers, GameObject refCue)
+    private void CreateTriggers(TriggerPoint startTriggers, TriggerPoint endTrigger, GameObject refCue, int index)
     {
-        foreach (var trigger in triggerTimers)
+        
+        if (startTriggers._triggerPoint.GetType() == typeof(float))
         {
-            RunTimeToTriggerCue(trigger, refCue);
+            Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(),
+                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
+            triggerTimer.GetComponent<TriggerTimeForCues>().StartByTimeTrigger(refCue, (float)startTriggers._triggerPoint, CreateEndTriggers(endTrigger, refCue, index));
+        }
+        else if (startTriggers._triggerPoint.GetType() == typeof(CueTransform))
+        {
+            Transform triggerCollider = GameManager.instance.generateCueInScene.CueTransformToTransform((CueTransform)startTriggers._triggerPoint,
+                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
+            triggerCollider.GetComponent<TriggerColliderForCues>().ArrangeTheTrigger(refCue, CreateEndTriggers(endTrigger, refCue, index), true);
         }
     }
-
-    private async void RunTimeToTriggerCue(TimeTrigger triggerTimer, GameObject refCue)
-    {
-        double startupTime = Time.realtimeSinceStartupAsDouble;
-        while(startupTime+(double)triggerTimer.startTime>Time.realtimeSinceStartupAsDouble)
-        {
-            await Task.Yield();
-        }
-        refCue.SetActive(true);
-        while (startupTime + (double)triggerTimer.endTime > Time.realtimeSinceStartupAsDouble)
-        {
-            await Task.Yield();
-        }
-        refCue.SetActive(false);
-    }
-    */
 }
