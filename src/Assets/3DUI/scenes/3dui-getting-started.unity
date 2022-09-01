@@ -13520,8 +13520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionnairePrefab: {fileID: 1977427658288308199, guid: 4c6cc58c027d248458484da2093c22bc, type: 3}
   triggerCue: {fileID: 1149144001}
-  infoPrefab: {fileID: 0}
-  allCueParent: {fileID: 0}
+  infoPrefab: {fileID: 50936569977459926, guid: 8f19012d03ec5c54fb7723af1b105079, type: 3}
+  allCueParent: {fileID: 1860791230}
+  audioManager: {fileID: 2019040262}
 --- !u!4 &1149144004
 Transform:
   m_ObjectHideFlags: 0
