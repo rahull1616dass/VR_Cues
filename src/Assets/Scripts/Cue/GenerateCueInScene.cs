@@ -11,6 +11,7 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
+    [SerializeField] private AudioManager audioManager;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
@@ -78,7 +79,7 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
+        triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)
