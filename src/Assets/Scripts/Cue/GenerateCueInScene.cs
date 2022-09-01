@@ -157,7 +157,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     IEnumerator genarateAudio(Audio audio)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.MPEG))
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip($"{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.MPEG))
         {
             yield return www.SendWebRequest();
 

@@ -101,50 +101,6 @@
       }
     },
     {
-      "cueType": "Media",
-      "imageReferenceId": "riddle_of_king.png",
-      "cueTransform": {
-        "attachToPlayer": false,
-        "position": {
-          "x": -6.83,
-          "y": 25.41,
-          "z": 14.39
-        },
-        "rotation": {
-          "x": 14.311,
-          "y": 126.2,
-          "z": 21
-        },
-        "scale": {
-          "x": 0.4,
-          "y": 0.4,
-          "z": 0.4
-        }
-      }
-    },
-    {
-      "cueType": "Media",
-      "imageReferenceId": "riddle_of_king.png",
-      "cueTransform": {
-        "attachToPlayer": false,
-        "position": {
-          "x": -6.83,
-          "y": 25.41,
-          "z": 14.39
-        },
-        "rotation": {
-          "x": 14.311,
-          "y": 126.2,
-          "z": 21
-        },
-        "scale": {
-          "x": 0.4,
-          "y": 0.4,
-          "z": 0.4
-        }
-      }
-    },
-    {
       "cueType": "Highlight",
       "objectId": "Sword",
       "highlightColor": "#224B0C",
@@ -180,73 +136,7 @@
           "z": 1
         }
       },
-      "audioReferenceId": "princess.mp3"
-    },
-    {
-      "cueType": "Media",
-      "cueTransform": {
-        "attachToPlayer": true,
-        "position": {
-          "x": -16.60884,
-          "y": -1.300256,
-          "z": 22.00809
-        },
-        "rotation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "scale": {
-          "x": 0.1,
-          "y": 0.1,
-          "z": 0.1
-        }
-      },
-      "audioReferenceId": "king_1.mp3"
-    },
-    {
-      "cueType": "Media",
-      "cueTransform": {
-        "attachToPlayer": true,
-        "position": {
-          "x": -16.60884,
-          "y": -1.300256,
-          "z": 22.00809
-        },
-        "rotation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "scale": {
-          "x": 1,
-          "y": 1,
-          "z": 1
-        }
-      },
-      "audioReferenceId": "king_2.mp3"
-    },
-    {
-      "cueType": "Media",
-      "cueTransform": {
-        "attachToPlayer": true,
-        "position": {
-          "x": 14,
-          "y": 0.58,
-          "z": 3
-        },
-        "rotation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "scale": {
-          "x": 1,
-          "y": 1,
-          "z": 1
-        }
-      },
-      "audioReferenceId": "narrator.mp3"
+      "audioReferenceId": "princess.mpeg"
     },
     {
       "cueType": "InfoBox",
