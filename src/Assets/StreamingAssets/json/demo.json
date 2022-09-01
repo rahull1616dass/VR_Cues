@@ -181,6 +181,62 @@
         }
       },
       "audioReferenceId": "narrator.mp3"
+    },
+    {
+    "cueType": "InfoBox",
+      "title": "Welcome to the game!",
+      "description": "This is a demo scene about our game.",
+      "textColor": "#000000",
+      "iconReferenceId": "welcome.jpg",
+      "buttons": [
+        {
+          "text": "Let's Go!",
+          "textColor": "#FFFFFF",
+          "buttonBackgroundColor": "#05801A"
+        }
+      ],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 0.84,
+          "y": -0.63,
+          "z": 2.53
+        },
+        "rotation": {
+          "x": -6.12,
+          "y": 60.23,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        },
+          "triggers": [{ "startTriggerPoint": 0}]
+      }
+    },
+      {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 18.309,
+          "y": 0.03,
+          "z": 13.863
+        },
+        "rotation": {
+          "x": -90,
+          "y": 41.2,
+          "z": 1
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "help_menu.png"
+      }
+    
     }
-  ]
-}
+
