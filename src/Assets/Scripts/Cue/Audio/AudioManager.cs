@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public AudioSource Play(AudioClip clip, AudioType audioType)
+    public AudioSource Play(AudioClip clip, AudioType audioType, CueTransform transform)
     {
         if (audioType == AudioType.Music)
             if (PlayerPrefs.GetInt("music") == 1)
@@ -56,12 +56,12 @@ public class AudioManager : MonoBehaviour
             {
                 audioClip = clip,
                 oneShot = true
-            }/*, () => { m_AudioCount--; }*/).GetAudioSource();
+            }/*, () => { m_AudioCount--; }*/).GetAudioSource(transform);
         }
         else
             return null;
     }
-    public AudioSource Play(AudioClip clip, float volume, bool IsLoop, bool withPlayer, AudioType audioType)
+    public AudioSource Play(AudioClip clip, float volume, bool IsLoop, bool withPlayer, CueTransform transform, AudioType audioType)
     {
         if (audioType == AudioType.Music)
             if (PlayerPrefs.GetInt("music") == 1)
@@ -81,7 +81,7 @@ public class AudioManager : MonoBehaviour
                 loop = IsLoop,
                 volume = volume,
                 withCamera = withPlayer
-            }/*, () => { m_AudioCount--; }*/).GetAudioSource();
+            }/*, () => { m_AudioCount--; }*/).GetAudioSource(transform);
         }
         else
             return null;

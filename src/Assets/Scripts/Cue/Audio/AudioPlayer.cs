@@ -29,8 +29,9 @@ namespace DevCommons.Sound
             return audioPlayer;
         }
 
-        public AudioSource GetAudioSource()
+        public AudioSource GetAudioSource(CueTransform transform)
         {
+            m_AudioSource.transform.localPosition = transform.position;
             return m_AudioSource;
         }
 
