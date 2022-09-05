@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,32 @@ using UnityEngine;
 
 public abstract class Cue
 {
+    public List<Trigger> triggers;
+
     public abstract void generate();
+    public Cue(JToken jsonTriggers)
+    {
+        triggers = new List<Trigger>();
+        foreach (JObject trigger in jsonTriggers)
+        {
+            triggers.Add(new Trigger(initTriggerPoint(trigger["_startPoint"]), initTriggerPoint(trigger["_endPoint"])));
+        }
+    }
+
+    private TriggerPoint initTriggerPoint(JToken triggerPoint) {
+        Debug.Log(triggerPoint.GetType());
+        var tempTriggerPoint = triggerPoint as float;
+        if(triggerPoint is float f)
+        {
+            return new TriggerPoint((float)triggerPoint);
+        }
+        return null;
+        /*if (triggerPoint.GetType() == typeof(CueTransform))
+        {
+            
+            return new TriggerPoint((CueTransform)triggerPoint);
+        }*/
+    }
 }
 
 

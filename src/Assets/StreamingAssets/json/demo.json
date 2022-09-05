@@ -32,7 +32,7 @@
           "z": 0.01
         }
       },
-      "triggers": [{ "startTriggerPoint": 0 }]
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",

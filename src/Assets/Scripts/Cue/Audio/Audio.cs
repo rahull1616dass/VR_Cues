@@ -1,7 +1,7 @@
 
 namespace Cues
 {
-    public class Audio : Cue
+    public class Audio
     {
         public string referenceId { get; set; }
         public bool shouldLoop { get; set; }
@@ -14,9 +14,6 @@ namespace Cues
             this.cueTransform = cueTransform;
         }
 
-        public override void generate()
-        {
-            GameManager.instance.generateCueInScene.generateAudio(this);
-        }
+      
     }
 }

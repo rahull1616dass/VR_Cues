@@ -1,4 +1,5 @@
 
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 public class InfoBox : Cue
@@ -12,6 +13,11 @@ public class InfoBox : Cue
     public string textColor { get; set; }
     public Button[] buttons { get; set; }
     public string iconReferenceId { get; set; }
+
+    public InfoBox(JToken triggers) : base(triggers)
+    {
+
+    }
 
     public override void generate()
     {
