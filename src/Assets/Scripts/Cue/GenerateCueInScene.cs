@@ -81,7 +81,7 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
+        //triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)
@@ -143,6 +143,7 @@ public class GenerateCueInScene : MonoBehaviour
         }
         Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
         transformInfoBox.gameObject.GetComponent<InfoBoxCreator>().CreateInfoBox(infoBox);
+        triggerCue.SetTrigger(infoBox.triggers, transformInfoBox.gameObject);
     }
 
     public void generateHaptic(Haptic haptic)
@@ -157,7 +158,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     IEnumerator genarateAudio(Audio audio)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip($"{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.MPEG))
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip($"{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.WAV))
         {
             yield return www.SendWebRequest();
 

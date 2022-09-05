@@ -1,6 +1,10 @@
 
+using System.Collections.Generic;
+
 public class InfoBox : Cue
 {
+
+    public List<Trigger> triggers;
     public CueTransform cueTransform { get; set; }
     public string title { get; set; }
     public string description { get; set; }

@@ -19,6 +19,8 @@ public class TriggerCues : MonoBehaviour
 
     private GameObject CreateEndTriggers(TriggerPoint endTrigger, GameObject refCue, int index)
     {
+        if (endTrigger == null)
+            return null;
         if (endTrigger._triggerPoint.GetType() == typeof(float))
         {
             Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(), 
