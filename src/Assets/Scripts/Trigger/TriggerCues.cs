@@ -12,7 +12,7 @@ public class TriggerCues : MonoBehaviour
         refCue.SetActive(false);
         for (int i = 0; i < allTriggers.Count; i++)
         {
-            CreateTriggers(allTriggers[i].startPoint, allTriggers[i].endPoint, refCue, i);
+            CreateTriggers(allTriggers[i]._startPoint, allTriggers[i]._endPoint, refCue, i);
         }
         
    }

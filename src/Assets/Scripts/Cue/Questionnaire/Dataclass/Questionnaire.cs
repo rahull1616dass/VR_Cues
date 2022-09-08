@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Questionnaire : Cue
 {
-    public CueTransform cueTransform { get; set; }
+
     public QInfo qInfo { get; set; }
     public Question[] questions { get; set; }
 
