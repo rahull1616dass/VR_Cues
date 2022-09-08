@@ -143,7 +143,7 @@ public class GenerateCueInScene : MonoBehaviour
         }
         Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
         transformInfoBox.gameObject.GetComponent<InfoBoxCreator>().CreateInfoBox(infoBox);
-        triggerCue.SetTrigger(infoBox.triggers, transformInfoBox.gameObject);
+        triggerCue.SetTrigger(infoBox._triggers, transformInfoBox.gameObject);
     }
 
     public void generateHaptic(Haptic haptic)

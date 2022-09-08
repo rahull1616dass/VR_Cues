@@ -37,6 +37,7 @@
     {
       "cueType": "Media",
       "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }],
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -76,7 +77,8 @@
           "z": 0.1
         }
       },
-      "imageReferenceId": "steps.png"
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
       },
       {
         "cueType": "Media",
@@ -98,7 +100,8 @@
             "z": 0.15
           }
         },
-        "imageReferenceId": "steps.png"
+        "imageReferenceId": "steps.png",
+        "triggers": [{ "startPoint": 0 }]
         },
         {
           "cueType": "Media",
@@ -120,7 +123,8 @@
               "z": 0.1
             }
           },
-          "imageReferenceId": "steps.png"
+          "imageReferenceId": "steps.png",
+          "triggers": [{ "startPoint": 0 }]
           },
           {
             "cueType": "Media",
@@ -142,7 +146,8 @@
                 "z": 0.1
               }
             },
-            "imageReferenceId": "steps.png"
+            "imageReferenceId": "steps.png",
+            "triggers": [{ "startPoint": 0 }]
             },
             {
               "cueType": "Media",
@@ -164,7 +169,8 @@
                   "z": 0.1
                 }
               },
-              "imageReferenceId": "steps.png"
+              "imageReferenceId": "steps.png",
+              "triggers": [{ "startPoint": 0 }]
               },
     {
       "cueType": "Media",
@@ -186,11 +192,13 @@
           "y": 0.4,
           "z": 0.4
         }
-      }
+      },
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",
       "imageReferenceId": "riddle_of_king.png",
+      "triggers": [{ "startPoint": 0 }],
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -213,6 +221,7 @@
     {
       "cueType": "Media",
       "imageReferenceId": "riddle_of_king.png",
+      "triggers": [{ "startPoint": 0 }],
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -238,7 +247,8 @@
       "highlightColor": "#224B0C",
       "animationTime": 1,
       "easeType": 21,
-      "loopType": 2
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Highlight",
@@ -246,7 +256,8 @@
       "highlightColor": "#224B0C",
       "animationTime": 1,
       "easeType": 21,
-      "loopType": 2
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",
@@ -268,7 +279,8 @@
           "z": 1
         }
       },
-      "audioReferenceId": "princess.wav"
+      "audioReferenceId": "princess.wav",
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "InfoBox",
@@ -299,9 +311,9 @@
           "x": 0.01,
           "y": 0.01,
           "z": 0.01
-        },
-        "triggers": [{ "startTriggerPoint": 0 }]
-      }
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Questionnaire",
@@ -323,33 +335,7 @@
           "z": 1
         }
       },
-      "timeTrigger": [
-        {
-          "startTime": 1,
-          "endTime": 5
-        }
-      ],
-      "positionTrigger": [
-        {
-          "cueTransform": {
-            "position": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "scale": {
-              "x": 1,
-              "y": 1,
-              "z": 1
-            }
-          }
-        }
-      ],
+      "triggers": [{ "startPoint": 0 }],
       "qInfo": {
         "qTitle": "title",
         "qInstructions": "instruction",

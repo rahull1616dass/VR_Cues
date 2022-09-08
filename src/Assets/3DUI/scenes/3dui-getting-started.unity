@@ -18354,7 +18354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8994168a5084794eb46e1d6c4c07da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonPath: /json/parse.json
+  jsonPath: /json/sample.json
   generateCueInScene: {fileID: 1149144003}
 --- !u!4 &1545465048
 Transform:

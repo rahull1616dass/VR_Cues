@@ -17,7 +17,14 @@ public abstract class Cue
         _triggers = new List<Trigger>();
         foreach (JObject trigger in jsonTriggers)
         {
-            _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), initTriggerPoint(trigger["endPoint"])));
+            try
+            {
+                _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), initTriggerPoint(trigger["endPoint"])));
+            }
+            catch (NullReferenceException) { // Assuming endPoint is not specified
+
+                _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), null));
+            }
         }
     }
 
@@ -25,12 +32,12 @@ public abstract class Cue
         try
         {
             return new TriggerPoint(triggerPoint.ToObject<float>());
-        }catch(ArgumentException)
+        }catch(ArgumentException) // Trigger is either a cueTransform or undefined
         {
             try
             {
                 return new TriggerPoint(triggerPoint.ToObject<CueTransform>());
-            }catch(ArgumentException)
+            }catch(ArgumentException) // Trigger is undefined
             {
                 throw new Exception("Trigger is not of type cueTransform or float");
             }
