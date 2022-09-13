@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using VRQuestionnaireToolkit;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GenerateCueInScene : MonoBehaviour
 {
@@ -81,28 +82,31 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        //triggerCue.SetTrigger(questionnaire.triggers, currentQuestionnaire);
+        triggerCue.SetTrigger(questionnaire._triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)
     {
+        GameObject mediaObj = null;
         if (!string.IsNullOrEmpty(media.imageReferenceId))
         {
-            generateImage(new Image(media.cueTransform, media.imageReferenceId));
+            mediaObj = generateImage(new Image(media.cueTransform, media.imageReferenceId));
         }
-        if (!string.IsNullOrEmpty(media.audioReferenceId))
+        else if (!string.IsNullOrEmpty(media.audioReferenceId))
         {
-            generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
+            mediaObj = generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
         }
+        triggerCue.SetTrigger(media._triggers, mediaObj);
     }
 
-    public void generateImage(Image image)
+    public GameObject generateImage(Image image)
     {
         Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);
        
         // Assign sprite to the instantiated image here.
         SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = image.referenceId.createSpriteFromReferenceId();
+        return transformImage.gameObject;
     }
 
     public void generateHighlight(Highlight highlight)
@@ -151,9 +155,9 @@ public class GenerateCueInScene : MonoBehaviour
         // Pico.generateHaptic(haptic.amplitude, haptic.duration);
     }
 
-    public void generateAudio(Audio audio)
+    public GameObject generateAudio(Audio audio)
     {
-        StartCoroutine(genarateAudio(audio));
+        return audioManager.Play(Resources.Load<AudioClip>("Audio/StarWars60"), audio.cueTransform).gameObject;
     }
 
     IEnumerator genarateAudio(Audio audio)
