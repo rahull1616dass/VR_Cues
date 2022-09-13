@@ -13573,8 +13573,8 @@ MonoBehaviour:
   triggerCue: {fileID: 1149144001}
   infoPrefab: {fileID: 50936569977459926, guid: 8f19012d03ec5c54fb7723af1b105079, type: 3}
   allCueParent: {fileID: 1860791230}
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
+  leftGhostHandPrefab: {fileID: 1432953465324244, guid: dd894f4e838df7d4489b00cb606c832d, type: 3}
+  rightGhostHandPrefab: {fileID: 1525468253343224, guid: b605af996cb03be4b829d63c3ba8fc05, type: 3}
 --- !u!4 &1149144004
 Transform:
   m_ObjectHideFlags: 0
@@ -17938,7 +17938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529013326}
   m_LocalRotation: {x: 0.588424, y: 0.39137074, z: -0.3901111, w: 0.5902538}
-  m_LocalPosition: {x: 14, y: 0.58, z: 3}
+  m_LocalPosition: {x: -0.92, y: 4.254, z: -3.302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

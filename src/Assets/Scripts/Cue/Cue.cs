@@ -15,6 +15,10 @@ public abstract class Cue
     public Cue(JToken jsonTriggers)
     {
         _triggers = new List<Trigger>();
+        if(jsonTriggers == null)
+        {
+            throw new Exception("The triggers are not specified for this cue. Did you forget?");
+        }
         foreach (JObject trigger in jsonTriggers)
         {
             try
@@ -22,7 +26,6 @@ public abstract class Cue
                 _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), initTriggerPoint(trigger["endPoint"])));
             }
             catch (NullReferenceException) { // Assuming endPoint is not specified
-
                 _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), null));
             }
         }

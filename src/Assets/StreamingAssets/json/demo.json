@@ -35,6 +35,33 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "cueType": "InfoBox",
+      "title": "Sorry Adventurer!",
+      "description": "But your princess is on another mountain!",
+      "textColor": "#000000",
+      "iconReferenceId": "princess.jpg",
+      "cueTransform":{
+        "attachToPlayer": false,
+        "position": {
+          "x": -37.6,
+          "y": 0.6,
+          "z": -15.24
+        },
+        "rotation": {
+          "x": 3.39,
+          "y": 43.1,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        }
+      },
+      "buttons": [],
+      "triggers": [{ "startPoint": 2 }]
+    },
+    {
       "cueType": "Media",
       "imageReferenceId": "steps.png",
       "triggers": [{ "startPoint": 0 }],
@@ -280,7 +307,99 @@
         }
       },
       "audioReferenceId": "star_wars",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "princess",
+      "triggers": [{ "startPoint": 20 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "audioReferenceId": "king_1",
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "king_2",
+      "triggers": [{ "startPoint": 100000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 14,
+          "y": 0.58,
+          "z": 3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "narrator",
+      "triggers": [{ "startPoint": 1000000 }]
     },
     {
       "cueType": "InfoBox",
@@ -316,17 +435,70 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
-      "cueType": "Questionnaire",
-      "cueTransform": {
+      "__comment": "Princess final cue Haptic 1",
+      "cueType": "Haptic",
+      "duration": 5,
+      "strength": 50,
+      "controller": "left",
+      "cueTransform":{
         "attachToPlayer": false,
         "position": {
-          "x": 0,
-          "y": 0,
-          "z": 0
+          "x": 14.275,
+          "y": 4.973,
+          "z": 38.142
         },
         "rotation": {
           "x": 0,
           "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "__comment": "Princess final cue Haptic 2",
+      "cueType": "Haptic",
+      "duration": 5,
+      "strength": 100,
+      "controller": "left",
+      "cueTransform":{
+        "attachToPlayer": false,
+        "position": {
+          "x": 19.6,
+          "y": 8.26,
+          "z": 49.92
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "__comment": "The final questioonaire",
+      "cueType": "Questionnaire",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 23.205,
           "z": 0
         },
         "scale": {
@@ -462,19 +634,19 @@
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
-          "x": 1,
-          "y": 2,
-          "z": 3
+          "x": -1.68,
+          "y": 1.04,
+          "z": -2.07
         },
         "rotation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
+          "x": -30.6,
+          "y": 68,
+          "z": 79.2
         },
         "scale": {
-          "x": 1,
-          "y": 1,
-          "z": 1
+          "x": 8,
+          "y": 8,
+          "z": 8
         }
       },
       "triggers": [{ "startPoint": 0 }],
