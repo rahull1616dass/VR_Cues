@@ -455,6 +455,13 @@
           ]
         }
       ]
+    },
+    {
+      "cueType": "Haptic",
+      "duration": 5,
+      "strength": 100,
+      "controller": "left",
+      "triggers": [{ "startPoint": 0 }]
     }
   ]
 }
