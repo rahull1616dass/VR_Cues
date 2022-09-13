@@ -157,7 +157,7 @@ public class GenerateCueInScene : MonoBehaviour
 
     public GameObject generateAudio(Audio audio)
     {
-        return audioManager.Play(Resources.Load<AudioClip>("Audio/StarWars60"), audio.cueTransform).gameObject;
+        return audioManager.Play(Resources.Load<AudioClip>($"audio/{audio.referenceId}"), audio.cueTransform).gameObject;
     }
 
     IEnumerator genarateAudio(Audio audio)
