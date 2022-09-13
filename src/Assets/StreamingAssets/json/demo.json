@@ -627,6 +627,30 @@
           ]
         }
       ]
-    }
+    },
+    {
+      "cueType": "GhostHand",
+      "handType": "left",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -1.68,
+          "y": 1.04,
+          "z": -2.07
+        },
+        "rotation": {
+          "x": -30.6,
+          "y": 68,
+          "z": 79.2
+        },
+        "scale": {
+          "x": 8,
+          "y": 8,
+          "z": 8
+        }
+      },
+      "triggers": [{ "startPoint": 0 }],
+      "animationName": "Fists"
+      }
   ]
 }

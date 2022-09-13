@@ -20,8 +20,4 @@ public class Haptic : Cue
     }
 }
 
-struct ControllerDirections
-{
-    public const string Left = "left";
-    public const string Right = "right";
-}
+
