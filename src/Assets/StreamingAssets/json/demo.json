@@ -458,13 +458,13 @@
     },
     {
       "cueType": "GhostHand",
-      "handType": "Left",
+      "handType": "left",
       "cueTransform": {
-        "attachToPlayer": true,
+        "attachToPlayer": false,
         "position": {
-          "x": 0,
-          "y": 0,
-          "z": 0
+          "x": 1,
+          "y": 2,
+          "z": 3
         },
         "rotation": {
           "x": 0,
