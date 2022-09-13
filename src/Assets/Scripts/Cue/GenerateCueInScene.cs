@@ -14,7 +14,6 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
-    [SerializeField] private AudioManager audioManager;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
@@ -157,24 +156,9 @@ public class GenerateCueInScene : MonoBehaviour
 
     public GameObject generateAudio(Audio audio)
     {
-        return audioManager.Play(Resources.Load<AudioClip>($"audio/{audio.referenceId}"), audio.cueTransform).gameObject;
+        AudioClip clip = Resources.Load<AudioClip>("audio/" + audio.referenceId);
+        return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
 
-    IEnumerator genarateAudio(Audio audio)
-    {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip($"{Application.streamingAssetsPath}/audio/{audio.referenceId}", AudioType.WAV))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
-                audioManager.Play(myClip, 1.0f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform);
-            }
-        }
-    }
+    
 }
