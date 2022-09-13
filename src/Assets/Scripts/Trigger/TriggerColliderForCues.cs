@@ -13,6 +13,8 @@ public class TriggerColliderForCues : MonoBehaviour
         endTrigger = endTriggerObj;
         isStartTrigger = isStartTriggerObj;
         GetComponent<BoxCollider>().isTrigger = true;
+        if (endTrigger != null)
+            endTrigger.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
