@@ -154,7 +154,8 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateHaptic(Haptic haptic)
     {
-        switch (haptic.controller) { 
+        switch (haptic.controller)
+        {
             case ControllerDirections.Left:
                 Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
                 leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.LeftController);
@@ -163,11 +164,11 @@ public class GenerateCueInScene : MonoBehaviour
             case ControllerDirections.Right:
                 Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
                 rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.RightController);
-                triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject); 
+                triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject);
                 break;
             default: throw new Exception($"{haptic.controller} is not a valid controller!");
         }
-        
+
     }
 
     public GameObject generateAudio(Audio audio)
@@ -176,5 +177,4 @@ public class GenerateCueInScene : MonoBehaviour
         return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
 
-    
 }
