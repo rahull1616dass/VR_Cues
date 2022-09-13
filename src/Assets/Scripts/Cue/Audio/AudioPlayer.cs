@@ -51,7 +51,7 @@ namespace DevCommons.Sound
             if (m_AudioPlayerData.audioClip == null)
                 return;
             m_AudioSource = gameObject.AddComponent<AudioSource>();
-            m_AudioSource.playOnAwake = false;
+            m_AudioSource.playOnAwake = true;
             m_AudioSource.volume = m_AudioPlayerData.volume;
             m_AudioSource.clip = m_AudioPlayerData.audioClip;
             m_AudioSource.loop = m_AudioPlayerData.loop;
