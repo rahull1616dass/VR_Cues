@@ -307,7 +307,99 @@
         }
       },
       "audioReferenceId": "star_wars",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "princess",
+      "triggers": [{ "startPoint": 20 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "audioReferenceId": "king_1",
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "king_2",
+      "triggers": [{ "startPoint": 100000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 14,
+          "y": 0.58,
+          "z": 3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "narrator",
+      "triggers": [{ "startPoint": 1000000 }]
     },
     {
       "cueType": "InfoBox",
