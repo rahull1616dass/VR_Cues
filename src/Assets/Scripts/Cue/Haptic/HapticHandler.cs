@@ -6,14 +6,13 @@ using UnityEngine;
 public class HapticHandler : MonoBehaviour
 {
     private float hapticAmp;
-    private int hapticDuration;
+    private const int DEFAULT_DURATION = 1000;
     private PXR_Input.Controller controller = PXR_Input.Controller.LeftController;
     private bool parameterSet = false;
 
-    public void CreateHaptic(float hapticStrength, int hapticTime, PXR_Input.Controller hand)
+    public void CreateHaptic(float hapticStrength, PXR_Input.Controller hand)
     {
         hapticAmp = hapticStrength;
-        hapticDuration = hapticTime;
         controller = hand;
         parameterSet = true;
     }
@@ -21,6 +20,6 @@ public class HapticHandler : MonoBehaviour
     private void Update()
     {
         if (parameterSet)
-            PXR_Input.SetControllerVibration(1, 1000, PXR_Input.Controller.LeftController);
+            PXR_Input.SetControllerVibration(1, DEFAULT_DURATION, PXR_Input.Controller.LeftController);
     }
 }

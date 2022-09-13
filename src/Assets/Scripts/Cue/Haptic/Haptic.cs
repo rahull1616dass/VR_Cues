@@ -6,7 +6,6 @@ using UnityEngine;
 public class Haptic : Cue
 {
     public float strength { get; set; }
-    public int duration { get; set; }
 
     public string controller { get; set; }
 

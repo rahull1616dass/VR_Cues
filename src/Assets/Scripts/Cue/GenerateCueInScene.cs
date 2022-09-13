@@ -161,12 +161,12 @@ public class GenerateCueInScene : MonoBehaviour
         {
             case ControllerDirections.Left:
                 Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
-                leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.LeftController);
+                leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, PXR_Input.Controller.LeftController);
                 triggerCue.SetTrigger(haptic._triggers, leftHaptic.gameObject);
                 break;
             case ControllerDirections.Right:
                 Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
-                rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.RightController);
+                rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, PXR_Input.Controller.RightController);
                 triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject);
                 break;
             default: throw new Exception($"{haptic.controller} is not a valid controller!");
@@ -179,5 +179,23 @@ public class GenerateCueInScene : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>("audio/" + audio.referenceId);
         return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
+
+    public void generateGhostHand(GhostHand ghostHand)
+    {
+        GameObject handPrefab;
+        switch (ghostHand.handType)
+        {
+            case ControllerDirections.Left:
+                handPrefab = leftGhostHandPrefab;
+                break;
+            case ControllerDirections.Right:
+                handPrefab = rightGhostHandPrefab;
+                break;
+            default: throw new Exception($"{ghostHand.handType} is not a valid controller!");
+        }
+        Transform transformGhostHand = CreateCueFromPrefab(ghostHand.cueTransform, allCueParent, handPrefab);
+        triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
+    }
+
 
 }
