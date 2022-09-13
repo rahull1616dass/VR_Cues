@@ -1,5 +1,6 @@
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ namespace Cues
     {
         public CueTransform cueTransform { get; set; }
         public string animationReferenceId { get; set; }
+
+        public Animation(JToken triggers) : base(triggers)
+        {
+
+        }
 
         public override void generate()
         {
