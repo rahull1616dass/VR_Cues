@@ -1,9 +1,12 @@
 ﻿using Assets.Extensions;
 using Cues;
 using System;
+using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using VRQuestionnaireToolkit;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GenerateCueInScene : MonoBehaviour
 {
@@ -12,24 +15,34 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
 
-    public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
+        params Type[] componentsToAdd)
+
     {
+        if (cueTransform.attachToPlayer)
+        {
+            parentTransform = Camera.main.transform;
+        }
         Transform tempCueTransform = new GameObject(objectName, componentsToAdd).transform;
         tempCueTransform.SetParent(parentTransform);
-        tempCueTransform.position = cueTransform.position;
-        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localPosition = cueTransform.position;
+        tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
 
-    public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", params Type[] componentsToAdd)
+    public Transform CreateCueFromPrefab(CueTransform cueTransform, Transform parentTransform, GameObject prefab, string objectName = "cueTransform", 
+        params Type[] componentsToAdd)
     {
-
+        if (cueTransform.attachToPlayer)
+        {
+            parentTransform = Camera.main.transform;
+        }
         Transform tempCueTransform = Instantiate(prefab, parentTransform).transform;
         foreach (Type component in componentsToAdd)
             tempCueTransform.gameObject.AddComponent(component);
-        tempCueTransform.position = cueTransform.position;
-        tempCueTransform.rotation = cueTransform.rotation;
+        tempCueTransform.localPosition = cueTransform.position;
+        tempCueTransform.localEulerAngles = cueTransform.rotation;
         tempCueTransform.localScale = cueTransform.scale;
         return tempCueTransform;
     }
@@ -68,28 +81,31 @@ public class GenerateCueInScene : MonoBehaviour
         // Initialize (Dis-/enable GameObjects)
         pageFactory.InitSetup();
 
-        triggerCue.PositionTrigger(questionnaire.positionTrigger, currentQuestionnaire);
+        triggerCue.SetTrigger(questionnaire._triggers, currentQuestionnaire);
     }
 
     public void generateMedia(Media media)
     {
+        GameObject mediaObj = null;
         if (!string.IsNullOrEmpty(media.imageReferenceId))
         {
-            generateImage(new Image(media.cueTransform, media.imageReferenceId));
+            mediaObj = generateImage(new Image(media.cueTransform, media.imageReferenceId));
         }
-        if (!string.IsNullOrEmpty(media.audioReferenceId))
+        else if (!string.IsNullOrEmpty(media.audioReferenceId))
         {
-            generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
+            mediaObj = generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
         }
+        triggerCue.SetTrigger(media._triggers, mediaObj);
     }
 
-    public void generateImage(Image image)
+    public GameObject generateImage(Image image)
     {
         Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);
        
         // Assign sprite to the instantiated image here.
         SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = image.referenceId.createSpriteFromReferenceId();
+        return transformImage.gameObject;
     }
 
     public void generateHighlight(Highlight highlight)
@@ -130,6 +146,7 @@ public class GenerateCueInScene : MonoBehaviour
         }
         Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
         transformInfoBox.gameObject.GetComponent<InfoBoxCreator>().CreateInfoBox(infoBox);
+        triggerCue.SetTrigger(infoBox._triggers, transformInfoBox.gameObject);
     }
 
     public void generateHaptic(Haptic haptic)
@@ -137,9 +154,10 @@ public class GenerateCueInScene : MonoBehaviour
         // Pico.generateHaptic(haptic.amplitude, haptic.duration);
     }
 
-    public void generateAudio(Audio audio)
+    public GameObject generateAudio(Audio audio)
     {
-        var audioRef = File.ReadAllBytes($"{Application.streamingAssetsPath}/audio/{audio.referenceId}");
+        AudioClip clip = Resources.Load<AudioClip>("audio/" + audio.referenceId);
+        return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
 
     public void generateAnimation(Cues.Animation animation)

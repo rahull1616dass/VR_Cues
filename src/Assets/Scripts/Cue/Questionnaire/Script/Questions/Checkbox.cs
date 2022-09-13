@@ -26,9 +26,17 @@ namespace VRQuestionnaireToolkit
         private RectTransform _questionRecTest;
         public List<GameObject> CheckboxList; //contains all radiobuttons which correspond to one question
 
+
+        [SerializeField] private TextMeshProUGUI questionTextbox;
+        private string currentQuestion, currentAnswer;
+
+        private int CurrentQuestionIndex;
+
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateCheckboxQuestion(string[] options, int questionIndex, RectTransform questionRec)
         {
+
             CheckboxList = new List<GameObject>();
 
             // generate checkbox and corresponding text labels on a single page
@@ -51,10 +59,50 @@ namespace VRQuestionnaireToolkit
                 checkBoxRec.localScale = new Vector3(checkBoxRec.localScale.x * 0.01f, checkBoxRec.localScale.y * 0.01f,
                     checkBoxRec.localScale.z * 0.01f);
 
-                CheckboxList.Add(temp);
+                checkBoxRec.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener((value) => OnValueChangeCheckBox(text.text, value));
 
+                CheckboxList.Add(temp);
             }
             return CheckboxList;
+        }
+
+
+
+        public void OnValueChangeCheckBox(string answer, bool value)
+        {
+            if (value)
+            {
+                currentQuestion = questionTextbox.text;
+                currentAnswer += ";" +answer;
+            }
+            else
+            {
+                currentAnswer = "";
+                string[] Answers = currentAnswer.Split(';');
+                for (int i = 0; i < Answers.Length; i++)
+                {
+                    if (Answers[i] == answer)
+                        continue;
+                    currentAnswer += ";" + Answers[i];
+                }
+            }
+        }
+
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true; 
+                ExportToCSV.SaveDataWhileAnswering("", "", "", CurrentQuestionIndex);
+            }
+        }
+        private void OnDisable()
+        {
+            Debug.Log("CallingDisable");
+            ExportToCSV.SaveDataWhileAnswering("CheckBox",currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

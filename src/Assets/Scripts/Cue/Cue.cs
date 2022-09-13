@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,53 +8,42 @@ using UnityEngine;
 
 public abstract class Cue
 {
+    public List<Trigger> _triggers;
+    public CueTransform cueTransform;
+
     public abstract void generate();
-}
-
-
-
-/*
- * 
- *     public Transform transformDataForCue { get; set; }
-
-    public Transform triggerPointForCue { get; set; }
-
-    public TriggerType typeOfTrigger;
- * public enum TriggerType
-{
-    TimeTrigger = 0,
-    PositionTrigger
-}
-[CreateAssetMenu(fileName = "CueData", menuName = "ScriptableObjects/BasicCue", order = 1)]
-public class Cue : ScriptableObject
-{
-    public PositionData _positionData;
-    public List<CueTrigger> _cueTriggers;
-}
-
-
-[System.Serializable]
-public class CueTrigger
-{
-    public enum ETriggerType
+    public Cue(JToken jsonTriggers)
     {
-        None = -1,
-        TimeTrigger,
-        PositionTrigger
+        _triggers = new List<Trigger>();
+        foreach (JObject trigger in jsonTriggers)
+        {
+            try
+            {
+                _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), initTriggerPoint(trigger["endPoint"])));
+            }
+            catch (NullReferenceException) { // Assuming endPoint is not specified
+
+                _triggers.Add(new Trigger(initTriggerPoint(trigger["startPoint"]), null));
+            }
+        }
     }
-    public ETriggerType _eTriggerType;
 
-    public float _eTriggerTime;
+    private TriggerPoint initTriggerPoint(JToken triggerPoint) {
+        try
+        {
+            return new TriggerPoint(triggerPoint.ToObject<float>());
+        }catch(ArgumentException) // Trigger is either a cueTransform or undefined
+        {
+            try
+            {
+                return new TriggerPoint(triggerPoint.ToObject<CueTransform>());
+            }catch(ArgumentException) // Trigger is undefined
+            {
+                throw new Exception("Trigger is not of type cueTransform or float");
+            }
+        }
 
-    public Vector3 _eTriggerPosition;
-
-    public Vector3 _eTriggerSize;
+    }
 }
 
-[System.Serializable]
-public class PositionData
-{
-    public Transform _cueTransform;
-    public Transform _parent;
-}*/
 

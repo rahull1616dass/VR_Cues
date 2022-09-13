@@ -23,9 +23,15 @@ namespace VRQuestionnaireToolkit
         public GameObject RadioButtons;
         public List<GameObject> RadioList; //contains all radiobuttons which correspond to one question
 
+        [SerializeField] private TextMeshProUGUI questionTextbox;
+        private string currentQuestion, currentAnswer;
+        private int CurrentQuestionIndex;
+
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateRadioQuestion(QData subQuestion, int subQuestionIndex, RectTransform questionRec)
         {
+
             if (subQuestion.qOptions.Length > 7)
             {
                 throw new InvalidOperationException("We currently only support up to 7 options for any radio question.");
@@ -37,7 +43,7 @@ namespace VRQuestionnaireToolkit
             bool isEven = subQuestion.qOptions.Length % 2 == 0;
 
             // generate radio and corresponding text labels on a single page
-            foreach (var (optionText, optionIndex) in subQuestion.qOptions.WithIndex()) 
+            foreach (var (optionText, optionIndex) in subQuestion.qOptions.WithIndex())
             {
                 // Instantiate radio prefabs
                 GameObject temp = Instantiate(RadioButtons);
@@ -51,8 +57,8 @@ namespace VRQuestionnaireToolkit
                 RectTransform radioRec = temp.GetComponent<RectTransform>();
                 radioRec.SetParent(questionRec);
 
-                radioRec.localPosition = isEven ? 
-                    new Vector3(-150 + (optionIndex * 85), 90 - (subQuestionIndex * 100), 0) : 
+                radioRec.localPosition = isEven ?
+                    new Vector3(-150 + (optionIndex * 85), 90 - (subQuestionIndex * 100), 0) :
                     new Vector3(-190 + (optionIndex * 85), 91 - (subQuestionIndex * 92), 0);
 
                 radioRec.localRotation = Quaternion.identity;
@@ -60,12 +66,44 @@ namespace VRQuestionnaireToolkit
 
                 // Set radiobutton group
                 Radio radioScript = temp.GetComponentInParent<Radio>();
-                temp.GetComponentInChildren<Toggle>().group = radioScript.gameObject.GetComponent<ToggleGroup>();
+
+                Toggle currentToggle = temp.GetComponentInChildren<Toggle>();
+                currentToggle.group = radioScript.gameObject.GetComponent<ToggleGroup>();
+                currentToggle.onValueChanged.AddListener((value) => OnValueChangeCheckBox(text.text, value));
 
                 RadioList.Add(temp);
             }
 
             return RadioList;
+        }
+
+        public void OnValueChangeCheckBox(string answer, bool value)
+        {
+            if (value)
+            {
+                currentQuestion = questionTextbox.text;
+                currentAnswer = answer;
+            }
+        }
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
+
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true;
+                ExportToCSV.SaveDataWhileAnswering("", "", "", CurrentQuestionIndex);
+
+            }
+        }
+
+        private void OnDisable()
+        {
+            Debug.Log("CallingDisable");
+
+            ExportToCSV.SaveDataWhileAnswering("Radio", currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

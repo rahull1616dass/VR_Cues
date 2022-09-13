@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
-        RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType"));
+        RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType", "triggers"));
         foreach(var cue in rootCue.cues)
         {
            cue.generate();

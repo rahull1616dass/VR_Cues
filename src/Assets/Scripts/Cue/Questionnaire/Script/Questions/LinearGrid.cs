@@ -19,6 +19,11 @@ namespace VRQuestionnaireToolkit
         private bool _isOdd;
         public List<GameObject> LinearGridList; //contains all radiobuttons which correspond to one question
 
+        [SerializeField] private TextMeshProUGUI questionTextbox;
+        private string currentQuestion, currentAnswer;
+        private int CurrentQuestionIndex;
+
+        private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateLinearGridQuestion(QData subQuestion, int numberQuestion, RectTransform questionRec)
         {
@@ -65,7 +70,10 @@ namespace VRQuestionnaireToolkit
 
                 // Set radiobutton group
                 LinearGrid linearGridScript = temp.GetComponentInParent<LinearGrid>();
-                temp.GetComponentInChildren<Toggle>().group = linearGridScript.gameObject.GetComponent<ToggleGroup>();
+
+                Toggle currentToggle = temp.GetComponentInChildren<Toggle>();
+                currentToggle.group = linearGridScript.gameObject.GetComponent<ToggleGroup>();
+                currentToggle.onValueChanged.AddListener((value) => OnValueChangeCheckBox(j.ToString(), value)) ;
 
                 LinearGridList.Add(temp);
             }
@@ -98,6 +106,39 @@ namespace VRQuestionnaireToolkit
             }
 
             return counter;
+        }
+
+        public void OnValueChangeCheckBox(string answer, bool value)
+        {
+            if (value)
+            {
+                currentQuestion = questionTextbox.text;
+                currentAnswer = answer;
+            }
+        }
+
+        private void OnEnable()
+        {
+            Debug.Log("CallingEnable");
+
+            if (!IsAlreadyEnabled)
+            {
+                CurrentQuestionIndex = ExportToCSV.QuestionIndex;
+                ExportToCSV.QuestionIndex++;
+                IsAlreadyEnabled = true; 
+                ExportToCSV.SaveDataWhileAnswering("", "", "", CurrentQuestionIndex);
+            }
+        }
+        private void OnDisable()
+        {
+            Debug.Log("CallingDisable");
+
+            ExportToCSV.SaveDataWhileAnswering("Range", currentQuestion, currentAnswer, CurrentQuestionIndex);
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("Destory");
         }
     }
 }

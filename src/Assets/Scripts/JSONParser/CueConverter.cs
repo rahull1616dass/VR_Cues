@@ -6,11 +6,23 @@ using System;
 
 class CueConverter : JsonConverter
 {
-    public CueConverter(string Selector)
+    struct CueTypes
     {
-        selector = Selector;
+        public const string RootCue = "RootCue";
+        public const string Questionnaire = "Questionnaire";
+        public const string Highlight = "Highlight";
+        public const string InfoBox = "InfoBox";
+        public const string Media = "Media";
+        public const string Haptic = "Haptic";
+        public const string Animation = "Animation";
     }
-    protected string selector { get; private set; }
+    public CueConverter(string cueTypeSelector, string triggersVariableName)
+    {
+        this.cueTypeSelector = cueTypeSelector;
+        this.triggersVariableName = triggersVariableName;
+    }
+    protected string cueTypeSelector { get; private set; }
+    protected string triggersVariableName { get; private set; }
 
     public override bool CanConvert(Type objectType)
     {
@@ -32,15 +44,15 @@ class CueConverter : JsonConverter
     {
         JObject jObject = JObject.Load(reader);
         object target;
-        switch ((string)jObject[selector])
+        switch ((string)jObject[cueTypeSelector])
         {
-            case "RootCue": target = new RootCue(); break;
-            case "Questionnaire": target = new Questionnaire(); break;
-            case "Media": target = new Media(); break;
-            case "Highlight": target = new Highlight(); break;
-            case "InfoBox": target = new InfoBox(); break;
-            case "Haptic": target = new Haptic(); break;
-            default: throw new ArgumentException("Invalid source type");
+            case CueTypes.RootCue: target = new RootCue(); break;
+            case CueTypes.Questionnaire: target = new Questionnaire(jObject[triggersVariableName]); break;
+            case "Media": target = new Media(jObject["triggers"]); break;
+            case CueTypes.Highlight: target = new Highlight(jObject[triggersVariableName]); break;
+            case CueTypes.InfoBox: target = new InfoBox(jObject[triggersVariableName]); break;
+            case CueTypes.Haptic: target = new Haptic(jObject[triggersVariableName]); break;
+            default: throw new ArgumentException($"Invalid cue type. {(string)jObject[cueTypeSelector]} does not exist.");
         }
         serializer.Populate(jObject.CreateReader(), target);
         return target;

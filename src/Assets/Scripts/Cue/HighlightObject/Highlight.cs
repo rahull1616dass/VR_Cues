@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json.Linq;
+
 namespace Cues
 {
     public class Highlight: Cue
@@ -9,6 +11,10 @@ namespace Cues
         public int easeType { get; set; }
         public int loopType  { get; set; }
 
+        public Highlight(JToken triggers) : base(triggers)
+        {
+
+        }
 
         public override void generate()
         {
