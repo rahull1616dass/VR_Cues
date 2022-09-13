@@ -1,4 +1,5 @@
 ﻿using Assets.Extensions;
+using Assets.Scripts.Extensions;
 using Cues;
 using System;
 using System.Collections;
@@ -17,6 +18,8 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
+    [SerializeField] private GameObject leftGhostHandPrefab;
+    [SerializeField] private GameObject rightGhostHandPrefab;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
@@ -157,12 +160,12 @@ public class GenerateCueInScene : MonoBehaviour
         switch (haptic.controller)
         {
             case ControllerDirections.Left:
-                Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
+                Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
                 leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.LeftController);
                 triggerCue.SetTrigger(haptic._triggers, leftHaptic.gameObject);
                 break;
             case ControllerDirections.Right:
-                Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
+                Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
                 rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.RightController);
                 triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject);
                 break;
