@@ -35,6 +35,33 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "cueType": "InfoBox",
+      "title": "Sorry Adventurer!",
+      "description": "But your princess is on another mountain!",
+      "textColor": "#000000",
+      "iconReferenceId": "princess.jpg",
+      "cueTransform":{
+        "attachToPlayer": false,
+        "position": {
+          "x": -37.6,
+          "y": 0.6,
+          "z": -15.24
+        },
+        "rotation": {
+          "x": 3.39,
+          "y": 43.1,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        }
+      },
+      "buttons": [],
+      "triggers": [{ "startPoint": 2 }]
+    },
+    {
       "cueType": "Media",
       "imageReferenceId": "steps.png",
       "triggers": [{ "startPoint": 0 }],
