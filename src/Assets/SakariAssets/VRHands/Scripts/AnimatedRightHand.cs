@@ -11,7 +11,7 @@ namespace NewtonVR
     public class AnimatedRightHand : MonoBehaviour
     {
 
-        private NVRHand hand;
+        //private NVRHand hand;
         private GameObject VRhand;
         public Animator anim;
         public float h;
@@ -25,7 +25,7 @@ namespace NewtonVR
         {
             
             VRhand = GameObject.FindGameObjectWithTag("RHand");
-            hand = GetComponent<NVRHand>();
+            //hand = GetComponent<NVRHand>();
             anim = VRhand.GetComponent<Animator>();
 
         }
@@ -43,6 +43,7 @@ namespace NewtonVR
         // Update is called once per frame
         void Normal()
         {
+            /*
             float g = hand.Inputs[NVRButtons.Trigger].Axis.x;
             anim.SetFloat("Trigger", g);
 			float horizontal = hand.Inputs [NVRButtons.Touchpad].Axis.x;
@@ -52,7 +53,7 @@ namespace NewtonVR
             anim.SetLayerWeight(anim.GetLayerIndex("Shocker"), vertical);
             anim.SetLayerWeight(anim.GetLayerIndex("Surf"), -vertical);
             Pointing = false;
-
+            */
         }
 
         public void Point()
