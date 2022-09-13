@@ -3,10 +3,13 @@ using Cues;
 using System;
 using System.Collections;
 using System.IO;
+using Unity.XR.PXR;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 using VRQuestionnaireToolkit;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using Image = Cues.Image;
 
 public class GenerateCueInScene : MonoBehaviour
 {
@@ -153,7 +156,20 @@ public class GenerateCueInScene : MonoBehaviour
 
     public void generateHaptic(Haptic haptic)
     {
-        // Pico.generateHaptic(haptic.amplitude, haptic.duration);
+        switch (haptic.controller) { 
+            case ControllerDirections.Left:
+                Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
+                leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.LeftController);
+                triggerCue.SetTrigger(haptic._triggers, leftHaptic.gameObject);
+                break;
+            case ControllerDirections.Right:
+                Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Ha0ptic", typeof(HapticHandler));
+                rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, haptic.duration, PXR_Input.Controller.RightController);
+                triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject); 
+                break;
+            default: throw new Exception($"{haptic.controller} is not a valid controller!");
+        }
+        
     }
 
     public GameObject generateAudio(Audio audio)

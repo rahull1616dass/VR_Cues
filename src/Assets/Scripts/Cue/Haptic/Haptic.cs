@@ -6,7 +6,7 @@ using UnityEngine;
 public class Haptic : Cue
 {
     public float strength { get; set; }
-    public float duration { get; set; }
+    public int duration { get; set; }
 
     public string controller { get; set; }
 
@@ -18,4 +18,10 @@ public class Haptic : Cue
     {
         GameManager.instance.generateCueInScene.generateHaptic(this);
     }
+}
+
+struct ControllerDirections
+{
+    public const string Left = "left";
+    public const string Right = "right";
 }
