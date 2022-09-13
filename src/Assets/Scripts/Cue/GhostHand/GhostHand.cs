@@ -9,7 +9,7 @@ namespace Cues
     public class GhostHand : Cue
     {
         public string animationName { get; set; }
-
+        public string handType { get; set; }
 
         public GhostHand(JToken triggers) : base(triggers)
         {

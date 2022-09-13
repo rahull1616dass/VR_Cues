@@ -1,4 +1,5 @@
 ﻿using Assets.Extensions;
+using Assets.Scripts.Extensions;
 using Cues;
 using System;
 using System.Collections;
@@ -178,7 +179,7 @@ public class GenerateCueInScene : MonoBehaviour
         return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
 
-    public void generateGhostHand(Cues.GhostHand ghostHand)
+    public void generateGhostHand(GhostHand ghostHand)
     {
 
     }
