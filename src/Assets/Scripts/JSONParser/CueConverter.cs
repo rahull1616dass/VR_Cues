@@ -14,7 +14,7 @@ class CueConverter : JsonConverter
         public const string InfoBox = "InfoBox";
         public const string Media = "Media";
         public const string Haptic = "Haptic";
-        public const string Animation = "Animation";
+        public const string GhostHand = "GhostHand";
     }
     public CueConverter(string cueTypeSelector, string triggersVariableName)
     {
@@ -48,7 +48,8 @@ class CueConverter : JsonConverter
         {
             case CueTypes.RootCue: target = new RootCue(); break;
             case CueTypes.Questionnaire: target = new Questionnaire(jObject[triggersVariableName]); break;
-            case "Media": target = new Media(jObject["triggers"]); break;
+            case CueTypes.Media: target = new Media(jObject["triggers"]); break;
+            case CueTypes.GhostHand: target = new GhostHand(jObject["triggers"]); break;
             case CueTypes.Highlight: target = new Highlight(jObject[triggersVariableName]); break;
             case CueTypes.InfoBox: target = new InfoBox(jObject[triggersVariableName]); break;
             case CueTypes.Haptic: target = new Haptic(jObject[triggersVariableName]); break;

@@ -14,6 +14,8 @@ public class GenerateCueInScene : MonoBehaviour
     [SerializeField] private TriggerCues triggerCue;
     [SerializeField] private GameObject infoPrefab;
     [SerializeField] private Transform allCueParent;
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
 
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
@@ -160,7 +162,7 @@ public class GenerateCueInScene : MonoBehaviour
         return AudioManager.Instance.Play(clip,1f, audio.shouldLoop, audio.cueTransform.attachToPlayer, audio.cueTransform).gameObject;
     }
 
-    public void generateAnimation(Cues.Animation animation)
+    public void generateGhostHand(Cues.GhostHand ghostHand)
     {
 
     }
