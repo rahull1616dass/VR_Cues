@@ -461,7 +461,25 @@
       "duration": 5,
       "strength": 100,
       "controller": "left",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [{ "startPoint": 0 }],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "rotation": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      }
     }
   ]
 }
