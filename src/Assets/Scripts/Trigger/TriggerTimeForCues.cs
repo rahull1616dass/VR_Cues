@@ -29,7 +29,7 @@ public class TriggerTimeForCues : MonoBehaviour
         {
             await Task.Yield();
             triggerTimer = triggerTimer - Time.deltaTime;
-            Debug.Log($"Time={triggerTimer}");
+            //Debug.Log($"Time={triggerTimer}");
         }
         cueToTrigger.SetActive(ObjectStateAfterTime);
         if (endTrigger != null)
