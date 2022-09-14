@@ -221,18 +221,19 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "__comment":"Steps_5",
       "cueType": "Media",
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
-          "x": -7.8354,
-          "y": -3.1512,
-          "z": 25.8725
+          "x": -8.17,
+          "y": -3,
+          "z": 29.67
         },
         "rotation": {
-          "x": -91.083,
-          "y": -7.72699,
-          "z": -177.326
+          "x": -59.29,
+          "y": 102.39,
+          "z": 67.94
         },
         "scale": {
           "x": 0.07333673,
