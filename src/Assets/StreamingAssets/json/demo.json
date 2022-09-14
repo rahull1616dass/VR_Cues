@@ -691,10 +691,10 @@
       }
       }],
       "qInfo": {
-        "qTitle": "title",
-        "qInstructions": "instruction",
-        "qMessage": "message",
-        "qAcknowledgments": "ack"
+        "qTitle": "Congrats!",
+        "qInstructions": "You have now finished the game. Please answer the following questions to help us improve the game.",
+        "qMessage": "Your answers are now saved.",
+        "qAcknowledgments": "Thanks for filling out the questionnaire!"
       },
       "questions": [
         {
