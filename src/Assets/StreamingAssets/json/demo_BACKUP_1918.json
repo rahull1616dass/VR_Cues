@@ -150,6 +150,29 @@
         }
       },
       "imageReferenceId": "steps.png",
+<<<<<<< HEAD
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 5.554,
+          "y": -2.777,
+          "z": 20.384
+        },
+        "rotation": {
+          "x": 90,
+          "y": 8.667999,
+          "z": 174.913
+        },
+        "scale": {
+          "x": 0.15,
+          "y": 0.15,
+          "z": 0.15
+        }
+=======
       "triggers": [
         {
           "startPoint": {
@@ -172,7 +195,12 @@
           },
           "endPoint": 5
         }
+      
       ]
+>>>>>>> 933c41bf8220abec0598888efefd29300c04e363
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",
