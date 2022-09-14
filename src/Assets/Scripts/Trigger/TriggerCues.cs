@@ -24,13 +24,14 @@ public class TriggerCues : MonoBehaviour
         if (endTrigger._triggerPoint.GetType() == typeof(float))
         {
             Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(), 
-                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
+                allTriggerParant, "CueTrigger_End_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
             triggerTimer.GetComponent<TriggerTimeForCues>().EndByTimeTrigger(refCue, (float)endTrigger._triggerPoint);
+            return triggerTimer.gameObject;
         }
         else if(endTrigger._triggerPoint.GetType() == typeof(CueTransform))
         {
             Transform triggerCollider = GameManager.instance.generateCueInScene.CueTransformToTransform((CueTransform)endTrigger._triggerPoint, 
-                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
+                allTriggerParant, "CueTrigger_End_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
             triggerCollider.GetComponent<TriggerColliderForCues>().ArrangeTheTrigger(refCue, null, false);
             return triggerCollider.gameObject;
         }
@@ -39,18 +40,18 @@ public class TriggerCues : MonoBehaviour
 
     private void CreateTriggers(TriggerPoint startTriggers, TriggerPoint endTrigger, GameObject refCue, int index)
     {
-        
+        GameObject endTriggerObj = CreateEndTriggers(endTrigger, refCue, index);
         if (startTriggers._triggerPoint.GetType() == typeof(float))
         {
             Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(),
-                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
-            triggerTimer.GetComponent<TriggerTimeForCues>().StartByTimeTrigger(refCue, (float)startTriggers._triggerPoint, CreateEndTriggers(endTrigger, refCue, index));
+                allTriggerParant, "CueTrigger_Start_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
+            triggerTimer.GetComponent<TriggerTimeForCues>().StartByTimeTrigger(refCue, (float)startTriggers._triggerPoint, endTriggerObj);
         }
         else if (startTriggers._triggerPoint.GetType() == typeof(CueTransform))
         {
             Transform triggerCollider = GameManager.instance.generateCueInScene.CueTransformToTransform((CueTransform)startTriggers._triggerPoint,
-                allTriggerParant, "CueTrigger_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
-            triggerCollider.GetComponent<TriggerColliderForCues>().ArrangeTheTrigger(refCue, CreateEndTriggers(endTrigger, refCue, index), true);
+                allTriggerParant, "CueTrigger_Start_" + refCue.name + "_" + index + 1, typeof(TriggerColliderForCues), typeof(BoxCollider));
+            triggerCollider.GetComponent<TriggerColliderForCues>().ArrangeTheTrigger(refCue, endTriggerObj, true);
         }
     }
 }
