@@ -3,6 +3,7 @@
   "cues": [
     {
       "cueType": "InfoBox",
+      "__comment": "Welcome Infobox",
       "title": "Welcome to the game!",
       "description": "This is a demo scene about our game.",
       "textColor": "#000000",
@@ -32,7 +33,29 @@
           "z": 0.01
         }
       },
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [
+        {
+          "startPoint": 0,
+          "endPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 12.81888,
+              "y": -3.1,
+              "z": 6.051795
+            },
+            "rotation": {
+              "x": 90,
+              "y": -11.02,
+              "z": 0.999
+            },
+            "scale": {
+              "x": 0.15,
+              "y": 0.15,
+              "z": 0.15
+            }
+          }
+        }
+      ]
     },
     {
       "cueType": "InfoBox",
@@ -63,6 +86,7 @@
     },
     {
       "cueType": "Media",
+      "__comment": "Steps 1, in the house",
       "imageReferenceId": "steps.png",
       "triggers": [
         {
@@ -442,39 +466,6 @@
       },
       "audioReferenceId": "narrator",
       "triggers": [{ "startPoint": 1000000 }]
-    },
-    {
-      "cueType": "InfoBox",
-      "title": "Welcome to the game!",
-      "description": "This is a demo scene about our game.",
-      "textColor": "#000000",
-      "iconReferenceId": "welcome.jpg",
-      "buttons": [
-        {
-          "text": "Let's Go!",
-          "textColor": "#FFFFFF",
-          "buttonBackgroundColor": "#05801A"
-        }
-      ],
-      "cueTransform": {
-        "attachToPlayer": false,
-        "position": {
-          "x": 0.84,
-          "y": -0.63,
-          "z": 2.53
-        },
-        "rotation": {
-          "x": -6.12,
-          "y": 60.23,
-          "z": 0.8
-        },
-        "scale": {
-          "x": 0.01,
-          "y": 0.01,
-          "z": 0.01
-        }
-      },
-      "triggers": [{ "startPoint": 0 }]
     },
     {
       "__comment": "Princess final cue Haptic 1",
