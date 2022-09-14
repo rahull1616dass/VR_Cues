@@ -131,6 +131,7 @@
     },
     {
       "cueType": "Media",
+      "__comment": "Steps 2, outside the house",
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -176,6 +177,7 @@
     },
     {
       "cueType": "Media",
+      "__comment": "Steps 3",
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -195,10 +197,33 @@
         }
       },
       "imageReferenceId": "steps.png",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -13.72,
+              "y": 2.07,
+              "z": 13.22
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 5.25,
+              "y": 3,
+              "z": 3
+            }
+          },
+          "endPoint": 5
+        }
+      ]
     },
     {
       "cueType": "Media",
+      "__comment": "Steps 4",
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
@@ -218,7 +243,29 @@
         }
       },
       "imageReferenceId": "steps.png",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -19.76,
+              "y": 4.9,
+              "z": 14.21
+            },
+            "rotation": {
+              "x": 1.27,
+              "y": 0.44,
+              "z": 0
+            },
+            "scale": {
+              "x": -1.75,
+              "y": 13.24,
+              "z": 2.8
+            }
+          },
+          "endPoint": 5
+        }
+      ]
     },
     {
       "__comment":"Steps_5",
@@ -242,7 +289,29 @@
         }
       },
       "imageReferenceId": "steps.png",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -21.739,
+              "y": 5.45,
+              "z": 17.52
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 2.26,
+              "y": 12.24,
+              "z": 3.35
+            }
+          },
+          "endPoint": 5
+        }
+      ]
     },
     {
       "cueType": "Media",
