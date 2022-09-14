@@ -49,7 +49,7 @@ namespace VRQuestionnaireToolkit
 
         public static void SaveDataWhileAnswering(string QuestionType, string Question, string Answer, int Index)
         {
-            Debug.Log("Using Index " + Index);
+            //Debug.Log("Using Index " + Index);
             string[] questionAnswer = new string[4];
             questionAnswer[0] = QuestionType;
             questionAnswer[1] = Question;
@@ -61,7 +61,7 @@ namespace VRQuestionnaireToolkit
             }
             else
             {
-                Debug.Log("Created Index " + Index);
+                //Debug.Log("Created Index " + Index);
                 questionAnswersList.Add(questionAnswer);
             }
         }

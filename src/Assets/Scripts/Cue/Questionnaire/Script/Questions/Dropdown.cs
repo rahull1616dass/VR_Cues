@@ -70,7 +70,7 @@ namespace VRQuestionnaireToolkit
         }
         private void OnEnable()
         {
-            Debug.Log("CallingEnable");
+            //Debug.Log("CallingEnable");
 
             if (!IsAlreadyEnabled)
             {
@@ -82,7 +82,7 @@ namespace VRQuestionnaireToolkit
         }
         private void OnDisable()
         {
-            Debug.Log("CallingDisable");
+            //Debug.Log("CallingDisable");
 
             ExportToCSV.SaveDataWhileAnswering("DropDown",currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
