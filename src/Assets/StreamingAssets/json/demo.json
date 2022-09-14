@@ -128,7 +128,30 @@
         }
       },
       "imageReferenceId": "steps.png",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 15.38416,
+              "y": -2.706256,
+              "z": 23.66309
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.534407,
+              "y": 3,
+              "z": 1.613528
+            }
+          },
+          "endPoint": 5
+        }
+      
+      ]
       },
       {
         "cueType": "Media",
