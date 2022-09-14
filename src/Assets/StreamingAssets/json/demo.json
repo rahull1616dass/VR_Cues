@@ -39,19 +39,19 @@
           "endPoint": {
             "attachToPlayer": false,
             "position": {
-              "x": 12.81888,
-              "y": -3.1,
-              "z": 6.051795
+              "x": 11.92,
+              "y": 1.735,
+              "z": 3.694
             },
             "rotation": {
-              "x": 90,
-              "y": -11.02,
-              "z": 0.999
+              "x": 0,
+              "y": 0,
+              "z": 0
             },
             "scale": {
-              "x": 0.15,
-              "y": 0.15,
-              "z": 0.15
+              "x": 3,
+              "y": 3,
+              "z": 3
             }
           }
         }
@@ -678,13 +678,13 @@
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
-          "x": 19.72295,
-          "y": -0.7662563,
-          "z": 52.09007
+          "x": 18.54,
+          "y": 16.4,
+          "z": 53.32
         },
         "rotation": {
           "x": 0,
-          "y": 23.205,
+          "y": -133.76,
           "z": 0
         },
         "scale": {
@@ -693,7 +693,26 @@
           "z": 1
         }
       },
-      "triggers": [{ "startPoint": 0 }],
+      "triggers": [{ "startPoint": 
+      {
+        "attachToPlayer": false,
+        "position": {
+          "x": 22.55,
+          "y": 21.45,
+          "z": 52.14
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 7,
+          "y": 7,
+          "z": 7
+        }
+      }
+      }],
       "qInfo": {
         "qTitle": "title",
         "qInstructions": "instruction",
@@ -863,7 +882,25 @@
       "cueType": "Haptic",
       "strength": 100,
       "controller": "right",
-      "triggers": [{ "startPoint": 0 }]
+      "triggers": [{ "startPoint": 0 }],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
     }
   ] 
 }
