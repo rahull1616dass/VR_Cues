@@ -594,13 +594,13 @@
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
-          "x": 19.72295,
-          "y": -0.7662563,
-          "z": 52.09007
+          "x": 18.54,
+          "y": 16.4,
+          "z": 53.32
         },
         "rotation": {
           "x": 0,
-          "y": 23.205,
+          "y": -133.76,
           "z": 0
         },
         "scale": {
@@ -609,7 +609,26 @@
           "z": 1
         }
       },
-      "triggers": [{ "startPoint": 0 }],
+      "triggers": [{ "startPoint": 
+      {
+        "attachToPlayer": false,
+        "position": {
+          "x": 22.55,
+          "y": 21.45,
+          "z": 52.14
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 7,
+          "y": 7,
+          "z": 7
+        }
+      }
+      }],
       "qInfo": {
         "qTitle": "title",
         "qInstructions": "instruction",
