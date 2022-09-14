@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -76,8 +77,8 @@ public class RayPicking : MonoBehaviour
     }
     private void GetTrackingSpaceRoot()
     {
-        var XRRig = GetComponentInParent<UnityEngine.XR.Interaction.Toolkit.XRRig>(); // i.e Roomscale tracking space 
-        trackingSpaceRoot = XRRig.rig; // Gameobject representing the center of tracking space in virtual enviroment
+        var XRRig = GetComponentInParent<XROrigin>(); // i.e Roomscale tracking space 
+        trackingSpaceRoot = XRRig.gameObject; // Gameobject representing the center of tracking space in virtual enviroment
     }
 
     private void GetRighHandController()
