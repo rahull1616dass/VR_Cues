@@ -82,7 +82,7 @@
         }
       },
       "buttons": [],
-      "triggers": [{ "startPoint": 2 }]
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",
@@ -420,29 +420,6 @@
       "easeType": 21,
       "loopType": 2,
       "triggers": [{ "startPoint": 0 }]
-    },
-    {
-      "cueType": "Media",
-      "cueTransform": {
-        "attachToPlayer": true,
-        "position": {
-          "x": 19.72295,
-          "y": -0.7662563,
-          "z": 52.09007
-        },
-        "rotation": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "scale": {
-          "x": 1,
-          "y": 1,
-          "z": 1
-        }
-      },
-      "audioReferenceId": "star_wars",
-      "triggers": [{ "startPoint": 1000000 }]
     },
     {
       "cueType": "Media",
