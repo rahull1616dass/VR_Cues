@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -14,7 +16,6 @@ public class RayPicking : MonoBehaviour
     public bool PickedUpObjectPositionNotControlledByPhysics = true; //otherwise object position will be still computed by physics engine, even when attached to ray
     public Vector3 scalingIncrement = new Vector3(0.1f, 0.1f, 0.1f);
 
-    private InputDevice righHandDevice;
     private GameObject rightHandController;
     private GameObject trackingSpaceRoot;
 
@@ -27,6 +28,9 @@ public class RayPicking : MonoBehaviour
     private GameObject lastObjectCollidingWithRay = null;
     private bool IsThereAnewObjectCollidingWithRay = false;
 
+    [SerializeField] private InputActionProperty action;
+
+    private VRInput movementInput;
 
     /// 
     ///  Events
@@ -39,6 +43,54 @@ public class RayPicking : MonoBehaviour
         GetTrackingSpaceRoot();
     }
 
+    private void OnEnable()
+    {
+        movementInput = new VRInput();
+        movementInput.Enable();
+        movementInput.RightHand.SelectObject.performed += TriggerPressed;
+    }
+    private void OnDisable()
+    {
+        movementInput.RightHand.SelectObject.performed -= TriggerPressed;
+    }
+
+    private void TriggerPressed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("ClickingTrigger");
+        if (objectPickedUP != null) // already pick up an object?
+        {
+            if (PickedUpObjectPositionNotControlledByPhysics)
+            {
+                Rigidbody rb = objectPickedUP.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = false;
+                }
+            }
+            objectPickedUP.transform.parent = null;
+            objectPickedUP = null;
+            Debug.Log("Object released: " + objectPickedUP);
+        }
+        else
+        {
+            GenerateSound();
+            GenerateVibrations();
+
+            objectPickedUP = lastRayCastHit.collider.gameObject;
+            objectPickedUP.transform.parent = gameObject.transform; // see Transform.parent https://docs.unity3d.com/ScriptReference/Transform-parent.html?_ga=2.21222203.1039085328.1595859162-225834982.1593000816
+            if (PickedUpObjectPositionNotControlledByPhysics)
+            {
+                Rigidbody rb = objectPickedUP.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                }
+            }
+            Debug.Log("Object Picked up:" + objectPickedUP);
+        }
+
+    }
+
     void Update()
     {
         if (objectPickedUP == null)
@@ -48,10 +100,8 @@ public class RayPicking : MonoBehaviour
             UpdateFlagNewObjectCollidingWithRay();
             OutlineObjectCollidingWithRay();
         }
-        AttachOrDetachTargetedObject();
         MoveTargetedObjectAlongRay();
         RotateTargetedObjectOnLocalUpAxis();
-        ChangeScaleOfTargetedObject();
     }
 
 
@@ -61,19 +111,6 @@ public class RayPicking : MonoBehaviour
 
     private void GetRightHandDevice()
     {
-        var desiredCharacteristics = InputDeviceCharacteristics.HeldInHand
-            | InputDeviceCharacteristics.Right
-            | InputDeviceCharacteristics.Controller;
-
-        var rightHandedControllers = new List<InputDevice>();
-        InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, rightHandedControllers);
-
-        foreach (var device in rightHandedControllers)
-        {
-            Debug.Log(string.Format("Device name '{0}' has characteristics '{1}'",
-                device.name, device.characteristics.ToString()));
-            righHandDevice = device;
-        }
     }
     private void GetTrackingSpaceRoot()
     {
@@ -164,134 +201,18 @@ public class RayPicking : MonoBehaviour
         }
     }
 
-    private void ChangeScaleOfTargetedObject()
-    {
-
-        if (righHandDevice.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool bJoystickButton))
-        {
-            if (!bWasJoystickButtonPressed && bJoystickButton && lastRayCastHit.collider != null)
-            {
-                bWasJoystickButtonPressed = true;
-            }
-            if (bWasJoystickButtonPressed)
-            {
-                if (righHandDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 thumbstickAxis))
-                {
-                    if (objectPickedUP != null)
-                    {
-                        if (thumbstickAxis.x > thumbstickMovementThreshold)
-                        {
-                            objectPickedUP.transform.localScale += scalingIncrement;
-                        }
-                        else if (thumbstickAxis.x < -thumbstickMovementThreshold)
-                        {
-                            objectPickedUP.transform.localScale -= scalingIncrement;
-
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void AttachOrDetachTargetedObject()
-    {
-        if (righHandDevice.isValid) // still connected?
-        {
-            Debug.Log("Checking:: RightHandIsValid");
-            if (righHandDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool bTriggerButton))
-            {
-                if (!bWasTriggerButtonPressed && bTriggerButton && lastRayCastHit.collider != null)
-                {
-                    bWasTriggerButtonPressed = true;
-                }
-                if (!bTriggerButton && bWasTriggerButtonPressed) // Button was released?
-                {
-                    if (objectPickedUP != null) // already pick up an object?
-                    {
-                        if (PickedUpObjectPositionNotControlledByPhysics)
-                        {
-                            Rigidbody rb = objectPickedUP.GetComponent<Rigidbody>();
-                            if (rb != null)
-                            {
-                                rb.isKinematic = false;
-                            }
-                        }
-                        objectPickedUP.transform.parent = null;
-                        objectPickedUP = null;
-                        Debug.Log("Object released: " + objectPickedUP);
-                    }
-                    else
-                    {
-                        GenerateSound();
-                        GenerateVibrations();
-
-                        objectPickedUP = lastRayCastHit.collider.gameObject;
-                        objectPickedUP.transform.parent = gameObject.transform; // see Transform.parent https://docs.unity3d.com/ScriptReference/Transform-parent.html?_ga=2.21222203.1039085328.1595859162-225834982.1593000816
-                        if (PickedUpObjectPositionNotControlledByPhysics)
-                        {
-                            Rigidbody rb = objectPickedUP.GetComponent<Rigidbody>();
-                            if (rb != null)
-                            {
-                                rb.isKinematic = true;
-                            }
-                        }
-                        Debug.Log("Object Picked up:" + objectPickedUP);
-                    }
-                    bWasTriggerButtonPressed = false;
-                }
-            }
-        }
-    }
-
     private void MoveTargetedObjectAlongRay()
     {
-        if (righHandDevice.isValid) // still connected?
-        {
-            if (righHandDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 thumbstickAxis))
-            {
-                if (objectPickedUP != null) // already picked up an object?
-                {
-                    if (thumbstickAxis.y > thumbstickMovementThreshold || thumbstickAxis.y < -thumbstickMovementThreshold)
-                    {
-                        objectPickedUP.transform.position += transform.TransformDirection(Vector3.forward) * translationIncrement * thumbstickAxis.y;
-                        //Debug.Log("Move object along ray: " + objectPickedUP + " axis: " + thumbstickAxis);
-                    }
-                }
-            }
-        }
+        
     }
 
     private void RotateTargetedObjectOnLocalUpAxis()
     {
-        if (righHandDevice.isValid) // still connected?
-        {
-            if (righHandDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 thumbstickAxis))
-            {
-                if (objectPickedUP != null) // already pick up an object?
-                {
-                    if (thumbstickAxis.x > thumbstickMovementThreshold || thumbstickAxis.x < -thumbstickMovementThreshold)
-                    {
-                        objectPickedUP.transform.Rotate(Vector3.up, rotationIncrement * thumbstickAxis.x, Space.Self);
-                    }
-                }
-            }
-        }
+        
     }
 
     private void GenerateVibrations()
     {
-        HapticCapabilities capabilities;
-        if (righHandDevice.TryGetHapticCapabilities(out capabilities))
-        {
-            if (capabilities.supportsImpulse)
-            {
-                uint channel = 0;
-                float amplitude = 0.5f;
-                float duration = 1.0f;
-                righHandDevice.SendHapticImpulse(channel, amplitude, duration);
-            }
-        }
     }
 
     private void GenerateSound()
