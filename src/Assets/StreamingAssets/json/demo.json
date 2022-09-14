@@ -64,7 +64,30 @@
     {
       "cueType": "Media",
       "imageReferenceId": "steps.png",
-      "triggers": [{ "startPoint": 0 }],
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 11.751,
+              "y": 1.843,
+              "z": 3.585
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 3,
+              "y": 3,
+              "z": 3
+            }
+          },
+          "endPoint": 5
+        }
+      
+      ],
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
