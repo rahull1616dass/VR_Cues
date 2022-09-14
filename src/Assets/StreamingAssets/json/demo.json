@@ -465,7 +465,28 @@
         }
       },
       "audioReferenceId": "princess",
-      "triggers": [{ "startPoint": 20 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 28.14,
+              "y": 4.88,
+              "z": 56.02
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 6.01,
+              "y": 3.59,
+              "z": -9.5
+            }
+          }
+        }
+      ]
     },
     {
       "cueType": "Media",
@@ -488,7 +509,28 @@
         }
       },
       "audioReferenceId": "king_1",
-      "triggers": [{ "startPoint": 1000000 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -8.838,
+              "y": 2.6,
+              "z": 27.445
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.89,
+              "y": 1.99,
+              "z": 4.3
+            }
+          }
+        }
+      ]
     },
     {
       "cueType": "Media",
@@ -511,7 +553,28 @@
         }
       },
       "audioReferenceId": "king_2",
-      "triggers": [{ "startPoint": 100000 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -12.75,
+              "y": 3.78,
+              "z": 21.76
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 2.98,
+              "y": 1.43,
+              "z": 2.71
+            }
+          }
+        }
+      ]
     },
     {
       "cueType": "Media",
@@ -534,7 +597,28 @@
         }
       },
       "audioReferenceId": "narrator",
-      "triggers": [{ "startPoint": 1000000 }]
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 11.92,
+              "y": 1.735,
+              "z": 3.694
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 3,
+              "y": 3,
+              "z": 3
+            }
+          }
+        }
+      ]
     },
     {
       "__comment": "Princess final cue Haptic 1",
