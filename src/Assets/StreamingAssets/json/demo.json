@@ -774,6 +774,12 @@
         }
       ],
       "animationName": "Fists"
+    },
+    {
+      "cueType": "Haptic",
+      "strength": 100,
+      "controller": "right",
+      "triggers": [{ "startPoint": 0 }]
     }
-  ]
+  ] 
 }
