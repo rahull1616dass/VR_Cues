@@ -3,14 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using System;
-using TMPro;
-using UnityEditor.Build.Content;
-using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.WSA;
-using Application = UnityEngine.Application;
-using UnityEngine.Networking;
 
 /// <summary>
 /// ExportToCSV.class
@@ -205,43 +198,43 @@ namespace VRQuestionnaireToolkit
         /// <param name="filename"></param>
         /// <param name="inputData"></param>
         /// <returns></returns>
-        IEnumerator SendToServer(string uri, string filename, string inputData)
-        {
-            WWWForm form = new WWWForm();
-            form.AddField("fileName", filename);
-            form.AddField("inputData", inputData);
+        //IEnumerator SendToServer(string uri, string filename, string inputData)
+        //{
+        //    WWWForm form = new WWWForm();
+        //    form.AddField("fileName", filename);
+        //    form.AddField("inputData", inputData);
 
-            using (UnityWebRequest www = UnityWebRequest.Post(uri, form))
-            {
-                yield return www.SendWebRequest();
+        //    using (UnityWebRequest www = UnityWebRequest.Post(uri, form))
+        //    {
+        //        yield return www.SendWebRequest();
 
-                if (www.isHttpError || www.isNetworkError)
-                {
-                    Debug.LogError(www.error + "\nPlease check the validity of the server URI.");
-                }
-                else
-                {
-                    string responseText = www.downloadHandler.text;
-                    Debug.Log("Message from the server: " + responseText);
-                }
-            }
-        }
+        //        if (www.isHttpError || www.isNetworkError)
+        //        {
+        //            Debug.LogError(www.error + "\nPlease check the validity of the server URI.");
+        //        }
+        //        else
+        //        {
+        //            string responseText = www.downloadHandler.text;
+        //            Debug.Log("Message from the server: " + responseText);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Check if the provided server URI is valid.
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
-        IEnumerator CheckURIValidity(string uri)
-        {
-            UnityWebRequest www = new UnityWebRequest(uri);
-            yield return www.SendWebRequest();
+        //IEnumerator CheckURIValidity(string uri)
+        //{
+        //    UnityWebRequest www = new UnityWebRequest(uri);
+        //    yield return www.SendWebRequest();
 
-            if (www.isHttpError || www.isNetworkError)
-            {
-                Debug.LogError(www.error + "\nPlease check the validity of the server URI.");
-            }
-        }
+        //    if (www.isHttpError || www.isNetworkError)
+        //    {
+        //        Debug.LogError(www.error + "\nPlease check the validity of the server URI.");
+        //    }
+        //}
     }
 }
 

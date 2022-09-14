@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/3DUI/scenes/3dui-getting-started.unity
+    guid: 1c1e5040acf677f48abfba513af91d9a
   m_configObjects:
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: 9091ec704dfaabf4b9dc932ef08a5cb3, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: fa265c9abd682484f9131996205d8a6d, type: 2}

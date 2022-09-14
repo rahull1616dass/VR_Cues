@@ -21,15 +21,14 @@
           "z": 1
         }
       },
-      "timeTrigger": [
+      "triggers": [
         {
-          "startTime": 1,
-          "endTime": 5
-        }
-      ],
-      "positionTrigger": [
+          "startPoint": 5,
+          "endPoint": 10
+        },
         {
-          "cueTransform": {
+          "startPoint": 20,
+          "endPoint": {
             "position": {
               "x": 0,
               "y": 0,
@@ -74,35 +73,23 @@
           ]
         },
         {
-          "qType":"dropdown",
-          "qInstructions":"Please select the correct answer",
-          "qData":[
-             {
-                "qText":"Demanding",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             },
-             {
-                "qText":"Mental",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             },
-             {
-                "qText":"Physical",
-                "qOptions":[
-                   "Yes",
-                   "Average",
-                   "No"
-                ]
-             }
+          "qType": "dropdown",
+          "qInstructions": "Please select the correct answer",
+          "qData": [
+            {
+              "qText": "Demanding",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Mental",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Physical",
+              "qOptions": ["Yes", "Average", "No"]
+            }
           ]
-       },
+        },
         {
           "qType": "radio",
           "qInstructions": "Please choose one of the following options...",
@@ -200,7 +187,8 @@
           "z": 0.1
         }
       },
-      "imageReferenceId": "help_menu.png"
+      "imageReferenceId": "help_menu.png",
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Highlight",
@@ -208,7 +196,8 @@
       "highlightColor": "#224B0C",
       "animationTime": 1,
       "easeType": 21,
-      "loopType": 2
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Highlight",
@@ -216,7 +205,8 @@
       "highlightColor": "#AC4425",
       "animationTime": 3,
       "easeType": 21,
-      "loopType": 2
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "InfoBox",
@@ -253,12 +243,14 @@
           "y": 0.1,
           "z": 0.1
         }
-      }
+      },
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Haptic",
       "duration": 5,
-      "amplitude": 100
+      "amplitude": 100,
+      "triggers": [{ "startPoint": 0 }]
     }
   ]
 }

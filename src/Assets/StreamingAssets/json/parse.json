@@ -1,0 +1,171 @@
+{
+  "cueType": "RootCue",
+  "cues": [
+    {
+      "cueType": "Questionnaire",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [
+        {
+          "startPoint": 5,
+          "endPoint": 10
+        },
+        {
+          "startPoint": 20,
+          "endPoint": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      ],
+      "qInfo": {
+        "qTitle": "title",
+        "qInstructions": "instruction",
+        "qMessage": "message",
+        "qAcknowledgments": "ack"
+      },
+      "questions": [
+        {
+          "qType": "checkbox",
+          "qInstructions": "Choose all options that apply",
+          "qData": [
+            {
+              "qText": " If you don’t use VR frequently, what is keeping you from adopting this?",
+              "qMandatory": "true",
+              "qOptions": [
+                "It's too expensive",
+                "The technology isn't that good yet ",
+                "There is not enough content and/or games ",
+                "I don't like wearing the headset ",
+                "The experience isn't immersive enough",
+                "The experience isn't better than traditional gaming"
+              ]
+            }
+          ]
+        },
+        {
+          "qType": "dropdown",
+          "qInstructions": "Please select the correct answer",
+          "qData": [
+            {
+              "qText": "Demanding",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Mental",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Physical",
+              "qOptions": ["Yes", "Average", "No"]
+            }
+          ]
+        },
+        {
+          "qType": "radio",
+          "qInstructions": "Please choose one of the following options...",
+          "qData": [
+            {
+              "qText": "I had a sense of “being there” in the virtual environment:",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = not at all",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = very much"
+              ]
+            },
+            {
+              "qText": "There were times during the experience when the virtual environment was the reality for me...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = at no time",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = almost all the time"
+              ]
+            },
+            {
+              "qText": "The virtual environment seems to me to be more like...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = images I saw",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = somewhere I visited"
+              ]
+            }
+          ]
+        },
+        {
+          "qType": "linearGrid",
+          "qInstructions": "Please rate all measures by clicking a point on the scale.",
+          "qData": [
+            {
+              "qText": "Mental Demand: How mentally demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Physical Demand: How physically demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Temporal Demand: How hurried or rushed was the pace of the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

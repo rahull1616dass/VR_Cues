@@ -10,7 +10,7 @@
                     "type": "Button",
                     "id": "c7732758-0dc2-4cc3-af38-2796b9fac355",
                     "expectedControlType": "Button",
-                    "processors": "AxisDeadzone(min=0.6)",
+                    "processors": "AxisDeadzone(min=0.65)",
                     "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "5b8ce4f7-38e7-456c-9e52-04c664a3d367",
                     "expectedControlType": "Vector2",
-                    "processors": "StickDeadzone(min=0.6)",
+                    "processors": "StickDeadzone(min=0.9,max=1)",
                     "interactions": "Press",
                     "initialStateCheck": true
                 }
@@ -64,7 +64,7 @@
                 },
                 {
                     "name": "MoveAround",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "92936ab4-6233-4dcd-83f9-cac7c11f707d",
                     "expectedControlType": "Vector2",
                     "processors": "",
