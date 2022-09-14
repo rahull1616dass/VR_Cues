@@ -150,29 +150,30 @@
         }
       },
       "imageReferenceId": "steps.png",
-      "triggers": [
-        {
-          "startPoint": {
-            "attachToPlayer": false,
-            "position": {
-              "x": 15.38416,
-              "y": -2.706256,
-              "z": 23.66309
-            },
-            "rotation": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "scale": {
-              "x": 1.534407,
-              "y": 3,
-              "z": 1.613528
-            }
-          },
-          "endPoint": 5
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 5.554,
+          "y": -2.777,
+          "z": 20.384
+        },
+        "rotation": {
+          "x": 90,
+          "y": 8.667999,
+          "z": 174.913
+        },
+        "scale": {
+          "x": 0.15,
+          "y": 0.15,
+          "z": 0.15
         }
-      ]
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
     },
     {
       "cueType": "Media",
@@ -221,19 +222,18 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
-      "__comment":"Steps_5",
       "cueType": "Media",
       "cueTransform": {
         "attachToPlayer": false,
         "position": {
-          "x": -8.17,
-          "y": -3,
-          "z": 29.67
+          "x": -7.8354,
+          "y": -3.1512,
+          "z": 25.8725
         },
         "rotation": {
-          "x": -59.29,
-          "y": 102.39,
-          "z": 67.94
+          "x": -91.083,
+          "y": -7.72699,
+          "z": -177.326
         },
         "scale": {
           "x": 0.07333673,
