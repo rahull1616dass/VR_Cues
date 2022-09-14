@@ -198,6 +198,7 @@ public class RayPicking : MonoBehaviour
     {
         if (righHandDevice.isValid) // still connected?
         {
+            Debug.Log("Checking:: RightHandIsValid");
             if (righHandDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool bTriggerButton))
             {
                 if (!bWasTriggerButtonPressed && bTriggerButton && lastRayCastHit.collider != null)
