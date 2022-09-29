@@ -30,7 +30,20 @@ public class TriggerTimeForCues : MonoBehaviour
             triggerTimer = triggerTimer - Time.deltaTime;
         }
         cueToTrigger.SetActive(ObjectStateAfterTime);
+        SaveLog(ObjectStateAfterTime);
         if (endTrigger != null)
             endTrigger.SetActive(ObjectStateAfterTime);
+    }
+
+    private void SaveLog(bool ObjectState)
+    {
+        if (ObjectState)
+        {
+            Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
+            if (cueLogData == null)
+            {
+                LogHelper.WriteLog("\n \n \n StartTimeOffset: " + cueLogData.startTimeOffset + " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset + ":::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine);
+            }
+        }
     }
 }

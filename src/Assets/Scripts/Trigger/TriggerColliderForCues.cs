@@ -21,12 +21,25 @@ public class TriggerColliderForCues : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             if (cueToTrigger != null)
+            {
+                SaveLog(isStartTrigger);
                 cueToTrigger.SetActive(isStartTrigger);
+            }
             if (endTrigger != null)
             {
                 endTrigger.SetActive(true);
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void SaveLog(bool ObjectState)
+    {
+        if (ObjectState)
+        {
+            Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
+            if (cueLogData != null)
+                LogHelper.WriteLog("\n \n \n StartTimeOffset: " + cueLogData.startTimeOffset + " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset + ":::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine);
         }
     }
 }

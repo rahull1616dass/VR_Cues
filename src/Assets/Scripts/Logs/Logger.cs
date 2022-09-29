@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Logger 
 {
-    private float startTimeOffset { get; set; } = 0;
-    private float endTimeOffset { get; set; }
-    private bool relevantForMeasurementEngine { get; set; }
+    public float startTimeOffset { get; set; } = 0;
+    public float endTimeOffset { get; set; }
+    public bool relevantForMeasurementEngine { get; set; }
 }

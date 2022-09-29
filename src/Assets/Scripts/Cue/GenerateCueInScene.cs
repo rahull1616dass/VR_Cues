@@ -59,7 +59,8 @@ public class GenerateCueInScene : MonoBehaviour
 
         // Place in hierarchy 
         RectTransform rectTransformQuestionnaire = currentQuestionnaire.GetComponent<RectTransform>();
-        Transform questionnaireTransform = CueTransformToTransform(questionnaire.cueTransform, allCueParent);
+        Transform questionnaireTransform = CueTransformToTransform(questionnaire.cueTransform, allCueParent, "QuestionCue", typeof(CueData));
+        questionnaireTransform.GetComponent<CueData>().AddData(questionnaire.logger);
 
         // Resetting transform
         rectTransformQuestionnaire.SetParent(questionnaireTransform);
@@ -95,21 +96,23 @@ public class GenerateCueInScene : MonoBehaviour
         GameObject mediaObj = null;
         if (!string.IsNullOrEmpty(media.imageReferenceId))
         {
-            mediaObj = generateImage(new Image(media.cueTransform, media.imageReferenceId));
+            mediaObj = generateImage(new Image(media.cueTransform, media.imageReferenceId), media.logger);
         }
         else if (!string.IsNullOrEmpty(media.audioReferenceId))
         {
             mediaObj = generateAudio(new Audio(media.cueTransform, media.audioReferenceId, media.audioShouldLoop));
+            mediaObj.AddComponent<CueData>().AddData(media.logger);
         }
         triggerCue.SetTrigger(media._triggers, mediaObj);
     }
 
-    public GameObject generateImage(Image image)
+    public GameObject generateImage(Image image, Logger logger)
     {
-        Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent);
-       
+        Transform transformImage = CueTransformToTransform(image.cueTransform, allCueParent, "ImageCue", typeof(SpriteRenderer), typeof(CueData));
+        transformImage.GetComponent<CueData>().AddData(logger);
+
         // Assign sprite to the instantiated image here.
-        SpriteRenderer spriteRenderer = transformImage.gameObject.AddComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = transformImage.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = image.referenceId.createSpriteFromReferenceId();
         return transformImage.gameObject;
     }
@@ -129,6 +132,7 @@ public class GenerateCueInScene : MonoBehaviour
             HighlightObject highlightObject = o.GetComponent<HighlightObject>();
             if(highlight.objectId == highlightObject.objectID)
             {
+                o.GetComponent<CueData>().AddData(highlight.logger);
                 highlightObject.initHighlight(
                 highlight.highlightColor,
                 highlight.animationTime,
@@ -144,14 +148,15 @@ public class GenerateCueInScene : MonoBehaviour
 
     }
 
-    public void generateInfoBox(InfoBox infoBox)    
+    public void generateInfoBox(InfoBox infoBox)
     {
-        if(infoBox.buttons.Length > 2)
+        if (infoBox.buttons.Length > 2)
         {
             throw new Exception("For UX purposes, only 0 to 2 buttons are supported!");
         }
-        Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab);
-        transformInfoBox.gameObject.GetComponent<InfoBoxCreator>().CreateInfoBox(infoBox);
+        Transform transformInfoBox = CreateCueFromPrefab(infoBox.cueTransform, allCueParent, infoPrefab, "InfoBox", typeof(CueData));
+        transformInfoBox.GetComponent<InfoBoxCreator>().CreateInfoBox(infoBox);
+        transformInfoBox.GetComponent<CueData>().AddData(infoBox.logger);
         triggerCue.SetTrigger(infoBox._triggers, transformInfoBox.gameObject);
     }
 
@@ -160,13 +165,15 @@ public class GenerateCueInScene : MonoBehaviour
         switch (haptic.controller)
         {
             case ControllerDirections.Left:
-                Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
+                Transform leftHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler), typeof(CueData));
                 leftHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, PXR_Input.Controller.LeftController);
+                leftHaptic.GetComponent<CueData>().AddData(haptic.logger);
                 triggerCue.SetTrigger(haptic._triggers, leftHaptic.gameObject);
                 break;
             case ControllerDirections.Right:
-                Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler));
+                Transform rightHaptic = CueTransformToTransform(haptic.cueTransform, allCueParent, "Haptic", typeof(HapticHandler), typeof(CueData));
                 rightHaptic.GetComponent<HapticHandler>().CreateHaptic(haptic.strength, PXR_Input.Controller.RightController);
+                rightHaptic.GetComponent<CueData>().AddData(haptic.logger);
                 triggerCue.SetTrigger(haptic._triggers, rightHaptic.gameObject);
                 break;
             default: throw new Exception($"{haptic.controller} is not a valid controller!");
@@ -193,7 +200,8 @@ public class GenerateCueInScene : MonoBehaviour
                 break;
             default: throw new Exception($"{ghostHand.handType} is not a valid controller!");
         }
-        Transform transformGhostHand = CreateCueFromPrefab(ghostHand.cueTransform, allCueParent, handPrefab);
+        Transform transformGhostHand = CreateCueFromPrefab(ghostHand.cueTransform, allCueParent, handPrefab, "GhostCue", typeof(CueData));
+        transformGhostHand.GetComponent<CueData>().AddData(ghostHand.logger);
         triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
     }
 
