@@ -202,6 +202,9 @@ public class GenerateCueInScene : MonoBehaviour
         }
         Transform transformGhostHand = CreateCueFromPrefab(ghostHand.cueTransform, allCueParent, handPrefab, "GhostCue", typeof(CueData));
         transformGhostHand.GetComponent<CueData>().AddData(ghostHand.logger);
+
+        Animator handAnimation = transformGhostHand.GetChild(0).GetComponent<Animator>();
+        handAnimation.Play(ghostHand.animationName, -1, 0f);
         triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
     }
 
