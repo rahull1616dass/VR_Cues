@@ -7,6 +7,4 @@ public class Logger
     private float startTimeOffset { get; set; } = 0;
     private float endTimeOffset { get; set; }
     private bool relevantForMeasurementEngine { get; set; }
-    private string tag { get; set; }
-
 }
