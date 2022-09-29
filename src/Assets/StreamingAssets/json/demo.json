@@ -2,6 +2,11 @@
   "cueType": "RootCue",
   "cues": [
     {
+      "logger":{
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "InfoBox",
       "__comment": "Welcome Infobox",
       "title": "Welcome to the game!",
@@ -716,6 +721,7 @@
           ]
         },
         {
+          "tag": "stress",
           "qType": "dropdown",
           "qInstructions": "Please select the correct answer",
           "qData": [
