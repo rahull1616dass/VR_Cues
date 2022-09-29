@@ -194,6 +194,9 @@ public class GenerateCueInScene : MonoBehaviour
             default: throw new Exception($"{ghostHand.handType} is not a valid controller!");
         }
         Transform transformGhostHand = CreateCueFromPrefab(ghostHand.cueTransform, allCueParent, handPrefab);
+
+        Animator handAnimation = transformGhostHand.GetChild(0).GetComponent<Animator>();
+        handAnimation.Play(ghostHand.animationName, -1, 0f);
         triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
     }
 
