@@ -24,11 +24,10 @@ public class TriggerTimeForCues : MonoBehaviour
 
     private async void RunTimeToTriggerCue(float triggerTimer, bool ObjectStateAfterTime)
     {
-        double startupTime = Time.realtimeSinceStartupAsDouble;
-        while (startupTime < triggerTimer)
+        while (0 < triggerTimer)
         {
             await Task.Yield();
-            triggerTimer = triggerTimer - Time.deltaTime / 1000f;
+            triggerTimer = triggerTimer - Time.deltaTime;
         }
         cueToTrigger.SetActive(ObjectStateAfterTime);
         if (endTrigger != null)

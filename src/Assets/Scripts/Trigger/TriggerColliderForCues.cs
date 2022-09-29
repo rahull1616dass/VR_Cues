@@ -18,12 +18,15 @@ public class TriggerColliderForCues : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (cueToTrigger != null)
-            cueToTrigger.SetActive(isStartTrigger);
-        if (endTrigger!= null)
+        if (other.gameObject.tag == "Player")
         {
-            endTrigger.SetActive(true);
+            if (cueToTrigger != null)
+                cueToTrigger.SetActive(isStartTrigger);
+            if (endTrigger != null)
+            {
+                endTrigger.SetActive(true);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

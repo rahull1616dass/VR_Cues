@@ -1,0 +1,737 @@
+{
+  "cueType": "RootCue",
+  "cues": [
+    {
+      "cueType": "InfoBox",
+      "__comment": "Welcome Infobox",
+      "title": "Welcome to the game!",
+      "description": "This is a demo scene about our game.",
+      "textColor": "#000000",
+      "iconReferenceId": "welcome.jpg",
+      "buttons": [
+        {
+          "text": "Let's Go!",
+          "textColor": "#FFFFFF",
+          "buttonBackgroundColor": "#05801A"
+        }
+      ],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 0.84,
+          "y": -0.63,
+          "z": 2.53
+        },
+        "rotation": {
+          "x": -6.12,
+          "y": 60.23,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        }
+      },
+      "triggers": [
+        {
+          "startPoint": 0,
+          "endPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 12.81888,
+              "y": -3.1,
+              "z": 6.051795
+            },
+            "rotation": {
+              "x": 90,
+              "y": -11.02,
+              "z": 0.999
+            },
+            "scale": {
+              "x": 0.15,
+              "y": 0.15,
+              "z": 0.15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "cueType": "InfoBox",
+      "title": "Sorry Adventurer!",
+      "description": "But your princess is on another mountain!",
+      "textColor": "#000000",
+      "iconReferenceId": "princess.jpg",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -37.6,
+          "y": 0.6,
+          "z": -15.24
+        },
+        "rotation": {
+          "x": 3.39,
+          "y": 43.1,
+          "z": 0.8
+        },
+        "scale": {
+          "x": 0.01,
+          "y": 0.01,
+          "z": 0.01
+        }
+      },
+      "buttons": [],
+      "triggers": [{ "startPoint": 2 }]
+    },
+    {
+      "cueType": "Media",
+      "__comment": "Steps 1, in the house",
+      "imageReferenceId": "steps.png",
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 12.81888,
+              "y": -3.1,
+              "z": 6.051795
+            },
+            "rotation": {
+              "x": 90,
+              "y": -11.02,
+              "z": 0.999
+            },
+            "scale": {
+              "x": 0.15,
+              "y": 0.15,
+              "z": 0.15
+            }
+          }
+        }
+      ],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 12.81888,
+          "y": -3.1,
+          "z": 6.051795
+        },
+        "rotation": {
+          "x": 90,
+          "y": -11.02,
+          "z": 0.999
+        },
+        "scale": {
+          "x": 0.15,
+          "y": 0.15,
+          "z": 0.15
+        }
+      }
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 14.002,
+          "y": -3.734,
+          "z": 16.046
+        },
+        "rotation": {
+          "x": 92.41998,
+          "y": -160.097,
+          "z": -381.002
+        },
+        "scale": {
+          "x": 0.14361,
+          "y": 0.12572,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png",
+<<<<<<< HEAD
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 5.554,
+          "y": -2.777,
+          "z": 20.384
+        },
+        "rotation": {
+          "x": 90,
+          "y": 8.667999,
+          "z": 174.913
+        },
+        "scale": {
+          "x": 0.15,
+          "y": 0.15,
+          "z": 0.15
+        }
+=======
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": 15.38416,
+              "y": -2.706256,
+              "z": 23.66309
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.534407,
+              "y": 3,
+              "z": 1.613528
+            }
+          },
+          "endPoint": 5
+        }
+      
+      ]
+>>>>>>> 933c41bf8220abec0598888efefd29300c04e363
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -1.183,
+          "y": -2.998,
+          "z": 20.354
+        },
+        "rotation": {
+          "x": -89.509,
+          "y": 0.853,
+          "z": -176.912
+        },
+        "scale": {
+          "x": 0.07,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -5.36,
+          "y": -3.84,
+          "z": 22.71
+        },
+        "rotation": {
+          "x": -89.509,
+          "y": 0.853,
+          "z": -173.588
+        },
+        "scale": {
+          "x": 0.112532,
+          "y": 0.1695025,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -7.8354,
+          "y": -3.1512,
+          "z": 25.8725
+        },
+        "rotation": {
+          "x": -91.083,
+          "y": -7.72699,
+          "z": -177.326
+        },
+        "scale": {
+          "x": 0.07333673,
+          "y": 0.1103659,
+          "z": 0.1
+        }
+      },
+      "imageReferenceId": "steps.png",
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "triggers": [{ "startPoint": 0 }],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    },
+    {
+      "cueType": "Media",
+      "imageReferenceId": "riddle_of_king.png",
+      "triggers": [{ "startPoint": 0 }],
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -6.83,
+          "y": 25.41,
+          "z": 14.39
+        },
+        "rotation": {
+          "x": 14.311,
+          "y": 126.2,
+          "z": 21
+        },
+        "scale": {
+          "x": 0.4,
+          "y": 0.4,
+          "z": 0.4
+        }
+      }
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Sword",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2,
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -24.21,
+              "y": 3.12,
+              "z": -2.87
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 5.98,
+              "y": 5,
+              "z": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "cueType": "Highlight",
+      "objectId": "Door",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "star_wars",
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "princess",
+      "triggers": [{ "startPoint": 20 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 0.1,
+          "y": 0.1,
+          "z": 0.1
+        }
+      },
+      "audioReferenceId": "king_1",
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": -16.60884,
+          "y": -1.300256,
+          "z": 22.00809
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "king_2",
+      "triggers": [{ "startPoint": 100000 }]
+    },
+    {
+      "cueType": "Media",
+      "cueTransform": {
+        "attachToPlayer": true,
+        "position": {
+          "x": 14,
+          "y": 0.58,
+          "z": 3
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "audioReferenceId": "narrator",
+      "triggers": [{ "startPoint": 1000000 }]
+    },
+    {
+      "__comment": "Princess final cue Haptic 1",
+      "cueType": "Haptic",
+      "duration": 5,
+      "strength": 50,
+      "controller": "left",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 14.275,
+          "y": 4.973,
+          "z": 38.142
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "__comment": "Princess final cue Haptic 2",
+      "cueType": "Haptic",
+      "duration": 5,
+      "strength": 100,
+      "controller": "left",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 19.6,
+          "y": 8.26,
+          "z": 49.92
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [{ "startPoint": 0 }]
+    },
+    {
+      "__comment": "The final questioonaire",
+      "cueType": "Questionnaire",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": 19.72295,
+          "y": -0.7662563,
+          "z": 52.09007
+        },
+        "rotation": {
+          "x": 0,
+          "y": 23.205,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "triggers": [{ "startPoint": 0 }],
+      "qInfo": {
+        "qTitle": "title",
+        "qInstructions": "instruction",
+        "qMessage": "message",
+        "qAcknowledgments": "ack"
+      },
+      "questions": [
+        {
+          "qType": "checkbox",
+          "qInstructions": "Choose all options that apply",
+          "qData": [
+            {
+              "qText": " If you don’t use VR frequently, what is keeping you from adopting this?",
+              "qMandatory": "true",
+              "qOptions": [
+                "It's too expensive",
+                "The technology isn't that good yet ",
+                "There is not enough content and/or games ",
+                "I don't like wearing the headset ",
+                "The experience isn't immersive enough",
+                "The experience isn't better than traditional gaming"
+              ]
+            }
+          ]
+        },
+        {
+          "qType": "dropdown",
+          "qInstructions": "Please select the correct answer",
+          "qData": [
+            {
+              "qText": "Demanding",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Mental",
+              "qOptions": ["Yes", "Average", "No"]
+            },
+            {
+              "qText": "Physical",
+              "qOptions": ["Yes", "Average", "No"]
+            }
+          ]
+        },
+        {
+          "qType": "radio",
+          "qInstructions": "Please choose one of the following options...",
+          "qData": [
+            {
+              "qText": "I had a sense of “being there” in the virtual environment:",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = not at all",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = very much"
+              ]
+            },
+            {
+              "qText": "There were times during the experience when the virtual environment was the reality for me...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = at no time",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = almost all the time"
+              ]
+            },
+            {
+              "qText": "The virtual environment seems to me to be more like...",
+              "qMandatory": "true",
+              "qOptions": [
+                "1 = images I saw",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7 = somewhere I visited"
+              ]
+            }
+          ]
+        },
+        {
+          "qType": "linearGrid",
+          "qInstructions": "Please rate all measures by clicking a point on the scale.",
+          "qData": [
+            {
+              "qText": "Mental Demand: How mentally demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Physical Demand: How physically demanding was the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            },
+            {
+              "qText": "Temporal Demand: How hurried or rushed was the pace of the task?",
+              "qMandatory": "true",
+              "qMin": "0",
+              "qMinLabel": "Low",
+              "qMax": "20",
+              "qMaxLabel": "High"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "cueType": "GhostHand",
+      "handType": "left",
+      "cueTransform": {
+        "attachToPlayer": false,
+        "position": {
+          "x": -1.68,
+          "y": 1.04,
+          "z": -2.07
+        },
+        "rotation": {
+          "x": -30.6,
+          "y": 68,
+          "z": 79.2
+        },
+        "scale": {
+          "x": 8,
+          "y": 8,
+          "z": 8
+        }
+      },
+      "triggers": [
+        {
+          "startPoint": {
+            "attachToPlayer": false,
+            "position": {
+              "x": -24.21,
+              "y": 3.12,
+              "z": -2.87
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 5.98,
+              "y": 5,
+              "z": 5
+            }
+          }
+        }
+      ],
+      "animationName": "Fists"
+    }
+  ]
+}

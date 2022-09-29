@@ -44,6 +44,15 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
                     ""processors"": ""StickDeadzone(min=0.9,max=1)"",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectObject"",
+                    ""type"": ""Value"",
+                    ""id"": ""52f74e19-51be-47b8-914c-72c2a8bb6a96"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RotateAround"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9efa5a75-7618-43f9-9e28-f930d401d28f"",
+                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -126,6 +146,7 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
         m_RightHand = asset.FindActionMap("RightHand", throwIfNotFound: true);
         m_RightHand_UISelect = m_RightHand.FindAction("UI Select", throwIfNotFound: true);
         m_RightHand_RotateAround = m_RightHand.FindAction("RotateAround", throwIfNotFound: true);
+        m_RightHand_SelectObject = m_RightHand.FindAction("SelectObject", throwIfNotFound: true);
         // LeftHand
         m_LeftHand = asset.FindActionMap("LeftHand", throwIfNotFound: true);
         m_LeftHand_UISelect = m_LeftHand.FindAction("UISelect", throwIfNotFound: true);
@@ -191,12 +212,14 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
     private IRightHandActions m_RightHandActionsCallbackInterface;
     private readonly InputAction m_RightHand_UISelect;
     private readonly InputAction m_RightHand_RotateAround;
+    private readonly InputAction m_RightHand_SelectObject;
     public struct RightHandActions
     {
         private @VRInput m_Wrapper;
         public RightHandActions(@VRInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @UISelect => m_Wrapper.m_RightHand_UISelect;
         public InputAction @RotateAround => m_Wrapper.m_RightHand_RotateAround;
+        public InputAction @SelectObject => m_Wrapper.m_RightHand_SelectObject;
         public InputActionMap Get() { return m_Wrapper.m_RightHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
                 @RotateAround.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotateAround;
                 @RotateAround.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotateAround;
                 @RotateAround.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnRotateAround;
+                @SelectObject.started -= m_Wrapper.m_RightHandActionsCallbackInterface.OnSelectObject;
+                @SelectObject.performed -= m_Wrapper.m_RightHandActionsCallbackInterface.OnSelectObject;
+                @SelectObject.canceled -= m_Wrapper.m_RightHandActionsCallbackInterface.OnSelectObject;
             }
             m_Wrapper.m_RightHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -222,6 +248,9 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
                 @RotateAround.started += instance.OnRotateAround;
                 @RotateAround.performed += instance.OnRotateAround;
                 @RotateAround.canceled += instance.OnRotateAround;
+                @SelectObject.started += instance.OnSelectObject;
+                @SelectObject.performed += instance.OnSelectObject;
+                @SelectObject.canceled += instance.OnSelectObject;
             }
         }
     }
@@ -271,6 +300,7 @@ public partial class @VRInput : IInputActionCollection2, IDisposable
     {
         void OnUISelect(InputAction.CallbackContext context);
         void OnRotateAround(InputAction.CallbackContext context);
+        void OnSelectObject(InputAction.CallbackContext context);
     }
     public interface ILeftHandActions
     {

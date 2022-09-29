@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Question
 {
+    public string tag { get; set; }
     public string qType { get; set; }
     public string qInstructions { get; set; }
     public QData[] qData { get; set; }

@@ -90,7 +90,7 @@ namespace VRQuestionnaireToolkit
 
         private void OnEnable()
         {
-            Debug.Log("CallingEnable");
+            //Debug.Log("CallingEnable");
             if (!IsAlreadyEnabled)
             {
                 CurrentQuestionIndex = ExportToCSV.QuestionIndex;
@@ -101,7 +101,7 @@ namespace VRQuestionnaireToolkit
         }
         private void OnDisable()
         {
-            Debug.Log("CallingDisable");
+            //Debug.Log("CallingDisable");
             ExportToCSV.SaveDataWhileAnswering("CheckBox",currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }

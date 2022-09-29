@@ -2,6 +2,11 @@
   "cueType": "RootCue",
   "cues": [
     {
+      "logger":{
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "Questionnaire",
       "cueTransform": {
         "attachToPlayer": false,
@@ -73,6 +78,7 @@
           ]
         },
         {
+          "tag": "stress",
           "qType": "dropdown",
           "qInstructions": "Please select the correct answer",
           "qData": [
