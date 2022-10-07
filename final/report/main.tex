@@ -1,0 +1,327 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{comment}
+\usepackage{biblatex}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\addbibresource{references.bib}
+\begin{document}
+
+\title{Formative Design of VR Guidance Cues
+\\}
+
+\author{\IEEEauthorblockN{Busenur Aktilav}
+\IEEEauthorblockA{\textit{Extended Artificial Intelligence, Master} \\
+\textit{Julius Maximilian University of Würzburg}\\
+Würzburg, Germany \\
+busenur.aktilav@stud-mail.uni-wuerzburg.de}
+\and
+\IEEEauthorblockN{ Kerem Cömert}
+\IEEEauthorblockA{\textit{Extended Artificial Intelligence, Master} \\
+\textit{Julius Maximilian University of Würzburg}\\
+Würzburg, Germany \\
+kerem.coemert@stud-mail.uni-wuerzburg.de}
+\and
+\IEEEauthorblockN{Rahul Das}
+\IEEEauthorblockA{\textit{Extended Artificial Intelligence, Master} \\
+\textit{Julius Maximilian University of Würzburg}\\
+Würzburg, Germany \\
+rahul.das@stud-mail.uni-wuerzburg.de}
+
+}
+
+\maketitle
+
+\begin{comment}
+
+
+I propose the following grading agreement, which applies to each of you separately: 
+
+15% Presentation (sync space, 10min)
+65% Achieved sophistication & Code base: 
+- utility, universality
+- extensibility
+- cleanliness, accessibility 
+20% Report ( ≥ 4 pages IEEE double column)
+
+
+
+- related work, involved requirements, conceptual solution, evaluation based on stakeholder feedback, future work
+
+
+
+- clear communication of your individual contribution
+
+Wrt the listed requirements:
+- Wouldn’t it make sense to simply integrate a browser for filing questionnaires and storing the data right with the respective service, e.g. limesurvey?
+- Given the overall scope of 30 ECTS (~900h of work, incl. the communication with the stakeholders, the conceptual work, the authoring of your reports and the preparation of the presentations, etc.), I would expect the last three cues that you have listed as part of the expectable scope; depending on the level of sophistication of other aspects of your code base, I would even expect more than that.
+- Of course, I might be mistaken here; to ensure an objective evaluation, I will, of course, consider the level of achieved sophistication, as outlined above.
+
+\end{comment}
+
+
+\begin{abstract}
+
+Virtual reality (VR) might be overwhelming if there is not a guidance system defined. Therefore, cues are commonly used in games and educational systems to direct users to take appropriate actions at particular moments, such as pressing a specific button to interact with an object. In this study, we developed a unity package in which a set of cues are implemented for the developer to create them in the scene. The specifications of cues are defined in a JSON file. Cues are instantiated based on the definition in the JSON file and they are created in the scene. 
+
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+VR, Cues, Guidance System, Unity package
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+VR systems have a wide range of possible uses in the healthcare industry. Applications for therapeutic support focus on exposure therapy, for example, for patients who have a phobia of heights, spiders, or public speaking. Others employ embodiment's effects to treat the abnormalities of body perception that are frequently associated with anorexia or obesity. Exercise-based training programs, which VR says will boost motivation and training outcomes, can support physiological wellness. The same justifications hold true for virtual physiotherapy techniques. Patients recovering from the effects of a stroke can practice using virtual limb replacements to relearn motor abilities, and virtual worlds can even recreate addiction scenarios as a basis for therapy.
+
+Without proper guidance mechanism, a VR experience can be overwhelming for a new user. Also for an instructor, it will be difficult to tell the user what to do once they wear the HMD. The assistance can be in the form of cues, either visual, auditory, or text based, but without causing any breaks in reality. The cue system should also understand the user interaction pattern to provide help at the right time.
+
+Users are given information through interaction cues so they are aware of their current interactive possibilities and are led through the interaction process. Interaction cues are frequently used in tutorials and games to tell players what to do and when. For instance, a lot of consumer-grade VR experiences, like The Lab by Valve, orally and graphically direct users to utilize the controllers and buttons to learn how to move around or handle items. %[file:///C:/Users/Zenbook/Buse/lectures/XTAILab2/viavr_cues/docs/references/3385959.3418448.pdf]
+
+In this work, we introduce a Unity Package which provides an easy interface to implement cue systems on a demo Unity scene. The parameters about where and how a cue looks and where and when it is triggered can be customized and adjusted for the scene that the cue is displayed in. We assume two roles, who are:
+\begin{itemize}
+    \item The Player, who experiences the VR Scene and interacts with the cues.
+    \item The Supervisor, who creates the cues and its triggers. Also monitors logs about player's interaction with the created cues.
+\end{itemize}
+
+
+
+
+
+\section{Related Work}
+
+In this section, we will be explaining the related works described in the literature that motivates our present study. And we will also be discussing how frameworks from the games research literature help to address some in the AR. 
+
+In the work of Grasset et al.[CITE1],  the authors distinguish between AR being a primary source of spatial information (such as tagging items in the user's environment with meaningful comments) and a secondary source of spatial information (e.g. viewing a virtual map of an external space, tracked with an arbitrary AR marker). Our focus is on first-person experiences where the AR display is used to show instructions. According to Grasset et al.[CITE1], there are two different kinds of navigational information: goal-oriented navigation, in which wayfinding instructions are visualized in the environment, and exploratory navigation, where the objective is to offer knowledge about the environment. The challenge here is to make the visualizations understandable as in how they are related to the virtual environment. There has been some research regarding this challenge and some solutions have been proposed. Livingston et al. explored the visualizing a ground plane. Some of the work [1-3] focused on dealing with visual cues that need to be visually masked in various ways. Others studies focused on visual blending. All of these approaches are useful starting point to design clear cues. 
+
+In the previous paragraph we focused on the study on navigation in augmented reality. Here, we will be mostly focusing on the interaction cues in video games. 
+
+Bradzell focused .... [paraphrase from the paper.] 
+
+Another comprehensive study that has been done and very close to what we are trying to achieve is the paper by Dillman et al.. They developed a descriptive framework of visual interaction cues in video games. They implemented different kind of cues to fulfill various purposes. We are also inspired from these cues. Here, we will be breifly explain those cues and which of the cues corresponds to our cues in our study.
+
+\begin{itemize}
+    \item \textbf{Discover}: Discover cues show the player what can be interacted with: what objects are interactable, what areas or spaces in the game world can be moved into, and so forth
+    \item \textbf{Look}: Look cues are used by designers to focus a player’s visual attention in a timely way. Many games feature time-based mechanics that involve events initiated by other agents, such as “enemies” (e.g. the enemy is shooting at player), or objects.
+    \item \textbf{Go}: Go cues are navigational cues that provide the player with guidance on how to navigate the environment to arrive at a destination.
+    \item \textbf{Subtle}: Subtle cues are blended into the environment in such a way that they are difficult to distinguish from the environment itself. Such cues seem to be a part of the level or environment design, making use of lighting and contrast to draw a player’s attention to features of the environment
+    \item \textbf{Emphasized}: Emphasized cues highlight an existing object or surface in the game environment
+    \item \textbf{Integrated}: Integrated cues take the form of an added virtual object in the scene that is visible to the player, but is not actually part of the game world.
+    \item \textbf{Overlaid}: Overlaid cues explicitly distinguish two different aspects of the player’s viewport: first, the viewport into the game world, which shows the environment, and second, a layer atop the viewport where UI elements sit atop the environment, and function largely independently of the changing view of the game world.
+    \item \textbf{Player}: Player-triggered visual interaction cues are activated by an explicit action by the player.
+    \item \textbf{Context}: Context-triggered visual interaction cues are activated by the player through implicit actions. A cue’s context is typically comprised of a player’s location in the game world (i.e. entering a room or entering an area for a cue), or the player’s view in the game world. For instance, stealable objects are highlighted when the player is near such objects, and when they are facing the object.
+    \item \textbf{Other/Agent}: . These are visual cues triggered by some other agent in the game: another player in a multi-player game, or another automated agent within the game environment.
+    \item \textbf{Persistent}: Some cues are always visible.
+\end{itemize}
+
+\begin{comment}
+Raphael Grasset, Alessandro Mulloni, Mark 
+Billinghurst, and Dieter Schmalstieg. 2011. Navigation 
+Techniques in Augmented and Mixed Reality: 
+Crossing the Virtuality Continuum. In Handbook of 
+Augmented Reality. Springer, New York, NY, 379–
+407. https://doi.org/10.1007/978-1-4614-0064-6_18
+
+
+\end{comment}
+
+\section{Development}
+After agreeing on the project and forming our group, the first few meetings with the stakeholders were about understanding the requirements, and discussing each requirements' feasibility and possible alternative solutions. The general framework of the project has already been set by the description provided by the stakeholders \cite{hci_project_description}. The initial requirement envisioned a two-sided system where the actors would constitute of a 'Supervisor' and a 'Player'. The Player would be someone who "plays" in the scene by wearing her VR Headset and interacts with the cues via listening, seeing or raycasting. 
+
+In contrast, the Supervisor would be someone who sits in front of a monitor and creates and manages when the cues would show up and disappear. The Supervisor would be able to see the player's feed live in her interface, and alternatively other metrics like heart rate graphs can be included.
+
+As such, initially we would need to develop solutions for both roles. For the supervisor, a Desktop Application built with either the Electron Framework \cite{electronjs} or Unity WebGL \cite{unity_webgl} were considered. Electron would have allowed for a smoother developer experience especially in design as it essentially is a "glorified WebView" that uses HTML/CSS. However, Unity WebGL might have allowed for a better integration with the Player interface, given that the Player side would be devleoped with Unity too. This was especially a concern if we were to implement a live feed of Player's gameplay to the Supervisor's interface.
+
+In order to facilitate the real-time communication between the two systems, a solution based on Persistent HTTP Connections would have been necessary. The communication would have been two-way since the data to be transferred would have been:
+\begin{itemize}
+    \item Player's live feed 
+    \item Any measurement and tracking device data that the player is equipped with for any given play session
+    \item Cue-related data sent by the supervisor to the Player's scene
+\end{itemize}
+As such, it is clear that the system would also have to be able to accommodate run-time modifications of cues, should the supervisor decide to perform such modifications.
+
+To this end, two solutions were considered, namely Unity Photon \cite{unity_photon} and internal communication solutions already developed within the Via VR system \cite{via_vr}. 
+
+However given the scope of such a development and the technical complexity it will add to the project in contrast to the limited time frame, this idea was ditched. Even still, the system was designed in such a way (namely with the JSON Structure of the cues) that such a development would in principle be possible, should the maintainers of the project deem it necessary.
+
+Another idea that emerge was to develop the project as a Unity Package \cite{unity_package_manager}. This would allow the project to be framed as a tool for a Unity Developer to use, rather than something to be consumed directly by the end-user. In such a scenario, the cues would all be available as prefabs, and could be designed and customized through the Unity Editor. More customizations in a much more polished matter could be added by us by utilizing something like the Odin Inspector \cite{odin_inspector}
+which is a framework for developing customized editor, which makes it quite suitable to the task at hand. This idea was also abandoned, as we decided to keep the scope focused on the platform-agnostic JSON based specification approach, which would allow a end-user based implementation later on (if such a GUI is developed) while at the same time targeting a developer, from one single source of truth.  
+
+All of the different paths that the project could have taken had been discussed with the stakeholders, especially during the first two months of development - each carrying pros and cons. This has also manifested itself on a decision diagram that we have drawn for one of the meetings.
+
+
+
+\section{Conceptual Solution}
+
+In this study, we provide four main points that devices the unity package. First of all, we have a set of cues which is explained in the subsections. We also created a trigger system to make the cue appear in the scene whenever its responsible trigger is activated. And we have a JSON file that we specify cues and triggers. Lastly, we keep track of the feedback and logs of the interacted cues. All these different part of the work is explained in the following subsections and given a visualisation of the cues from the demo scene that is prepared to test the system.
+
+\subsection{JSON File}
+For any given scene, the information about the cues is predominantly stored in a JSON file, which describes mainly the following:
+\begin{enumerate}
+    \item Type
+    \item Location in the scene (in the form of a CueTransform)
+    \item Triggers
+    \item Characteristics of the cue
+\end{enumerate}{en}
+The JSON file is structured as an array of objects, where each object is a cue of a type that is recognized by the application. The data that is managed outside of JSON is as follows:
+\begin{itemize}
+    \item \textbf{Ghost Hand Animations}: There is a pre-defined list of animations that 
+\end{itemize}
+
+\subsection{Cues}
+
+\subsubsection{Ghost Hand}
+
+It is used to guide the user how to interact with objects by showing ghost hand animations.  Ghost hands are very generic and can be applicable to many scenarios since the interaction shown by the hand maps directly to the buttons that needs to be pressed on the handset to perform the hand position in question. For instance, pressing  and holding the "Grip Button" on the handset would correspond to hand being in a closed, gripping fist position. This can be shown with the \textbf{Fists} animation which is one of the possible ghost hands animation. The whole list of possible animations are as follows:
+\begin{itemize}
+    \item Devilshorn
+    \item Finger
+    \item Fists
+    \item Peace
+    \item Point
+    \item RestPose
+    \item Shocker
+    \item Spock
+    \item Surf
+    \item Thumsup
+\end{itemize}
+
+Animation cue is also a good way to provide guidance to the user without too much disturbing the user experience. An alternative way would be to explain the interaction in a text which would not be too much of an elegant solution compared to the animation.
+
+\subsubsection{Haptic}
+
+This type of cue is used to send a haptic feedback to the user's handset whenever specifies with the time and/or position triggers.
+
+Haptic feedback has been used many different fields of the industry such as entertainment, games, interactive cinema, etc. And also it has many applications in education. For instance pilots and firefighters are trained using VR and tactile technologies, and these technologies are also actively used in medicine and dentistry. Often, surgical operations require very precise movements, so doctors use robots and special tools, and thanks to haptic feedback technologies, surgeons can literally feel the tools they operate. \cite{antoshchenko_2020} In the sense of VR, haptic feedback is important because it gives a sense of presence for a better immersive experience. Using haptic feedback as a form of cue in our work does not interrupt the VR experience and provides the user a guidance. Thus, it has been proven a useful form of cue for guiding user by providing a feedback. 
+
+
+\subsubsection{Highlight}
+
+This type of cue is used to highlight a given object to bring the object into player's attention. The highlighting takes the form of an animation that changes the object to a specified color, in a specified duration. This cue catches the user's attention to that highlighted object. For instance, one of the use case would be to use this cue in escape room kind of a game when we want to give some hints to the users.
+
+
+\subsubsection{Infobox}
+
+This type of cue is used to inform the user or receive a feedback from the user. Initially in development, we had two different kinds of cues called "Prompt" and "Alert" Cues, which ended up being merged into the InfoBox cue. This cue features a title and body to which some information can be written. If necessary, up to three buttons can be added with customizable text and color. In this way, single page questions might pop up on the screen like Alert Dialogs with Yes/No answers such as,  "Do you want to stop the experience?" or "Supervisor is requesting for streaming your VR feed. Proceed?". The answers of the player then gets saved with the respective timestamp for the supervisor.
+
+\subsubsection{Media}
+
+This type of cue is used to play an audio track from user's speakers and/or an image cue displayed on a 3D canvas. With the Media cue, at any given moment you can have an audio track playing, or an image shown to user or both. One use case to use both would be when you want an image cue to pop up with a sound effect.
+
+\subsubsection{Questionnaire}
+
+This type of cue is used to present the user with a questionnaire with questions of several possible types in different pages..The user can point to the answers with the ray cast from her handset, and select with the Trigger Button. The answers will be saved locally.
+
+\subsection{Trigger}
+
+Triggers are used to trigger the cues for two purposes:
+\begin{itemize}
+    \item make the cues appear in the scene 
+    \item make the cues disappear from the scene
+\end{itemize}
+
+In order to fulfill these purposes, there are two types of triggers defined in our system. 
+\begin{itemize}
+    \item Position trigger
+    \item Time trigger
+\end{itemize}
+
+In the start trigger point, the cue can be triggered either by the position or the time. There are 4 different kind of combination to use these cues. These are:
+\begin{itemize}
+    \item Trigger gets activated when the user reaches to the area of the specific position that is defined in the JSON, the position trigger gets activated and make the cue associated with that particular position trigger appear in the scene. If it is activated with a position trigger, it can be deactivated with either position trigger or time trigger. The first way to deactivate the cue is when the user reaches a specific position. The second way to deactivate the cue which has been triggered with position trigger is to allocate a specific time for the cue to be visible to the user. 
+    \item Trigger gets activated at a specified time in the JSON and a cue associated with that particular time trigger appear in the scene. There are two ways to deactivate this cue. Either with another time trigger that indicates when this trigger should stop or a position trigger that the user activates by going near to the specified position.
+\end{itemize}
+ 
+Above, it is explained that how to activate or deactivate cues. There is also a possibility that the cues can be activated and as long as there is not a deactivation trigger is present, then cues can be in the scene until the end of the experiment. 
+
+\subsection{Feedback from Interaction with Cues}
+
+In our work, we keep track of the user's interaction with the cues in the scene. It is useful in terms of when the supervisor wants to know which of the cues the user could interact with and how much time the user spend while interacting with the cues. In this way, it can be used in such a use case that the therapist might want to analyze the response time to a certain stimulus. It gives a way to analyze this response and correlate it with the physiological reaction of the user. Another use case might be that we can have an insight on the user's response to a certain type of situation in the scene. We can measure it by asking questions to the user inside the experiment regarding how s/he felt on that particular state. 
+
+There are two different ways that we keep track of this interaction. 
+\begin{itemize}
+    \item Keep the logs of the start and end time stamps of the triggers.
+    \item Save the answer/feedback from the user locally from the applicable cues. (questionnaire and infobox)
+\end{itemize}
+
+Keeping track of the logs works as follows: when the trigger is activated for the particular cue, then we save the triggered time to the log file. 
+
+We have two types of cue which requires a feedback from the user. One of them is the questionnaire and the other one is the infobox. 
+
+In the questionnaire, supervisor prepares a questionnaire specific to the experiment to understand the user experience inside the scene. In this way we can have an understanding of how much of our experiment succeed and what can be inferred from the user's responses. We present the questionnaire in the scene as a type of cue and user provide answers and we save them locally. Saving the answers is also another way to keep track of the interaction with this specific kind of cue.
+
+As in the questionnaire case, in the infobox cue, during the experiment, supervisor might ask yes/no questions to the user and these interaction and these answers are also saved. 
+
+In the end, we achieve to keep track of the interactions that user do throughout the experiment so that they can be helpful to the supervisor at the end of the experiment.
+
+\subsection{Code Structure}
+
+
+\section{Experimental Study}
+
+
+\subsection{Experimental Setup}
+
+
+\subsubsection{Methods of evaluating}
+
+
+\subsubsection{Equipment used}
+
+\begin{itemize}
+    \item \textbf{Laptop}: A XMG Pro 17 laptop was used for our implementation with Intel Core i7-11800H 8 x 2.3 - 4.6 GHz, 135 W PL2 / Short Burst, 55 W PL1 / Sustained, Tiger Lake H45 processor, as well as NVIDIA GeForce RTX 3080 Laptop GPU graphic card, and a board of Intel HM570.
+    
+    %\cite{XMG Pro 17}
+    %https://www.xmg.gg/en/xmg-pro-17-l21/
+    
+    \item \textbf{VR sets}: Pico Neo 3 Pro has the Qualcomm XR2 processor, 6GB RAM (Neo 3 Pro) or 8GB RAM (Neo 3 Pro Eye,256GB onboard storage and featuring a 3664 x 1920 LCD screen with a PPI of 773 and up to 90Hz refresh rate, these new headsets are both lighter and more compact than our previous 6DoF headsets.
+
+    %\cite{pico_neo_3}
+    %https://www.picoxr.com/us/neo3.html
+    
+\end{itemize}
+
+\subsubsection{Game engine used}
+
+Unity cross-platform game engine was used. It is developed by Unity Technologies, first announced and released in June 2005 at Apple Inc.'s Worldwide Developers Conference as a Mac OS X-exclusive game engine.
+%\cite{unity_wikipedia}
+
+\subsection{Experimental Results}
+
+
+\section{Future Work}
+One thing that was outside the scope of this project was having event-based interactions. In our current implementation, all the triggers, and assets necessary for cues (like images and audio) are provided in compile-time. However, one might extend the system to include the ability to have runtime interaction between the player and the supervisor. In such a system, the supervisor may be able to prepare cues as the player's play session is ongoing, and send them through. \newline
+It is of course possible to add more cues. We believe we have covered many of the basic use cases with our current selection of different cues, but one can still go more specific with different functional requirements. \newline
+One path we ended up not taking but which could have been interesting nevertheless is about how the cues are created. In our current implementation, we define a limited set of cues, with a limited set of possible parameters to adjust. While we believe this proves sufficient, it would be possible to have cues implemented with some kind of layout manager, such as the Android XML Layouts \cite{android_layouts}. Or we could have implemented a Unity 3D WebView \cite{unity_webview} to which the supervisor system would send HTML/CSS/JavaScript files to customize the cue. Both of these options would give greater customization of the cues but at a cost of complexity. The supervisor would have to program the front-end framework of our choice to design the cues. In the format that we went with, it is possible to adjust the JSON with no programming required, as long as one knows which parameter does what (which can be checked from our Wiki Documentation \cite{gitlab_wiki}) \newline
+Nevertheless, we designed our system with those future considerations in mind. As such, the JSON structure of the cues can be sent as HTTP Payloads once synchronous communication is implemented. Similarly, it would be possible to create a GUI for the supervisor to adjust the cues, to abstract away the manual editing of the JSON as well. 
+
+
+\section{Future Work}
+\begin{itemize}
+    \item Adding more cues
+    \item JSON Schema to check the structure of the JSON file
+    \item Concurrency
+    \item Connection to other systems via a communication protocol like HTTP
+\end{itemize}
+\section{Conclusion}
+
+
+\printbibliography
+
+\end{document}
+
