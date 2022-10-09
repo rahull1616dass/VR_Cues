@@ -42,7 +42,7 @@ public class TriggerTimeForCues : MonoBehaviour
             Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
             if (cueLogData == null)
             {
-                LogHelper.WriteLog("\n \n \n StartTimeOffset: " + cueLogData.startTimeOffset + " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset + ":::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine);
+                LogHelper.WriteLog("\n \n \n ID: " +cueLogData._id+ " ::::: StartTimeOffset: " + cueLogData.startTimeOffset + " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset + ":::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine);
             }
         }
     }

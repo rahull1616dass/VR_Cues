@@ -12,7 +12,7 @@ public abstract class Cue
     public CueTransform cueTransform;
     public Logger logger;
 
-    public abstract void generate();
+    public abstract void generate(int ID);
     public Cue(JToken jsonTriggers)
     {
         _triggers = new List<Trigger>();
