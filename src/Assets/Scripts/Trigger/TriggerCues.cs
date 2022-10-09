@@ -25,7 +25,7 @@ public class TriggerCues : MonoBehaviour
         {
             Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(), 
                 allTriggerParant, "CueTrigger_End_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
-            triggerTimer.GetComponent<TriggerTimeForCues>().EndByTimeTrigger(refCue, (float)endTrigger._triggerPoint);
+            triggerTimer.GetComponent<TriggerTimeForCues>().EndByTimeTrigger(refCue, (int)endTrigger._triggerPoint);
             return triggerTimer.gameObject;
         }
         else if(endTrigger._triggerPoint.GetType() == typeof(CueTransform))
@@ -45,7 +45,7 @@ public class TriggerCues : MonoBehaviour
         {
             Transform triggerTimer = GameManager.instance.generateCueInScene.CueTransformToTransform(new CueTransform(),
                 allTriggerParant, "CueTrigger_Start_" + refCue.name + "_" + index + 1, typeof(TriggerTimeForCues));
-            triggerTimer.GetComponent<TriggerTimeForCues>().StartByTimeTrigger(refCue, (float)startTriggers._triggerPoint, endTriggerObj);
+            triggerTimer.GetComponent<TriggerTimeForCues>().StartByTimeTrigger(refCue, (int)startTriggers._triggerPoint, endTriggerObj);
         }
         else if (startTriggers._triggerPoint.GetType() == typeof(CueTransform))
         {
