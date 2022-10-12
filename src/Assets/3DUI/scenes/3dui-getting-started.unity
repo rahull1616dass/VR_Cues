@@ -14168,6 +14168,7 @@ MonoBehaviour:
   allCueParent: {fileID: 1860791230}
   leftGhostHandPrefab: {fileID: 1432953465324244, guid: dd894f4e838df7d4489b00cb606c832d, type: 3}
   rightGhostHandPrefab: {fileID: 1525468253343224, guid: b605af996cb03be4b829d63c3ba8fc05, type: 3}
+  layerSO: {fileID: 11400000, guid: 11e555a7e5e765749b48bed43f8efa28, type: 2}
 --- !u!4 &1149144004
 Transform:
   m_ObjectHideFlags: 0
