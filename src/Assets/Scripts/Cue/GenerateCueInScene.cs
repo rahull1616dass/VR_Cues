@@ -23,6 +23,8 @@ public class GenerateCueInScene : MonoBehaviour
 
     private int cueIndex;
 
+
+
     public Transform CueTransformToTransform(CueTransform cueTransform, Transform parentTransform , string objectName = "cueTransform", 
         params Type[] componentsToAdd)
 
@@ -206,8 +208,7 @@ public class GenerateCueInScene : MonoBehaviour
         transformGhostHand.GetComponent<CueData>().AddData(ghostHand.logger, cueIndex++);
 
         Animator handAnimation = transformGhostHand.GetChild(0).GetComponent<Animator>();
-        handAnimation.Play(ghostHand.animationName, -1, 0f);
-        triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
+        //handAnimation.SetLayerWeight()
     }
 
 
