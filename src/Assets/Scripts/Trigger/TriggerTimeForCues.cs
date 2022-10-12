@@ -35,12 +35,15 @@ public class TriggerTimeForCues : MonoBehaviour
     {
         Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
         if (cueLogData != null)
-        {
-            LogHelper.WriteLog("\n \n \n ID: " + cueLogData._id +
-                " ::::: StartTimeOffset: " + cueLogData.startTimeOffset +
-                " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset +
-                " :::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine +
-                " :::: " + (ObjectState ? "StartTimeTrigger: " : "EndTimeTrigger: ") + triggerTimer);
-        }
+            if (ObjectState)
+            {
+                LogHelper.WriteLog($"{cueLogData._id},{cueLogData.startTimeOffset},{cueLogData.endTimeOffset}," +
+                    $"{cueLogData.relevantForMeasurementEngine},{transform.position},null,{Time.time}");
+            }
+            else
+            {
+                LogHelper.WriteLog($"{cueLogData._id},{cueLogData.startTimeOffset},{cueLogData.endTimeOffset}," +
+                    $"{cueLogData.relevantForMeasurementEngine},null,{transform.position},{Time.time}");
+            }
     }
 }
