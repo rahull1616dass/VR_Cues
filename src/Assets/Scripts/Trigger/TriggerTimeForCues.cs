@@ -34,7 +34,7 @@ public class TriggerTimeForCues : MonoBehaviour
     private void SaveLog(bool ObjectState, float triggerTimer)
     {
         Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
-        if (cueLogData == null)
+        if (cueLogData != null)
         {
             LogHelper.WriteLog("\n \n \n ID: " + cueLogData._id +
                 " ::::: StartTimeOffset: " + cueLogData.startTimeOffset +
