@@ -1,4 +1,12 @@
-# Sooraj
+# \begin[!h]
+
+    \centering
+        \centerline{
+        \includegraphics[width=0.5\textwidth]{questionnaire_lineargrid.jpg}
+        }
+        \caption{Sample Likert Scale question}
+            \label{fig:questionnaire_lineargrid}
+\end{figure}Sooraj
 
 1. [https://www.hci.uni-wuerzburg.de/projects/getit/](https://www.hci.uni-wuerzburg.de/projects/getit/)
 2. [https://downloads.hci.informatik.uni-wuerzburg.de/2018-sui-comp-of-vr-transition-techniques-preprint.pdf](https://downloads.hci.informatik.uni-wuerzburg.de/2018-sui-comp-of-vr-transition-techniques-preprint.pdf)
@@ -35,7 +43,6 @@ Four additional purposes for interaction cues: pick, manipulate, gesture, and sp
 ![AR-project-cue-examples.png](img/AR-project-cue-examples.png)
 
 # Rahul
-
 
 - We can follow this basic photon tutorial during our next meeting to create a basic online setting: [https://doc.photonengine.com/en-us/pun/v2/demos-and-tutorials/pun-basics-tutorial/intro]()
 - Can discuss Unity WebGL Development. Should we develop two seperate code repositories (one for Player one for Supervisor) and connect them via Photon? (btw, seems Photon uses its own cloud servers rather than a localhost implementation.)
