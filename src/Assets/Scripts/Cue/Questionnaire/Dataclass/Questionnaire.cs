@@ -16,8 +16,9 @@ public class Questionnaire : Cue
         
     }
     
-    public override void generate()
+    public override void generate(int id)
     {
+        logger._id = id;
         GameManager.instance.generateCueInScene.generateQuestionnaire(this);
        
     }

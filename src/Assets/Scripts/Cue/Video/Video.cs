@@ -12,7 +12,7 @@ namespace Cues.Data
 
         }
 
-        public override void generate()
+        public override void generate(int id)
         {
             throw new System.NotImplementedException();
         }

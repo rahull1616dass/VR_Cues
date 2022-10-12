@@ -132,7 +132,7 @@ public class GenerateCueInScene : MonoBehaviour
             HighlightObject highlightObject = o.GetComponent<HighlightObject>();
             if(highlight.objectId == highlightObject.objectID)
             {
-                o.GetComponent<CueData>().AddData(highlight.logger);
+                o.AddComponent<CueData>().AddData(highlight.logger);
                 highlightObject.initHighlight(
                 highlight.highlightColor,
                 highlight.animationTime,

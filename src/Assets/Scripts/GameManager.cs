@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
     {
         var jsonString = File.ReadAllText(Application.streamingAssetsPath + jsonPath);
         RootCue rootCue = JsonConvert.DeserializeObject<RootCue>(jsonString, new CueConverter("cueType", "triggers"));
-        foreach(var cue in rootCue.cues)
-        {
-           cue.generate();
-        }
         LogHelper.CreateLogTxtFile();
+        for (int i = 0; i < rootCue.cues.Count; i++)
+        {
+            rootCue.cues[i].generate(i);
+        }
     }
 
 }

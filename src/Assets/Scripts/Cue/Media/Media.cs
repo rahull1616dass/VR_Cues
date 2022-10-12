@@ -17,8 +17,9 @@ namespace Cues
 
         }
 
-        public override void generate()
+        public override void generate(int id)
         {
+            logger._id = id;
             GameManager.instance.generateCueInScene.generateMedia(this);
         }
     }

@@ -35,11 +35,15 @@ public class TriggerColliderForCues : MonoBehaviour
 
     private void SaveLog(bool ObjectState)
     {
-        if (ObjectState)
-        {
-            Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
-            if (cueLogData != null)
-                LogHelper.WriteLog("\n \n \n StartTimeOffset: " + cueLogData.startTimeOffset + " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset + ":::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine);
-        }
+        
+        Logger cueLogData = cueToTrigger.GetComponent<CueData>().currentLogData;
+        if (cueLogData != null)
+            LogHelper.WriteLog("\n \n \n ID: " + cueLogData._id +
+                " ::::: StartTimeOffset: " + cueLogData.startTimeOffset +
+                " ::::: EndTimeOffSet: " + cueLogData.endTimeOffset +
+                " :::: relevantForMeasurementEngine: " + cueLogData.relevantForMeasurementEngine +
+                " :::: " + (ObjectState ? "StartTriggerPostion: ":"EndTriggerPostion: ") +transform.position +
+                " :::: Time of Interraction" + Time.time);
+        
     }
 }
