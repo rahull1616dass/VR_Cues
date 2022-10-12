@@ -18,7 +18,8 @@ namespace Cues
 
         public override void generate(int id)
         {
-            logger._id = id;
+            if (logger != null)
+                logger._id = id;
             GameManager.instance.generateCueInScene.generateHighlight(this);
         }
     }
