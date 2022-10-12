@@ -9,9 +9,9 @@ public class LogHelper
     private static string fileName = "";
     public static void CreateLogTxtFile()
     {
-        fileName = $"{Application.streamingAssetsPath}/logs/{DateTime.Now.ToString("yyMMdd_HHmmss")}.txt";
+        fileName = $"{Application.streamingAssetsPath}/logs/{DateTime.Now.ToString("yyMMdd_HHmmss")}.csv";
+        WriteLog("StartTimeOffset,EndTimeOffset,RelevantForMeasurementEngine,StartTriggerPosition,EndTriggerPosition,TimeOfInteraction");
     }
-
 
     public static void WriteLog(string log)
     {
