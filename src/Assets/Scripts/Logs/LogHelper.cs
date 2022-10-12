@@ -10,7 +10,7 @@ public class LogHelper
     public static void CreateLogTxtFile()
     {
         fileName = $"{Application.streamingAssetsPath}/logs/{DateTime.Now.ToString("yyMMdd_HHmmss")}.csv";
-        WriteLog("CueId;StartTimeOffset;EndTimeOffset;RelevantForMeasurementEngine;StartTriggerPosition;EndTriggerPosition;TimeOfInteraction");
+        WriteLog("Timestamp;CueId;StartTimeOffset;EndTimeOffset;RelevantForMeasurementEngine;StartTriggerPosition;EndTriggerPosition;TimeOfInteraction");
     }
 
     public static void WriteLog(string log)
