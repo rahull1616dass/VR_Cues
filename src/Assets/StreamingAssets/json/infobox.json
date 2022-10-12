@@ -1,0 +1,49 @@
+{
+    "cueType": "RootCue",
+    "cues": [
+        {
+            "logger": {
+              "startTimeOffset": 5.3,
+              "endTimeOffset": 6.3,
+              "relevantForMeasurementEngine": true
+            },
+            "cueType": "InfoBox",
+            "title": "This is title of the InfoBox.",
+            "description": "This is description of the InfoBox.",
+            "textColor": "#000000",
+            "iconReferenceId": "error_icon.png",
+            "buttons": [
+              {
+                "text": "Button1 Text",
+                "textColor": "#FFFFFF",
+                "buttonBackgroundColor": "#05801A"
+              },
+              {
+                "text": "Button2 Text",
+                "textColor": "#FFFFFF",
+                "buttonBackgroundColor": "#FF0000"
+              }
+            ],
+            "cueTransform": {
+              "attachToPlayer": true,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "scale": {
+                "x": 0.1,
+                "y": 0.1,
+                "z": 0.1
+              }
+            },
+            "triggers": [{ "startPoint": 0 }]
+          }
+    ]
+  }
+

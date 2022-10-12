@@ -2,7 +2,7 @@
   "cueType": "RootCue",
   "cues": [
     {
-      "logger":{
+      "logger": {
         "startTimeOffset": 5.3,
         "endTimeOffset": 6.3,
         "relevantForMeasurementEngine": true
@@ -174,6 +174,11 @@
       ]
     },
     {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "Media",
       "cueTransform": {
         "attachToPlayer": true,
@@ -197,6 +202,11 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "Highlight",
       "objectId": "Car",
       "highlightColor": "#224B0C",
@@ -206,6 +216,11 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "Highlight",
       "objectId": "Male",
       "highlightColor": "#AC4425",
@@ -215,6 +230,11 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "InfoBox",
       "title": "This is title of the InfoBox.",
       "description": "This is description of the InfoBox.",
@@ -253,6 +273,11 @@
       "triggers": [{ "startPoint": 0 }]
     },
     {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
       "cueType": "Haptic",
       "duration": 5,
       "amplitude": 100,

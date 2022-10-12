@@ -1,0 +1,19 @@
+{
+  "cueType": "RootCue",
+  "cues": [
+    {
+      "logger": {
+        "startTimeOffset": 5.3,
+        "endTimeOffset": 6.3,
+        "relevantForMeasurementEngine": true
+      },
+      "cueType": "Highlight",
+      "objectId": "Car",
+      "highlightColor": "#224B0C",
+      "animationTime": 1,
+      "easeType": 21,
+      "loopType": 2,
+      "triggers": [{ "startPoint": 0 }]
+    }
+  ]
+}
