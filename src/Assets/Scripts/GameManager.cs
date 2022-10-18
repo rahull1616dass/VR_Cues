@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [ReadOnly]
     [SerializeField] private string jsonPath;
     public static GameManager instance;
     public GenerateCueInScene generateCueInScene;

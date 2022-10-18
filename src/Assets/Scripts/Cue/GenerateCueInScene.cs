@@ -210,6 +210,8 @@ public class GenerateCueInScene : MonoBehaviour
         Animator handAnimation = transformGhostHand.GetChild(0).GetComponent<Animator>();
         handAnimation.SetLayerWeight(layerSO.getAnimationLayerByName(ghostHand.animationName), 1f);
 
+        triggerCue.SetTrigger(ghostHand._triggers, transformGhostHand.gameObject);
+
         Debug.Log(ghostHand.animationName);
         Debug.Log(layerSO.getAnimationLayerByName(ghostHand.animationName));
     }
