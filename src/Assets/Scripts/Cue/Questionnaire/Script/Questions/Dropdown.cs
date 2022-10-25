@@ -29,9 +29,12 @@ namespace VRQuestionnaireToolkit
 
         private bool IsAlreadyEnabled;
 
+        private string thisTag;
+
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateDropdownQuestion(string[] options, int dropdownIndex, RectTransform questionRec)
+        public List<GameObject> CreateDropdownQuestion(string[] options, int dropdownIndex, RectTransform questionRec, string tag)
         {
+            thisTag = tag;
             if (options.Length > 7)
             {
                 throw new InvalidOperationException("We currently only support up to 7 dropdown questions on a single page");
@@ -84,7 +87,7 @@ namespace VRQuestionnaireToolkit
         {
             //Debug.Log("CallingDisable");
 
-            ExportToCSV.SaveDataWhileAnswering("DropDown",currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering(thisTag, currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

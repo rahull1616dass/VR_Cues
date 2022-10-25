@@ -29,8 +29,11 @@ namespace VRQuestionnaireToolkit
 
         private bool IsAlreadyEnabled;
         //qText look how many q in one file >4 deny
+
+        private string thisTag;
         public List<GameObject> CreateRadioQuestion(QData subQuestion, int subQuestionIndex, RectTransform questionRec)
         {
+            thisTag = subQuestion.tag;
 
             if (subQuestion.qOptions.Length > 7)
             {
@@ -103,7 +106,7 @@ namespace VRQuestionnaireToolkit
         {
             //Debug.Log("CallingDisable");
 
-            ExportToCSV.SaveDataWhileAnswering("Radio", currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering(thisTag, currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

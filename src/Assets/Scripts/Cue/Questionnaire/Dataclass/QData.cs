@@ -1,5 +1,6 @@
 public class QData
 {
+    public string tag { get; set; }
     public string qText { get; set; }
     public string[] qOptions { get; set; }
     public bool qMandatory { get; set; }

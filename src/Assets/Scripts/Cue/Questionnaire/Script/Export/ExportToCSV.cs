@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using UnityEngine.Events;
+using System;
 
 /// <summary>
 /// ExportToCSV.class
@@ -47,11 +48,11 @@ namespace VRQuestionnaireToolkit
 
         // Use this for initialization
 
-        public static void SaveDataWhileAnswering(string QuestionType, string Question, string Answer, int Index)
+        public static void SaveDataWhileAnswering(string QuestionTag, string Question, string Answer, int Index)
         {
             //Debug.Log("Using Index " + Index);
             string[] questionAnswer = new string[4];
-            questionAnswer[0] = QuestionType;
+            questionAnswer[0] = QuestionTag;
             questionAnswer[1] = Question;
             questionAnswer[2] = Index.ToString();
             questionAnswer[3] = Answer;
@@ -71,7 +72,7 @@ namespace VRQuestionnaireToolkit
             List<string[]> _csvRows = new List<string[]>();
             string[] csvTitleRow = new string[4];
             // create title rows
-            csvTitleRow[0] = "QuestionType";
+            csvTitleRow[0] = "QuestionTag";
             csvTitleRow[1] = "Question";
             csvTitleRow[2] = "QuestionID";
             csvTitleRow[3] = "Answer";
@@ -85,7 +86,7 @@ namespace VRQuestionnaireToolkit
 
             //-----Processing responses into the specified data format-----//
 
-            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + "_" + FileName + "." + _fileType;
+            string _completeFileName = "questionnaireID_" + _questionnaireID + "_" + FileName + "." + _fileType;
             string _path = _folderPath + _completeFileName;
 
 
@@ -178,10 +179,9 @@ namespace VRQuestionnaireToolkit
         static void WriteToLocal(string localPath, StringBuilder content)
         {
             Debug.Log("Answers stored in path: " + localPath);
-
             try
             {
-                StreamWriter outStream = System.IO.File.CreateText(localPath);
+                StreamWriter outStream = File.CreateText(localPath);
                 outStream.WriteLine(content);
                 outStream.Close();
             }

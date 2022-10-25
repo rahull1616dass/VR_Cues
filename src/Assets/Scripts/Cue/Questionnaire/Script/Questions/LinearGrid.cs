@@ -24,9 +24,12 @@ namespace VRQuestionnaireToolkit
         private int CurrentQuestionIndex;
 
         private bool IsAlreadyEnabled;
+
+        private string thisTag;
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateLinearGridQuestion(QData subQuestion, int numberQuestion, RectTransform questionRec)
         {
+            thisTag = subQuestion.tag;
             this.qMandatory = subQuestion.qMandatory;
 
             if (subQuestion.qMax > 20)
@@ -133,7 +136,7 @@ namespace VRQuestionnaireToolkit
         {
             //Debug.Log("CallingDisable");
 
-            ExportToCSV.SaveDataWhileAnswering("Range", currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering(thisTag, currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }

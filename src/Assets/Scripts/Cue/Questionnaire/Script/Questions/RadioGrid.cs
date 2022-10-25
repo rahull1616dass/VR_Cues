@@ -34,6 +34,7 @@ namespace VRQuestionnaireToolkit
         private RectTransform _questionRecTest;
         public List<GameObject> RadioList; //contains all radiobuttons which correspond to one question
 
+
         //qText look how many q in one file >4 deny
         public List<GameObject> CreateRadioGridQuestion(Question question, int numberConditions, RectTransform questionRec)
         {

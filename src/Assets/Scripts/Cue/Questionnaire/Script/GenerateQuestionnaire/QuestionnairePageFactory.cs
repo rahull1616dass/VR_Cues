@@ -209,7 +209,7 @@ namespace VRQuestionnaireToolkit
                         text.text = subQuestion.qText;
                         text.transform.localPosition = new Vector3(10, 110 - (index * 50), text.transform.localPosition.z);
 
-                        QuestionList.Add(typedQuestion.GetComponent<Checkbox>().CreateCheckboxQuestion(subQuestion.qOptions, index, typedQuestion.GetComponent<RectTransform>()));
+                        QuestionList.Add(typedQuestion.GetComponent<Checkbox>().CreateCheckboxQuestion(subQuestion.qOptions, index, typedQuestion.GetComponent<RectTransform>(), subQuestion.tag));
                     }
                     break;
                 case "checkboxGrid":
@@ -257,7 +257,7 @@ namespace VRQuestionnaireToolkit
                         text = typedQuestion.GetComponentInChildren<TextMeshProUGUI>();
                         text.text = subDropdown.qText;
                         text.transform.localPosition = new Vector3(0, 120 - (index * 90), text.transform.localPosition.z);
-                        QuestionList.Add(typedQuestion.GetComponent<Dropdown>().CreateDropdownQuestion(subDropdown.qOptions, index, typedQuestion.GetComponent<RectTransform>()));
+                        QuestionList.Add(typedQuestion.GetComponent<Dropdown>().CreateDropdownQuestion(subDropdown.qOptions, index, typedQuestion.GetComponent<RectTransform>(), subDropdown.tag));
                     }
                     break;
                 case "textInput":

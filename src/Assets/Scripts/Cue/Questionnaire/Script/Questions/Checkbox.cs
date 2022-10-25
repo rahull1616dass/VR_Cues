@@ -33,9 +33,12 @@ namespace VRQuestionnaireToolkit
         private int CurrentQuestionIndex;
 
         private bool IsAlreadyEnabled;
+
+        private string thisTag;
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateCheckboxQuestion(string[] options, int questionIndex, RectTransform questionRec)
+        public List<GameObject> CreateCheckboxQuestion(string[] options, int questionIndex, RectTransform questionRec, string tag)
         {
+            thisTag = tag;
 
             CheckboxList = new List<GameObject>();
 
@@ -102,7 +105,7 @@ namespace VRQuestionnaireToolkit
         private void OnDisable()
         {
             //Debug.Log("CallingDisable");
-            ExportToCSV.SaveDataWhileAnswering("CheckBox",currentQuestion, currentAnswer, CurrentQuestionIndex);
+            ExportToCSV.SaveDataWhileAnswering(thisTag, currentQuestion, currentAnswer, CurrentQuestionIndex);
         }
     }
 }
